@@ -16,7 +16,7 @@ const getMoreLink = len => {
 }
 
 const getLatest = (data, isLatest) => {
-  const postNode = data.find(item => item.name === 'posts')
+  const postNode = data.find(item: object => item.name === 'posts')
   const posts = (postNode || {}).children || []
   if (!isLatest) return posts
   return posts.slice(0, Configs.latestLimit)
@@ -46,7 +46,7 @@ const Posts = ({
         ))}
         {isLatest && <span className="more">{getMoreLink(posts.length)}</span>}
       </div>
-      <style jsx>{`
+      <style tsx>{`
         section {
           margin-top: calc(${theme.layout.gap} * 2);
         }

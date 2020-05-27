@@ -11,9 +11,11 @@
     "export": "npm run now-build && next export"
   },
   "dependencies": {
+    "@types/ms": "^0.7.31",
+    "@types/styled-jsx": "^2.2.8",
     "@zeit-ui/react": "^1.5.0",
     "@zeit-ui/react-icons": "^1.2.2",
-    "@zeit-ui/react-prism": "^1.0.0",
+    "@zeit-ui/react-prism": "^1.0.1",
     "ms": "^2.1.2",
     "next": "^9.4.0",
     "react": "16.13.0",
