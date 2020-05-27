@@ -1,25 +1,24 @@
 const BLOG = {
-  author: "Witt",
-  title: "Witt - unix.bio",
-  description:
-    "Hi, I'm Witt. A JavaScript full stack engineer, I'm creating apps and libs to help improve the developer experience.",
-  summary: "JavaScript 工程师，对开发者体验感兴趣。",
-  language: "zh-cn",
+  author: "Reona",
+  title: "Blog by Reona",
+  description: "",
+  summary: "Web Developer",
+  language: "en-us",
   latestLimit: 5,
 
   labels: {
-    default: "所有文章",
-    latest: "最近",
-    list: "所有",
+    default: "Articles",
+    latest: "Latest",
+    list: "All Articles",
   },
 
-  email: "unix.bio@gmail.com",
-  github: "unix",
-  twitter: "echo_witt",
-  domain: "unix.bio",
+  email: "shimada.reona@gmail.com",
+  github: "reona5",
+  twitter: "reona_5",
+  domain: "reona.dev",
 
-  googleAnalytics: "UA-110371817-3",
-  cn: true,
+  googleAnalytics: "UA-146202958-1",
+  cn: false,
   enableViews: true,
 
   layouts: {

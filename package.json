@@ -30,6 +30,7 @@
     "fs-extra": "^8.1.0",
     "prompt-sync": "^4.2.0",
     "rehype-join-line": "^1.0.2",
-    "styled-jsx": "^3.2.4"
+    "styled-jsx": "^3.2.4",
+    "typescript": "^3.9.3"
   }
 }
