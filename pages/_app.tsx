@@ -5,7 +5,7 @@ import { ZeitProvider, CssBaseline } from "@zeit-ui/react";
 import React, { useCallback, useState, useEffect, useMemo } from "react";
 import useDomClean from "lib/use-dom-clean";
 import { getDNSPrefetchValue } from "lib/data-transform";
-import ThemeConfigProvider from "../lib/components/theme-config-provider";
+import ThemeConfigProvider from "lib/components/theme-config-provider";
 
 const Application = ({ Component, pageProps }) => {
   const [themeType, setThemeType] = useState("light");

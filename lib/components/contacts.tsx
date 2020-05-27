@@ -1,39 +1,59 @@
-import React, { useMemo } from 'react'
-import { useTheme, Spacer, Link, Divider } from '@zeit-ui/react'
-import useConfigs from '../config-context'
-import SunIcon from '@zeit-ui/react-icons/sun'
-import MoonIcon from '@zeit-ui/react-icons/moon'
-import { Configs } from '../utils'
+import React, { useMemo } from "react";
+import { useTheme, Spacer, Link, Divider } from "@zeit-ui/react";
+import useConfigs from "../config-context";
+import SunIcon from "@zeit-ui/react-icons/sun";
+import MoonIcon from "@zeit-ui/react-icons/moon";
+import { Configs } from "../utils";
 
 const Contacts = ({ isDetailPage = false }) => {
-  const theme = useTheme()
-  const configs = useConfigs()
-  const isDark = useMemo(() => theme.type === 'dark', [theme.type])
-  const switchTheme = () => configs.onChange(theme.type === 'dark')
-  
-  const themeTitle = Configs.isCN() ? '切换主题' : 'Switch themes'
+  const theme = useTheme();
+  const configs = useConfigs();
+  const isDark = useMemo(() => theme.type === "dark", [theme.type]);
+  const switchTheme = () => configs.onChange(theme.type === "dark");
+
+  const themeTitle = Configs.isCN() ? "切换主题" : "Switch themes";
   const linkProps = {
-    rel: 'noreferrer',
-    target: '_blank',
-  }
-  
+    rel: "noreferrer",
+    target: "_blank",
+  };
+
   return (
     <>
       <div className="contacts">
-        {isDetailPage && <Divider y={.5} />}
+        {isDetailPage && <Divider y={0.5} />}
         <div className="between">
           <div className="socials">
-            {Configs.email && <Link aria-label="email" href={Configs.email} {...linkProps}>Email</Link> }
-            {Configs.github && <Link aria-label="github" href={Configs.github} {...linkProps}>Github</Link>}
-            {Configs.twitter && <Link aria-label="twitter" href={Configs.twitter} {...linkProps}>Twitter</Link>}
+            {Configs.email && (
+              <Link aria-label="email" href={Configs.email} {...linkProps}>
+                Email
+              </Link>
+            )}
+            {Configs.github && (
+              <Link aria-label="github" href={Configs.github} {...linkProps}>
+                Github
+              </Link>
+            )}
+            {Configs.twitter && (
+              <Link aria-label="twitter" href={Configs.twitter} {...linkProps}>
+                Twitter
+              </Link>
+            )}
           </div>
           <div>
-            {isDark && <span title={themeTitle}><SunIcon onClick={switchTheme} size={16} /></span>}
-            {!isDark && <span title={themeTitle}><MoonIcon onClick={switchTheme} size={16} /></span>}
+            {isDark && (
+              <span title={themeTitle}>
+                <SunIcon onClick={switchTheme} size={16} />
+              </span>
+            )}
+            {!isDark && (
+              <span title={themeTitle}>
+                <MoonIcon onClick={switchTheme} size={16} />
+              </span>
+            )}
           </div>
         </div>
-        
-        <style jsx>{`
+
+        <style tsx>{`
         .contacts {
           width: ${Configs.layouts.pageWidth};
           padding: 0 ${theme.layout.gapQuarter};
@@ -97,7 +117,7 @@ const Contacts = ({ isDetailPage = false }) => {
       </div>
       <Spacer y={3.5} />
     </>
-  )
-}
+  );
+};
 
-export default Contacts
+export default Contacts;

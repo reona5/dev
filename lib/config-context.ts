@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export const ThemeConfigContext = React.createContext({})
+export const ThemeConfigContext = React.createContext({});
 
-const useConfigs = () => React.useContext(ThemeConfigContext)
+const useConfigs = () => React.useContext(ThemeConfigContext);
 
-export default useConfigs
+export default useConfigs;

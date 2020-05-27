@@ -34,7 +34,7 @@ const DateDisplay = ({ date }) => {
           {views}
         </>
       )}
-      <style jsx>{`
+      <style tsx>{`
         p {
           color: ${theme.palette.accents_4};
           font-size: 0.8rem;
@@ -83,7 +83,7 @@ const Title = ({ title, date }) => {
         <DateDisplay date={date} />
       </div>
 
-      <style jsx>{`
+      <style tsx>{`
         .title {
           margin: ${theme.layout.gap} 0;
         }

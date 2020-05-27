@@ -1,5 +1,5 @@
 import ms from "ms";
-import { BLOG } from "../blog.config";
+import BLOG from "../blog.config";
 
 export const msToString = (time: number) => {
   const str = ms(time, { long: true });

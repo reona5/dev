@@ -1,31 +1,32 @@
-import React, { useState, useEffect } from 'react'
-import { Row, useTheme, User, Link } from '@zeit-ui/react'
-import NextLink from 'next/link'
-import ProfileLinks from './profile-links'
-import { Configs } from '../utils'
+import React, { useState, useEffect } from "react";
+import { Row, useTheme, User, Link } from "@zeit-ui/react";
+import NextLink from "next/link";
+import ProfileLinks from "./profile-links";
+import { Configs } from "../utils";
 
-const Profile = React.memo(({
-}) => {
-  const theme = useTheme()
-  const [showText, setShowText] = useState(theme.type === 'dark')
+const Profile = React.memo(({}) => {
+  const theme = useTheme();
+  const [showText, setShowText] = useState(theme.type === "dark");
   useEffect(() => {
-    const show = theme.type === 'dark'
+    const show = theme.type === "dark";
     if (showText !== show) {
-      setShowText(show)
+      setShowText(show);
     }
-  }, [theme.type])
+  }, [theme.type]);
 
   return (
     <div className="profile">
       <Row align="bottom" className="user">
         <NextLink href="/" passHref>
           <Link>
-            <User src="/assets/avatar.png" name={Configs.author}>{Configs.summary}</User>
+            <User src="/assets/avatar.png" name={Configs.author}>
+              {Configs.summary}
+            </User>
           </Link>
         </NextLink>
       </Row>
       <ProfileLinks />
-      <style jsx>{`
+      <style tsx>{`
         .profile {
           padding: ${theme.layout.gap} 0;
         }
@@ -48,7 +49,7 @@ const Profile = React.memo(({
         }
       `}</style>
     </div>
-  )
-})
+  );
+});
 
-export default Profile
+export default Profile;

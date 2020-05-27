@@ -1,28 +1,36 @@
-import React from 'react'
-import { Link, useTheme } from '@zeit-ui/react'
-import NextLink from 'next/link'
-const options = { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' }
+import React from "react";
+import { Link, useTheme } from "@zeit-ui/react";
+import NextLink from "next/link";
+const options = {
+  weekday: "short",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
 
 const getDateString = (date) => {
-  const d = new Date(date)
-  if (`${d}` === 'Invalid Date') return ''
-  return new Date(date).toLocaleString('zh-cn', options)
-    .replace('日', '日, &nbsp;')
-}
+  const d = new Date(date);
+  if (`${d}` === "Invalid Date") return "";
+  return new Date(date)
+    .toLocaleString("zh-cn", options)
+    .replace("日", "日, &nbsp;");
+};
 
 const PostItem = ({ post }) => {
-  const theme = useTheme()
-  
+  const theme = useTheme();
+
   return (
     <div className="item">
       <NextLink href={post.url} as={post.url} passHref>
         <Link>
           {post.name}
-          <span className="date" dangerouslySetInnerHTML={{__html: getDateString(post.meta.date)}}>
-          </span>
+          <span
+            className="date"
+            dangerouslySetInnerHTML={{ __html: getDateString(post.meta.date) }}
+          ></span>
         </Link>
       </NextLink>
-      <style jsx>{`
+      <style tsx>{`
         .item {
           margin-bottom: calc(1.35 * ${theme.layout.gapHalf});
           overflow: hidden;
@@ -66,7 +74,7 @@ const PostItem = ({ post }) => {
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default PostItem
+export default PostItem;

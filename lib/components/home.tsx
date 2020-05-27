@@ -1,18 +1,18 @@
-import React from 'react'
-import Profile from './profile'
+import React from "react";
+import Profile from "./profile";
 
 const Home = () => {
   return (
     <div className="home">
       <Profile />
-  
-      <style jsx>{`
+
+      <style tsx>{`
         .home {
           width: 100%;
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
