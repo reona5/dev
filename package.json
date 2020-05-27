@@ -1,0 +1,35 @@
+{
+  "name": "reona.dev",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "npm run collect && next dev",
+    "dev": "npm run collect && next dev",
+    "now-build": "npm run collect && next build",
+    "post": "node scripts/create.js",
+    "collect": "node scripts/collect-meta.js",
+    "export": "npm run now-build && next export"
+  },
+  "dependencies": {
+    "@zeit-ui/react": "^1.5.0",
+    "@zeit-ui/react-icons": "^1.2.2",
+    "@zeit-ui/react-prism": "^1.0.0",
+    "ms": "^2.1.2",
+    "next": "^9.4.0",
+    "react": "16.13.0",
+    "react-dom": "16.13.0"
+  },
+  "devDependencies": {
+    "@mapbox/rehype-prism": "^0.4.0",
+    "@mdx-js/loader": "^1.5.7",
+    "@next/mdx": "^9.4.0",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "chalk": "^3.0.0",
+    "extract-mdx-metadata": "^1.0.0",
+    "fs-extra": "^8.1.0",
+    "prompt-sync": "^4.2.0",
+    "rehype-join-line": "^1.0.2",
+    "styled-jsx": "^3.2.4"
+  }
+}
