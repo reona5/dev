@@ -1583,10 +1583,10 @@
     fs-extra "^7.0.0"
     rev-hash "^2.0.0"
 
-"@next/mdx@^9.4.0":
-  version "9.4.0"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.4.0.tgz#378e620807a7e27e732ea607f7afa453fbfaaafb"
-  integrity sha512-CyYHS0Ri515J3qZwjQ7Qgfltst7QSAVKzwK3v9p1wvP+G0UFk3DNwn/PtUk6zRaSJ6mSw/y8d8AnYjSgP0mw5w==
+"@next/mdx@^9.4.4":
+  version "9.4.4"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.4.4.tgz#ad1da5ecd2f3ee4b07fdf9a938441efffd58af6b"
+  integrity sha512-d1WPPxube7kgQo5JjfiFxPoK+set0OBCNeIJnF8TN176v4SsFNngfB4I5RIxsdXqD7aPzWeFcxCGGGvbzjKa8A==
 
 "@next/react-dev-overlay@9.4.0":
   version "9.4.0"
