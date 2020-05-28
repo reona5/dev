@@ -14,7 +14,7 @@ const DateDisplay = ({ date }) => {
   if (`${d}` === "Invalid Date") return null;
 
   const time = Date.now() - d.getTime();
-  const locale = "en-us";
+  const locale = "ja-jp";
   const showViews = useMemo(() => BLOG.enableViews && countUpdated, [
     countUpdated,
   ]);
