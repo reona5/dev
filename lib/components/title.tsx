@@ -2,8 +2,8 @@ import React, { useMemo } from "react";
 import { msToString } from "../data-transform";
 import { useTheme } from "@zeit-ui/react";
 import { useRouter } from "next/router";
-import { Configs } from "../utils";
 import useViewsShow from "../use-views-show";
+import BLOG from "blog.config";
 
 const DateDisplay = ({ date }) => {
   const theme = useTheme();
@@ -14,13 +14,11 @@ const DateDisplay = ({ date }) => {
   if (`${d}` === "Invalid Date") return null;
 
   const time = Date.now() - d.getTime();
-  const locale = Configs.isCN() ? "zh-cn" : "en-us";
-  const showViews = useMemo(() => Configs.enableViews && countUpdated, [
+  const locale = "en-us";
+  const showViews = useMemo(() => BLOG.enableViews && countUpdated, [
     countUpdated,
   ]);
-  const views = useMemo(() => `${count} ${Configs.isCN() ? "阅读" : "views"}`, [
-    count,
-  ]);
+  const views = useMemo(() => `${count} views`, [count]);
 
   return (
     <p>
@@ -34,7 +32,7 @@ const DateDisplay = ({ date }) => {
           {views}
         </>
       )}
-      <style tsx>{`
+      <style jsx>{`
         p {
           color: ${theme.palette.accents_4};
           font-size: 0.8rem;
@@ -83,7 +81,7 @@ const Title = ({ title, date }) => {
         <DateDisplay date={date} />
       </div>
 
-      <style tsx>{`
+      <style jsx>{`
         .title {
           margin: ${theme.layout.gap} 0;
         }

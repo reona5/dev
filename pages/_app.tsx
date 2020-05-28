@@ -63,7 +63,7 @@ const Application = ({ Component, pageProps }) => {
         <ThemeConfigProvider onChange={changeHandle}>
           <Component {...pageProps} />
         </ThemeConfigProvider>
-        <style global tsx>{`
+        <style global jsx>{`
           @media only screen and (max-width: 767px) {
             html {
               font-size: 15px;

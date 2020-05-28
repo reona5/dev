@@ -6,7 +6,7 @@ const Home = () => {
     <div className="home">
       <Profile />
 
-      <style tsx>{`
+      <style jsx>{`
         .home {
           width: 100%;
         }

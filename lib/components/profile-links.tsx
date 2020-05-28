@@ -1,19 +1,19 @@
 import React, { useMemo } from "react";
 import NextLink from "next/link";
 import { useTheme, Link } from "@zeit-ui/react";
-import metadata from "../data/metadata";
-import { Configs } from "../utils";
+import metadata from "../data/metadata.json";
+import BLOG from "blog.config";
 
-const getFixes = (metas) => {
-  const data = metas.find((item) => item.name === "fixed");
+const getFixes = (metas: any) => {
+  const data = metas.find((item: any) => item.name === "fixed");
   return (data || {}).children || [];
 };
 
-const fillSpace = (name) => {
+const fillSpace = (name: string) => {
   return name.replace(/ /g, "_");
 };
 
-const makeLink = (data) => {
+const makeLink = (data: any) => {
   return (
     <NextLink href={data.url} key={data.url} passHref>
       <Link>{fillSpace(data.name)}</Link>
@@ -26,21 +26,21 @@ const ProfileLinks = () => {
   const links = useMemo(() => getFixes(metadata), []);
   return (
     <div className="link">
-      {makeLink({ url: "/blog", name: Configs.labels.default })}
-      {links.map((link) => makeLink(link))}
+      {makeLink({ url: "/blog", name: BLOG.labels.default })}
+      {links.map((link: string) => makeLink(link))}
 
-      <style tsx>{`
+      <style jsx>{`
         .link :global(a) {
           color: ${theme.palette.accents_6};
           text-transform: uppercase;
-          font-size: .8rem;
+          font-size: 0.8rem;
           margin-right: ${theme.layout.gapHalf};
         }
-        
+
         .link :global(a:hover) {
           color: ${theme.palette.accents_4};
         }
-        
+
         .link :global(a:last-of-type) {
           margin-right: 0;
         }

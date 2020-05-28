@@ -7,9 +7,9 @@ const BLOG = {
   latestLimit: 5,
 
   labels: {
-    default: "Articles",
+    default: "Posts",
     latest: "Latest",
-    list: "All Articles",
+    list: "All Posts",
   },
 
   email: "shimada.reona@gmail.com",

@@ -1,17 +1,19 @@
 import React, { useMemo } from "react";
-import { useTheme, Spacer, Link, Divider } from "@zeit-ui/react";
+import { useTheme, Spacer, Link } from "@zeit-ui/react";
 import useConfigs from "../config-context";
-import SunIcon from "@zeit-ui/react-icons/sun";
-import MoonIcon from "@zeit-ui/react-icons/moon";
-import { Configs } from "../utils";
+import Sun from "./icons/sun";
+import Moon from "./icons/moon";
+import Mail from "./icons/mail";
+import Github from "./icons/github";
+import Twitter from "./icons/twitter";
+import Blog from "blog.config";
 
-const Contacts = ({ isDetailPage = false }) => {
+const Contacts = () => {
   const theme = useTheme();
-  const configs = useConfigs();
+  const configs: any = useConfigs();
   const isDark = useMemo(() => theme.type === "dark", [theme.type]);
   const switchTheme = () => configs.onChange(theme.type === "dark");
-
-  const themeTitle = Configs.isCN() ? "切换主题" : "Switch themes";
+  const themeTitle = "Switch themes";
   const linkProps = {
     rel: "noreferrer",
     target: "_blank",
@@ -20,100 +22,99 @@ const Contacts = ({ isDetailPage = false }) => {
   return (
     <>
       <div className="contacts">
-        {isDetailPage && <Divider y={0.5} />}
         <div className="between">
           <div className="socials">
-            {Configs.email && (
-              <Link aria-label="email" href={Configs.email} {...linkProps}>
-                Email
+            {Blog.email && (
+              <Link aria-label="email" href={Blog.email} {...linkProps}>
+                <Mail />
               </Link>
             )}
-            {Configs.github && (
-              <Link aria-label="github" href={Configs.github} {...linkProps}>
-                Github
+            {Blog.github && (
+              <Link aria-label="github" href={Blog.github} {...linkProps}>
+                <Github />
               </Link>
             )}
-            {Configs.twitter && (
-              <Link aria-label="twitter" href={Configs.twitter} {...linkProps}>
-                Twitter
+            {Blog.twitter && (
+              <Link aria-label="twitter" href={Blog.twitter} {...linkProps}>
+                <Twitter />
               </Link>
             )}
           </div>
           <div>
             {isDark && (
               <span title={themeTitle}>
-                <SunIcon onClick={switchTheme} size={16} />
+                <Sun onClick={switchTheme} />
               </span>
             )}
             {!isDark && (
               <span title={themeTitle}>
-                <MoonIcon onClick={switchTheme} size={16} />
+                <Moon onClick={switchTheme} />
               </span>
             )}
           </div>
         </div>
 
-        <style tsx>{`
-        .contacts {
-          width: ${Configs.layouts.pageWidth};
-          padding: 0 ${theme.layout.gapQuarter};
-          position: absolute;
-          z-index: 1;
-          bottom: 3.5rem;
-          left: 50%;
-          transform: translateX(-50%);
-          color: ${theme.palette.accents_6};
-        }
-        
-        .between {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
-        
-        .contacts :global(svg) {
-          cursor: pointer;
-          margin: ${theme.layout.gapQuarter} ${theme.layout.gapHalf};
-          position: relative;
-          color: inherit;
-          z-index: 2;
-        }
-        
-        .contacts :global(a) {
-          color: inherit;
-        }
-        
-        .socials :global(a) {
-          margin-right: .5rem;
-          font-size: .75rem;
-          text-transform: uppercase;
-        }
-        
-       .contacts span {
-          color: inherit;
-          display: inline-flex;
-          justify-content: center;
-          align-items: center;
-        }
-        
-        .contacts span:hover {
-          color: ${theme.palette.accents_4};
-        }
-        
-        .contacts :global(a:hover) {
-          color: ${theme.palette.accents_4};
-          text-decoration: underline dashed;
-          cursor: ne-resize;
-          transition: all 150ms ease;
-        }
-        
-        @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
+        <style jsx>{`
           .contacts {
+            width: ${Blog.layouts.pageWidth};
+            padding: 0 ${theme.layout.gapQuarter};
             position: absolute;
-            width: ${Configs.layouts.pageWidthMobile};
+            z-index: 1;
+            bottom: 3.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: ${theme.palette.accents_6};
           }
-        }
-      `}</style>
+
+          .between {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+
+          .contacts :global(svg) {
+            cursor: pointer;
+            margin: ${theme.layout.gapQuarter} ${theme.layout.gapHalf};
+            position: relative;
+            color: inherit;
+            z-index: 2;
+          }
+
+          .contacts :global(a) {
+            color: inherit;
+          }
+
+          .socials :global(a) {
+            margin-right: 0.5rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+          }
+
+          .contacts span {
+            color: inherit;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .contacts span:hover {
+            color: ${theme.palette.accents_4};
+          }
+
+          .contacts :global(a:hover) {
+            color: ${theme.palette.accents_4};
+            text-decoration: underline dashed;
+            cursor: ne-resize;
+            transition: all 150ms ease;
+          }
+
+          @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
+            .contacts {
+              position: absolute;
+              width: ${Blog.layouts.pageWidthMobile};
+            }
+          }
+        `}</style>
       </div>
       <Spacer y={3.5} />
     </>
