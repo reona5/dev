@@ -31,3 +31,5 @@ yarn-error.log*
 /lib/data/
 
 .vercel
+
+sitemap.xml

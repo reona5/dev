@@ -57,6 +57,16 @@ const nextConfig = {
           permanent: true,
           destination: "/posts/:path*",
         },
+        {
+          source: "/index",
+          statusCode: 301,
+          destination: "/",
+        },
+        {
+          source: "/index/",
+          statusCode: 301,
+          destination: "/",
+        },
       ];
     },
   },
