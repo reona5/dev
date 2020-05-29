@@ -56,7 +56,6 @@ const Posts = ({ isLatest = false }) => {
         section h2 {
           font-size: 0.8rem;
           color: ${theme.palette.accents_6};
-          text-transform: uppercase;
           letter-spacing: 2px;
           border-bottom: 2px solid ${theme.palette.accents_6};
           padding: 2px ${theme.layout.gapQuarter} 0 0;

@@ -87,7 +87,6 @@ const Contacts = () => {
           .socials :global(a) {
             margin-right: 0.5rem;
             font-size: 0.75rem;
-            text-transform: uppercase;
           }
 
           .contacts span {
