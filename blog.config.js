@@ -12,9 +12,9 @@ const BLOG = {
     list: "Posts",
   },
 
-  email: "shimada.reona@gmail.com",
-  github: "reona5",
-  twitter: "reona_5",
+  email: "mailto:shimada.reona@gmail.com",
+  github: "https://github.com/reona5",
+  twitter: "https://twitter.com/reona_5",
   domain: "reona.dev",
 
   googleAnalytics: "UA-146202958-1",
