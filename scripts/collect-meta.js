@@ -3,7 +3,8 @@ const path = require("path");
 const extractMetadata = require("extract-mdx-metadata");
 const pagePrefix = path.join(__dirname, "../pages");
 const docsDir = path.join(__dirname, "../pages");
-const targetPath = path.join(__dirname, "../lib/data/metadata.json");
+const targetPath = path.join(__dirname, "/lib/data/metadata.json");
+const sitemap = require("nextjs-sitemap-generator");
 
 const getMetadata = async (files, parentPath) => {
   return Promise.all(
