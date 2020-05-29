@@ -1,5 +1,6 @@
 import Layout from 'lib/components/layout'
-import {} from '@zeit-ui/react'
+import YouTube from 'react-youtube'
+import { Link } from '@zeit-ui/react'
 
 export const meta = {
   title: "GitHub Pages × Hugoで技術ブログを始めた",
@@ -13,7 +14,7 @@ Webに関わる開発をしている方であれば、ソースコードのホ�
 
 GitHubには[GitHub Pages](https://pages.github.com/)という機能があり、静的ページをホスティングすることができます。デフォルトでは`(GitHubのアカウント名).github.io` のリポジトリ名がURLとなりますが、カスタムドメインを使用することもできます。（個人的にgithub.ioは充分シンプルで良いと思うので、このまま使っています。）
 
-{{<youtube 2MsN8gpT6jY>}}
+<YouTube videoId="2MsN8gpT6jY" />
 
 また、昨年末にはCI/CDの機能を実現する[GitHub Actions](https://github.co.jp/features/actions)が正式版として公開され話題になりましたね。
 
@@ -34,6 +35,7 @@ CI/CDツールとしては[CircleCI](https://circleci.com/ja/)がよく使われ
 等の理由でHugoを選択しました。
 普段の開発でエディタはVimを使っているので、エディタ上で且つMarkdownで入力ができるのはとても使い勝手が良いです。
 
+<br />
 
 ## GitHub Actionsの設定
 
@@ -41,7 +43,7 @@ CI/CDツールとしては[CircleCI](https://circleci.com/ja/)がよく使われ
 GitHubで今回使用するリポジトリを作成し、リポジトリメニューの中からActionsを選択します。
 言語によっては既にあるワークフローを使うこともできるみたいですね。
 
-![githubsc1](public/images/github_sc1.png)
+![](/images/github_sc1.png)
 
 今回は右上にある `Set up a workflow yourself` を選択します。
 
@@ -96,12 +98,13 @@ jobs:
 設定が終わったら`Start Commit`を押下し、ブランチは既にプッシュするブランチとして指定している`source` を作成し、commitします。
 
 設定ファイルに書いた `deploy_key` を発行し、リポジトリに登録する必要があります。
-Deployの際に使っているリポジトリ（https://github.com/peaceiris/actions-gh-pages）のREADMEにわかりやすい手順が載っているので、こちらは割愛します。
+Deployの際に使っているリポジトリ（<Link href="https://github.com/peaceiris/actions-gh-pages" icon color target="_blank">https://github.com/peaceiris/actions-gh-pages</Link>）のREADMEにわかりやすい手順が載っているので、こちらは割愛します。
 
+<br />
 
 ## サイトの作成
 
-サイトの作成にあたっては[HugoのQuick Start](https://gohugo.io/getting-started/quick-start/)を参考にしました。
+サイトの作成にあたってはHugoの[Quick Start](https://gohugo.io/getting-started/quick-start/)を参考にしました。
 
 ```shell
 $ brew install hugo
@@ -124,6 +127,7 @@ $ git submodule add https://github.com/Track3/hermit.git themes/hermit
 設定にあたっては、各テーマのリポジトリに含まれるものを参考にしました。
 Google Analyticsを使ったアクセス解析などもこちらで設定できます。
 
+<br />
 
 ## ページの作成
 
@@ -147,6 +151,8 @@ $ hugo server -D
 
 最後に `hugo` コマンドでサイトを生成し、デプロイまで進めましょう。
 変更をリモートリポジトリにプッシュすることでGitHub Actionsのジョブが走ります。以上で完了です。
+
+<br />
 
 ## 最後に
 
