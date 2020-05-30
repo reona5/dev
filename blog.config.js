@@ -1,7 +1,7 @@
 const BLOG = {
   author: "Reona",
-  title: "Blog by Reona",
-  description: "",
+  title: "Reona's Blog",
+  description: "Reona's Blog",
   summary: "Web Developer",
   language: "en-us",
   latestLimit: 5,

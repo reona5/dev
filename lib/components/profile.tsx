@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Row, useTheme, User, Link } from "@zeit-ui/react";
+import { Row, useTheme, Avatar, Text, Spacer, Link } from "@zeit-ui/react";
 import NextLink from "next/link";
 import ProfileLinks from "./profile-links";
 import BLOG from "blog.config";
 
+const avatarImage = () => (
+  <Avatar isSquare size={45} alt="avatar" src="/assets/avatar.png" />
+);
 const Profile = React.memo(({}) => {
   const theme = useTheme();
   const [showText, setShowText] = useState(theme.type === "dark");
@@ -18,10 +21,14 @@ const Profile = React.memo(({}) => {
     <div className="profile">
       <Row align="bottom" className="user">
         <NextLink href="/" passHref>
+          <Link>{avatarImage()}</Link>
+        </NextLink>
+        <Spacer x={0.5} />
+        <NextLink href="/" passHref>
           <Link>
-            <User src="/assets/avatar.png" name={BLOG.author}>
-              {BLOG.summary}
-            </User>
+            <Text h2 className="name">
+              {BLOG.author}
+            </Text>
           </Link>
         </NextLink>
       </Row>
@@ -36,6 +43,10 @@ const Profile = React.memo(({}) => {
           margin-bottom: ${theme.layout.gapQuarter};
           max-width: 100%;
           overflow: hidden;
+        }
+
+        .profile :global(.name) {
+          margin-top: -3rem;
         }
 
         @media only screen and (max-width: ${theme.layout.breakpointMobile}) {
