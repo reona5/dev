@@ -1,7 +1,4 @@
 {
-  "name": "reona.dev",
-  "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "npm run collect && next dev",
     "dev": "npm run collect && next dev",
@@ -22,6 +19,7 @@
     "ms": "^2.1.2",
     "next": "^9.4.4",
     "nextjs-sitemap-generator": "^1.0.0",
+    "node": "^13.8.0",
     "prop-types": "^15.5.4",
     "react": "^16.13.1",
     "react-dom": "16.13.0",

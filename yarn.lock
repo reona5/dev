@@ -5273,6 +5273,11 @@ no-case@^2.2.0, no-case@^2.3.2:
   dependencies:
     lower-case "^1.1.1"
 
+node-bin-setup@^1.0.0:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/node-bin-setup/-/node-bin-setup-1.0.6.tgz#4b5c9bb937ece702d7069b36ca78af4684677528"
+  integrity sha512-uPIxXNis1CRbv1DwqAxkgBk5NFV3s7cMN/Gf556jSw6jBvV7ca4F9lRL/8cALcZecRibeqU+5dFYqFFmzv5a0Q==
+
 node-fetch@2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
@@ -5319,6 +5324,13 @@ node-releases@^1.1.53:
   version "1.1.55"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.55.tgz#8af23b7c561d8e2e6e36a46637bab84633b07cee"
   integrity sha512-H3R3YR/8TjT5WPin/wOoHOUPHgvj8leuU/Keta/rwelEQN9pA/S2Dx8/se4pZ2LBxSd0nAGzsNzhqwa77v7F1w==
+
+node@^13.8.0:
+  version "13.14.0"
+  resolved "https://registry.yarnpkg.com/node/-/node-13.14.0.tgz#2e5afdc3aa66909f1d1d860f54064fbf2720d47c"
+  integrity sha512-y5pClvPYkG7cTPRDmyNeCuOseyRFuZbrvQVbyAEhkfRWtfhyyu6lHYUjBSJzrSZXlbkCIlx+TKqLDAEhxc9Vkw==
+  dependencies:
+    node-bin-setup "^1.0.0"
 
 normalize-html-whitespace@1.0.0:
   version "1.0.0"
