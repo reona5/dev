@@ -5,7 +5,7 @@ import ProfileLinks from "./profile-links";
 import BLOG from "blog.config";
 
 const avatarImage = () => (
-  <Avatar isSquare size={45} alt="avatar" src="/assets/avatar.png" />
+  <Avatar isSquare size={45} alt="avatar" src="/assets/avatar.webp" />
 );
 const Profile = React.memo(({}) => {
   const theme = useTheme();
