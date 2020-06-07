@@ -26,10 +26,22 @@ const LayoutHeader = ({ meta }) => (
   </Head>
 );
 
+const encodeCharacterForLink = (str: string | undefined) => {
+  if (!str) return "";
+  return str.replace(/#/g, "%23").replace(/\+/g, "%2B");
+};
+
 const Layout = ({ children, meta }: any) => {
   const [showAfterRender, setShowAfterRender] = useState(false);
+  const { asPath } = useRouter();
   const inDetailPage = useMemo(() => meta?.title, []);
   useEffect(() => setShowAfterRender(true), []);
+  const normalizedTitle = encodeCharacterForLink(meta?.title);
+  const tweetlink = `https://twitter.com/intent/tweet?text=${normalizedTitle}%20-%20Reona\'s%20Blog%0a&url=https://${BLOG.domain}${asPath}`;
+  const hatenalink = `https://b.hatena.ne.jp/add?mode=confirm&url=https://${BLOG.domain}${asPath}&title=${normalizedTitle}"`;
+  const [toasts, setToast] = useToasts();
+  const click = () =>
+    setToast({ text: "Thank you for sharing!", delay: 10000 });
 
   if (!showAfterRender)
     return (
