@@ -1,11 +1,12 @@
 {
   "scripts": {
-    "start": "npm run collect && next dev",
-    "dev": "npm run collect && next dev",
-    "now-build": "npm run collect && next build",
+    "start": "npm run collect && next dev && yarn imagemin",
+    "dev": "npm run collect && next dev && yarn imagemin",
+    "now-build": "npm run collect && next build && yarn imagemin",
     "post": "node scripts/create.js",
     "collect": "node scripts/collect-meta.js",
-    "export": "npm run now-build && next export"
+    "export": "npm run now-build && next export",
+    "imagemin": "node scripts/imagemin.js"
   },
   "dependencies": {
     "@mxck/mdx.macro": "^0.2.8",
@@ -16,6 +17,11 @@
     "@zeit-ui/react-icons": "^1.2.2",
     "@zeit-ui/react-prism": "^1.0.1",
     "enzyme": "^3.0.0",
+    "imagemin": "^7.0.1",
+    "imagemin-gifsicle": "^7.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "imagemin-pngquant": "^9.0.0",
+    "imagemin-svgo": "^8.0.0",
     "ms": "^2.1.2",
     "next": "^9.4.4",
     "nextjs-sitemap-generator": "^1.0.0",
