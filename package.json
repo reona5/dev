@@ -18,7 +18,6 @@
     "@zeit-ui/react-prism": "^1.0.1",
     "enzyme": "^3.0.0",
     "imagemin": "^7.0.1",
-    "imagemin-gifsicle": "^7.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.0",
     "imagemin-svgo": "^8.0.0",

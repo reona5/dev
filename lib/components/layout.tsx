@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import Profile from "./profile";
 import Title from "./title";
-import { Spacer } from "@zeit-ui/react";
+import { Button, Link, Spacer, useToasts } from "@zeit-ui/react";
 import BLOG from "blog.config";
 
 const ContactsWithNoSSR = dynamic(() => import("./contacts"), { ssr: false });
@@ -64,6 +65,23 @@ const Layout = ({ children, meta }: any) => {
         <Profile />
         {inDetailPage && <Title title={meta?.title} date={meta?.date} />}
         {children}
+        {inDetailPage && <Spacer x={1} />}
+        {inDetailPage && (
+          <div className="share-sns">
+            <Spacer y={0.5} />
+            <Button type="secondary" onClick={click} ghost>
+              <Link href={hatenalink} target="_blank" pure>
+                Share on Hatena
+              </Link>
+            </Button>
+            <Spacer y={0.5} />
+            <Button type="success" onClick={click} ghost>
+              <Link href={tweetlink} target="_blank" pure>
+                Share on Twitter
+              </Link>
+            </Button>
+          </div>
+        )}
         <Spacer y={5} />
         <ContactsWithNoSSR />
       </div>
@@ -106,6 +124,10 @@ const Layout = ({ children, meta }: any) => {
             max-width: ${BLOG.layouts.pageWidthMobile};
             min-height: 100vh;
           }
+        }
+
+        .share-sns {
+          text-align: right;
         }
       `}</style>
     </section>
