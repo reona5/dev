@@ -3,7 +3,7 @@ const path = require("path");
 const extractMetadata = require("extract-mdx-metadata");
 const pagePrefix = path.join(__dirname, "../pages");
 const docsDir = path.join(__dirname, "../pages");
-const targetPath = path.join(__dirname, "/lib/data/metadata.json");
+const targetPath = path.join(__dirname, "../lib/data/metadata.json");
 const sitemap = require("nextjs-sitemap-generator");
 
 const getMetadata = async (files, parentPath) => {
@@ -50,10 +50,7 @@ const sortPosts = (data) => {
         console.error(
           '> Try to run "new Date().toUTCString()" in console to get "date".'
         );
-        const meta = {
-          ...post.meta,
-          date: new Date().toUTCString(),
-        };
+        const meta = { ...post.meta, date: new Date().toUTCString() };
         return { ...post, meta };
       }
 
@@ -86,7 +83,6 @@ const sortPosts = (data) => {
     console.log(e);
     process.exit(1);
   }
-
   sitemap({
     baseUrl: "https://reona.dev",
     pagesDirectory: path.join(__dirname, "../pages"),
