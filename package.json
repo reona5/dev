@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "start": "npm run collect && next dev && yarn imagemin",
-    "dev": "npm run collect && next dev && yarn imagemin",
-    "now-build": "npm run collect && next build && yarn imagemin",
+    "start": "npm run collect && next dev",
+    "dev": "npm run collect && next dev",
+    "now-build": "npm run collect && next build",
     "post": "node scripts/create.js",
     "collect": "node scripts/collect-meta.js",
     "export": "npm run now-build && next export",
