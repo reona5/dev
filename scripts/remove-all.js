@@ -7,7 +7,7 @@ const fixedPath = path.join(__dirname, "../pages/fixed");
 const postsTemplate = path.join(__dirname, "./templates/posts");
 const fixedTemplate = path.join(__dirname, "./templates/fixed");
 const shouldIgnoreFile = ["sponsors.js"];
-const shouldKeepImages = ["avatar.webp", "og-main.png"];
+const shouldKeepImages = ["avatar.png", "og-main.png"];
 
 const removeDirsInPages = async (files) => {
   return await Promise.all(
