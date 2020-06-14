@@ -1,0 +1,98 @@
+import Layout from 'lib/components/layout'
+import { Link } from '@zeit-ui/react'
+
+export const meta = {
+  title: '[Next.js] Headタグ内のタグ重複を防ぐ',
+  date: '2020-06-14T08:28:13.461Z',
+  description: '',
+  image: '',
+}
+
+## 結論
+
+重複を避けたいタグに `key` オプションを追加し、同名のキーを設定します。
+
+``` javascript
+import Head from 'next/head'
+
+function IndexPage() {
+  return (
+    <div>
+      <Head>
+        <title>My page title</title>
+        <meta property="og:title" content="My page title" key="title" />
+      </Head>
+      <Head>
+        <meta property="og:title" content="My new title" key="title" />
+      </Head>
+      <p>Hello world!</p>
+    </div>
+  )
+}
+
+export default IndexPage
+```
+
+こちらのコードの場合、重複しているmetaタグのうち後者のみがレンダリングされます。
+
+<Link href="https://nextjs.org/docs/api-reference/next/head" icon color target="_blank">next/head</Link>
+<Link href="https://github.com/vercel/next.js/pull/5800" icon color target="_blank">Dedupe only items with unique key #5800</Link>
+
+<br />
+
+### 背景
+
+当ブログは、ブログに関する情報は `pages/_app.tsx` のHeadタグ内に、ブログ記事ごとの情報は `lib/components/layout.tsx` のHeadタグ内にメタ情報として設定してあります。
+しかし、metaタグの `key` オプションが設定されていなかったため、`og:title` 等の[OGP](https://ogp.me/)に関するmetaタグが重複しており、例えばSlackチャンネルにブログ記事のリンクを貼り付けた際に、各記事のタイトル等のメタ情報が表示されませんでした。
+
+<br />
+
+### その他の方法
+
+<Link href="https://github.com/nfl/react-helmet" icon color target="_blank">nfl / react-helmet</Link>
+
+こちらのreact-helmetというライブラリを使っても解決できそうです。
+
+Headタグ内のmetaタグが重複した場合、ネストしている子コンポーネントのタグをparseします。
+
+使い方も簡単で、
+
+``` javascript
+import React from "react";
+import {Helmet} from "react-helmet";
+
+class Application extends React.Component {
+  render () {
+    return (
+        <div className="application">
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>My Title</title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
+            ...
+        </div>
+    );
+  }
+};
+```
+
+このように対象のタグを `<Helmet>` で囲むだけで対応してくれます。
+
+ただ、Nextプロジェクトで試してみたところ、
+
+``` shell
+Unhandled Runtime Error
+TypeError: Cannot read property 'tagName' of null
+```
+
+エラーが発生してしまいビルドできなかったです。
+
+<Link href="https://github.com/vercel/next.js/tree/canary/examples/with-react-helmet" icon color target="_blank">react-helmet example</Link>
+
+Next.jsの場合はこちらのサンプルリポジトリを参考にすると実現できそうです💪
+
+とはいえ、Next.jsの場合は最初のやり方で対処してくれるので、 `react-helmet` を使う必要はなさそうです。
+
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>

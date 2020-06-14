@@ -44,6 +44,5 @@
     "rehype-join-line": "^1.0.2",
     "styled-jsx": "^3.2.4",
     "typescript": "^3.9.3"
-  },
-  "version": "0.0.0"
+  }
 }
