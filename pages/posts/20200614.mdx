@@ -43,7 +43,7 @@ export default IndexPage
 ### 背景
 
 当ブログは、ブログに関する情報は `pages/_app.tsx` のHeadタグ内に、ブログ記事ごとの情報は `lib/components/layout.tsx` のHeadタグ内にメタ情報として設定してあります。
-しかし、metaタグの `key` オプションが設定されていなかったため、`og:title` 等の[OGP](https://ogp.me/)に関するmetaタグが重複しており、例えばSlackチャンネルにブログ記事のリンクを貼り付けた際に、各記事のタイトル等のメタ情報が表示されませんでした。
+しかし、上記で示したようなmetaタグの `key` オプションが設定されていなかったため、`og:title` 等の[OGP](https://ogp.me/)に関するmetaタグが重複したままparseされてしまい、例えばSlackチャンネルにブログ記事のリンクを貼り付けた際に、各記事のタイトル等のメタ情報が表示されませんでした。
 
 <br />
 
@@ -94,5 +94,18 @@ Next.jsの場合はこちらのサンプルリポジトリを参考にすると�
 
 とはいえ、Next.jsの場合は最初のやり方で対処してくれるので、 `react-helmet` を使う必要はなさそうです。
 
+<br />
+
+## さいごに
+
+今回の件でドキュメントの重要性を再確認できました。Next.jsの場合ドキュメントは英語ではありますが、フレームワーク自体がシンプルなのでドキュメントも読みやすいです。なので、毛嫌いせずに読み込んでみます。
+
+OpenGraphに関しては、以下のサイトでURLを入力することでプロパティ設定を調べることができます。
+
+<Link href="https://developers.facebook.com/tools/debug/" icon color target="_blank">Facebook for Developers / シェアデバッガー</Link>
+
+修正が必要な箇所や、SNSにURLを投稿した際のプレビューなども確認することができます。
+
+<br />
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>
