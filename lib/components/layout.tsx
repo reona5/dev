@@ -16,14 +16,28 @@ const LayoutHeader = ({ meta }) => (
       </title>
     )}
     {meta?.description && (
-      <meta name="description" content={meta?.description} />
+      <meta name="description" content={meta?.description} key="description" />
     )}
     {meta?.description && (
-      <meta property="og:description" content={meta?.description} />
+      <meta
+        property="og:description"
+        content={meta?.description}
+        key="og:description"
+      />
     )}
-    {meta?.title && <meta property="og:title" content={meta?.title} />}
-    {meta?.image && <meta property="og:image" content={meta?.image} />}
-    {meta?.image && <meta property="twitter:image" content={meta?.image} />}
+    {meta?.title && (
+      <meta property="og:title" content={meta?.title} key="og:title" />
+    )}
+    {meta?.image && (
+      <meta property="og:image" content={meta?.image} key="og:image" />
+    )}
+    {meta?.image && (
+      <meta
+        property="twitter:image"
+        content={meta?.image}
+        key="twitter:image"
+      />
+    )}
   </Head>
 );
 

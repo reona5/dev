@@ -29,23 +29,29 @@ const Application = ({ Component, pageProps }) => {
         <title>{BLOG.title}</title>
         {domain && <link rel="dns-prefetch" href={domain} />}
         <meta name="referrer" content="strict-origin" />
-        <meta name="description" content={BLOG.description} />
+        <meta name="description" content={BLOG.description} key="description" />
         <meta property="og:site_name" content={BLOG.title} />
-        <meta property="og:description" content={BLOG.description} />
+        <meta
+          property="og:description"
+          content={BLOG.description}
+          key="og:description"
+        />
         <meta property="og:type" content="website" />
         <meta name="generator" content="unix.bio" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="author" content={BLOG.author} />
         <meta name="twitter:creator" content={`@${BLOG.twitter}`} />
-        <meta property="og:title" content={BLOG.title} />
+        <meta property="og:title" content={BLOG.title} key="og:title" />
         <meta property="og:url" content={BLOG.domain} />
         <meta
           property="og:image"
           content={`https:${domain}/assets/og-main.png`}
+          key="og:image"
         />
         <meta
           property="twitter:image"
           content={`https:${domain}/assets/og-main.png`}
+          key="og:image"
         />
         <meta
           itemProp="image"
