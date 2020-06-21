@@ -15,6 +15,8 @@ export const meta = {
 
 そのため、**シェルスクリプトでコマンドを作成し、クリップボードにコピーしてある画像をショートカットで展開するよう設定しました。**
 
+<br />
+
 ## 利用するライブラリ
 
 <Link href="https://github.com/jcsalterego/pngpaste" icon color target="_blank">jcsalterego/pngpaste</Link>
@@ -27,9 +29,13 @@ $ brew install pngpaste
 
 Homebrewがあればこのコマンド実行でOKです。
 
+<br />
+
 <Link href="https://imageoptim.com/mac" icon color target="_blank">ImageOptim</Link>
 
 今回はペーストしたファイルを画像圧縮した状態で保存するようにしたいので、こちらを使います。
+
+<br />
 
 ## コマンドファイル
 
@@ -87,6 +93,8 @@ $ chmod +x ~/usr/local/bin/paste_image_on_vim_markdown
 
 試しにコマンドで `paste_image_on_vim_markdown` と打ってみると、実行できるようになっているはずです。
 
+<br />
+
 ## vimrc
 
 最後にVim上でコマンドを実行できるように設定します。私はNeoVimとdeinを使っているので `init.vim` に設定します。
@@ -101,6 +109,8 @@ nnoremap <Leader>p <C-c>:r! paste_image_on_vim_markdown <CR>
 ![](/images/2020-06-22-02-57-09.png)
 
 指定のディレクトリに画像が保存され、同時に画像圧縮もされます。便利！
+
+<br />
 
 ## さいごに
 
