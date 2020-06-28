@@ -9,8 +9,6 @@
     "imagemin": "node scripts/imagemin.js"
   },
   "dependencies": {
-    "@material-ui/core": "^4.10.2",
-    "@material-ui/icons": "^4.9.1",
     "@mxck/mdx.macro": "^0.2.8",
     "@types/ms": "^0.7.31",
     "@types/styled-jsx": "^2.2.8",
