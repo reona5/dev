@@ -9,6 +9,9 @@
     "imagemin": "node scripts/imagemin.js"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@mxck/mdx.macro": "^0.2.8",
     "@types/ms": "^0.7.31",
     "@types/styled-jsx": "^2.2.8",
@@ -16,6 +19,7 @@
     "@zeit-ui/react": "^1.5.0",
     "@zeit-ui/react-icons": "^1.2.2",
     "@zeit-ui/react-prism": "^1.0.1",
+    "emotion-theming": "^10.0.27",
     "enzyme": "^3.0.0",
     "imagemin": "^7.0.1",
     "imagemin-mozjpeg": "^9.0.0",
