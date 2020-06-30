@@ -14,6 +14,7 @@ const Application = ({ Component, pageProps }) => {
     const next = isDark ? "light" : "dark";
     setThemeType(next);
   }, []);
+  const metaImageUrl = `https://og-image.reona5.vercel.app/${BLOG.title}?images=https://${domain}/assets/og-main.png`;
 
   useEffect(() => {
     if (typeof localStorage !== "object") return null;
@@ -43,21 +44,9 @@ const Application = ({ Component, pageProps }) => {
         <meta name="twitter:creator" content={`@${BLOG.twitter}`} />
         <meta property="og:title" content={BLOG.title} key="og:title" />
         <meta property="og:url" content={BLOG.domain} />
-        <meta
-          property="og:image"
-          content={`https:${domain}/assets/og-main.png`}
-          key="og:image"
-        />
-        <meta
-          property="twitter:image"
-          content={`https:${domain}/assets/og-main.png`}
-          key="og:image"
-        />
-        <meta
-          itemProp="image"
-          property="og:image"
-          content={`https:${domain}/assets/og-main.png`}
-        />
+        <meta property="og:image" content={metaImageUrl} key="og:image" />
+        <meta property="twitter:image" content={metaImageUrl} key="og:image" />
+        <meta itemProp="image" property="og:image" content={metaImageUrl} />
         <meta
           name="viewport"
           content="initial-scale=1, maximum-scale=5, minimum-scale=1, viewport-fit=cover"
