@@ -8,6 +8,8 @@ import { Button, Link, Spacer, useToasts } from "@zeit-ui/react";
 import BLOG from "blog.config";
 
 const ContactsWithNoSSR = dynamic(() => import("./contacts"), { ssr: false });
+const metaImageUrl = (title: string) =>
+  `https://og-image.reona5.vercel.app/${title}?theme=dark&images=https://reona.dev/assets/og-main.png`;
 const LayoutHeader = ({ meta }) => (
   <Head>
     {meta?.title && (
@@ -26,15 +28,23 @@ const LayoutHeader = ({ meta }) => (
       />
     )}
     {meta?.title && (
-      <meta property="og:title" content={meta?.title} key="og:title" />
+      <meta
+        property="og:title"
+        content={metaImageUrl(meta?.title)}
+        key="og:title"
+      />
     )}
     {meta?.image && (
-      <meta property="og:image" content={meta?.image} key="og:image" />
+      <meta
+        property="og:image"
+        content={metaImageUrl(meta?.title)}
+        key="og:image"
+      />
     )}
     {meta?.image && (
       <meta
         property="twitter:image"
-        content={meta?.image}
+        content={metaImageUrl(meta?.title)}
         key="twitter:image"
       />
     )}
