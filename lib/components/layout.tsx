@@ -28,20 +28,16 @@ const LayoutHeader = ({ meta }) => (
       />
     )}
     {meta?.title && (
-      <meta
-        property="og:title"
-        content={metaImageUrl(meta?.title)}
-        key="og:title"
-      />
+      <meta property="og:title" content={meta?.title} key="og:title" />
     )}
-    {meta?.image && (
+    {meta?.title && (
       <meta
         property="og:image"
         content={metaImageUrl(meta?.title)}
         key="og:image"
       />
     )}
-    {meta?.image && (
+    {meta?.title && (
       <meta
         property="twitter:image"
         content={metaImageUrl(meta?.title)}

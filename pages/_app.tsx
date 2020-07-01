@@ -14,7 +14,7 @@ const Application = ({ Component, pageProps }) => {
     const next = isDark ? "light" : "dark";
     setThemeType(next);
   }, []);
-  const metaImageUrl = `https://og-image.reona5.vercel.app/reona.dev?images=https://${domain}/assets/og-main.png`;
+  const metaImageUrl = `https://og-image.reona5.vercel.app/reona.dev?theme=dark&images=https://reona.dev/assets/og-main.png`;
 
   useEffect(() => {
     if (typeof localStorage !== "object") return null;
