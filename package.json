@@ -19,6 +19,7 @@
     "@zeit-ui/react": "^1.5.0",
     "@zeit-ui/react-icons": "^1.2.2",
     "@zeit-ui/react-prism": "^1.0.1",
+    "canvas": "^2.6.1",
     "emotion-theming": "^10.0.27",
     "enzyme": "^3.0.0",
     "imagemin": "^7.0.1",
