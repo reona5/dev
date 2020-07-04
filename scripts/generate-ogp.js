@@ -1,4 +1,4 @@
-const { createCanvas } = require("canvas");
+const { createCanvas, registerFont } = require("canvas");
 const fs = require("fs-extra");
 const path = require("path");
 const extractMetadata = require("extract-mdx-metadata");
@@ -65,7 +65,7 @@ function renderText(ctx, rows) {
     const rowText = rows[i].join(" ");
     const m = ctx.measureText(rowText);
 
-    const w = (W - m.width) / 3;
+    const w = (W - m.width) / 2;
     const h = 40 + 210 / 2 - (LINE_HEIGHT + 12) * (rowCount - i - 1);
 
     ctx.fillText(rowText, w, h);
