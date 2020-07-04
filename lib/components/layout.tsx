@@ -31,14 +31,14 @@ const LayoutHeader = ({ meta }) => (
     {meta?.date && (
       <meta
         property="og:image"
-        content={meta?.date.toLocaleString("%Y%m%D") + ".png"}
+        content={"/ogp/" + meta?.date.slice(0, 10) + ".png"}
         key="og:image"
       />
     )}
     {meta?.date && (
       <meta
         property="twitter:image"
-        content={meta?.date.toLocaleString("%Y%m%D") + ".png"}
+        content={"/opp/" + meta?.date.slice(0, 10) + ".png"}
         key="twitter:image"
       />
     )}

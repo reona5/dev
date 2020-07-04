@@ -92,8 +92,12 @@ async function main() {
     const assignedData = await { ...data[0], ...data[1] };
     await Promise.all(
       assignedData.children.map(async (p) => {
-        const out = path.join(targetDir, p.url.replace("/posts/", "") + ".png");
-        await generateImage(p.name, out);
+        const targetFile = path.join(
+          targetDir,
+          p.meta.date.slice(0, 10) + ".png"
+        );
+        await generateImage(p.name, targetFile);
+        console.log(`generated ${targetFile}`);
       })
     );
   } catch (e) {
