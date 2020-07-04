@@ -28,11 +28,11 @@ const getMetadata = async (files, parentPath) => {
 const W = 600;
 const H = 315;
 const LINE_HEIGHT = 30;
-const FONT_FAMILY = "SourceHanCodeJP-Regular";
+const FONT_FAMILY = "NotoSansJP-Regular.otf";
 const FONT_PATH = path.join(
   __dirname,
   "../public/fonts/",
-  "SourceHanCodeJP-Regular.otf"
+  "NotoSansJP-Regular.otf"
 );
 
 function getRows(ctx, text) {
@@ -81,14 +81,14 @@ async function generateImage(text, outputPath) {
 
   const rows = getRows(ctx, text);
 
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "#F6F8FA";
   ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = "white";
+  ctx.fillStyle = "black";
   renderText(ctx, rows);
 
-  const m = ctx.measureText("reona.dev");
-  ctx.fillText("reona.dev", (W - m.width) / 2, 250);
+  const m = ctx.measureText("$ reona.dev_");
+  ctx.fillText("$ reona.dev_", (W - m.width) / 2, 250);
   const buf = cvs.toBuffer();
   await fs.writeFile(outputPath, buf);
 }
