@@ -65,7 +65,7 @@ function renderText(ctx, rows) {
     const rowText = rows[i].join(" ");
     const m = ctx.measureText(rowText);
 
-    const w = (W - m.width) / 2;
+    const w = (W - m.width) / 3;
     const h = 40 + 210 / 2 - (LINE_HEIGHT + 12) * (rowCount - i - 1);
 
     ctx.fillText(rowText, w, h);
