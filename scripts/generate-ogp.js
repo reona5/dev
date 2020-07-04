@@ -28,6 +28,12 @@ const getMetadata = async (files, parentPath) => {
 const W = 600;
 const H = 315;
 const LINE_HEIGHT = 30;
+const FONT_FAMILY = "SourceHanCodeJP-Regular";
+const FONT_PATH = path.join(
+  __dirname,
+  "../public/fonts/",
+  "SourceHanCodeJP-Regular.otf"
+);
 
 function getRows(ctx, text) {
   const words = text.split(" ");
@@ -69,7 +75,9 @@ function renderText(ctx, rows) {
 async function generateImage(text, outputPath) {
   const cvs = createCanvas(W, H);
   const ctx = cvs.getContext("2d");
-  ctx.font = `${LINE_HEIGHT}px serif`;
+
+  registerFont(FONT_PATH, { family: FONT_FAMILY });
+  ctx.font = `${LINE_HEIGHT}px ${FONT_FAMILY}`;
 
   const rows = getRows(ctx, text);
 
