@@ -28,17 +28,17 @@ const LayoutHeader = ({ meta }) => (
     {meta?.title && (
       <meta property="og:title" content={meta?.title} key="og:title" />
     )}
-    {meta?.url && (
+    {meta?.date && (
       <meta
         property="og:image"
-        content={meta?.url.replace("posts", "public/ogp") + ".png"}
+        content={meta?.date.toLocaleString("%Y%m%D") + ".png"}
         key="og:image"
       />
     )}
-    {meta?.url && (
+    {meta?.date && (
       <meta
         property="twitter:image"
-        content={meta?.url.replace("posts", "public/ogp") + ".png"}
+        content={meta?.date.toLocaleString("%Y%m%D") + ".png"}
         key="twitter:image"
       />
     )}
