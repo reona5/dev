@@ -69,7 +69,7 @@ function renderText(ctx, rows) {
 async function generateImage(text, outputPath) {
   const cvs = createCanvas(W, H);
   const ctx = cvs.getContext("2d");
-  ctx.font = `${LINE_HEIGHT}px Impact`;
+  ctx.font = `${LINE_HEIGHT}px serif`;
 
   const rows = getRows(ctx, text);
 

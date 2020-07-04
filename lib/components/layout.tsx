@@ -8,6 +8,8 @@ import { Button, Link, Spacer, useToasts } from "@zeit-ui/react";
 import BLOG from "blog.config";
 
 const ContactsWithNoSSR = dynamic(() => import("./contacts"), { ssr: false });
+const ogImagePath = (path: string) =>
+  "https://" + BLOG.domain + "/ogp/" + path + ".png";
 const LayoutHeader = ({ meta }) => (
   <Head>
     {meta?.title && (
@@ -31,15 +33,22 @@ const LayoutHeader = ({ meta }) => (
     {meta?.date && (
       <meta
         property="og:image"
-        content={"/ogp/" + meta?.date.slice(0, 10) + ".png"}
+        content={ogImagePath(meta?.date.slice(0, 10))}
         key="og:image"
       />
     )}
     {meta?.date && (
       <meta
         property="twitter:image"
-        content={"/opp/" + meta?.date.slice(0, 10) + ".png"}
+        content={ogImagePath(meta?.date.slice(0, 10))}
         key="twitter:image"
+      />
+    )}
+    {meta?.date && (
+      <meta
+        itemProp="image"
+        property="og:image"
+        content={ogImagePath(meta?.date.slice(0, 10))}
       />
     )}
   </Head>
