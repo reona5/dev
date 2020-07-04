@@ -31,14 +31,14 @@ const LayoutHeader = ({ meta }) => (
     {meta?.url && (
       <meta
         property="og:image"
-        content={meta?.url.replace("/posts/", "") + ".png"}
+        content={meta?.url.replace("posts", "public/ogp") + ".png"}
         key="og:image"
       />
     )}
     {meta?.url && (
       <meta
         property="twitter:image"
-        content={meta?.url.replace("/posts/", "") + ".png"}
+        content={meta?.url.replace("posts", "public/ogp") + ".png"}
         key="twitter:image"
       />
     )}
