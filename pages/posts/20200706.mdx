@@ -1,0 +1,64 @@
+import Layout from 'lib/components/layout'
+import Link from 'next/link'
+
+export const meta = {
+  title: 'node-canvas で OGP に対応した',
+  date: '2020-07-05T15:48:54.100Z',
+  description: '',
+  image: '',
+}
+
+
+## はじめに
+
+ブログ記事のmetaタグを読み取って動的にOGP画像を作成するスクリプト [Automattic / node-canvas](https://github.com/Automattic/node-canvas) を使って作成しました。
+
+![](/images/2020-07-06-01-13-49.png)
+
+<Link href="/posts/20200614">[Next.js] Headタグ内のタグ重複を防ぐ</Link>
+
+↑こちらの記事ではブログ記事ごとに動的にOGPを設定する方法を書いています。
+
+<br />
+
+## og-image
+
+ちなみにOpenGraph用の画像生成ライブラリとして、Vercelの公式ライブラリがあります。
+
+[vercel / og-image](https://github.com/vercel/og-image)
+
+当ブログはVercelで自動デプロイしています。
+はじめはこのリポジトリをフォークをして設定をいじりながら設定していました。
+しかし、日本語対応フォントがライブラリに入っていないので記事タイトルが文字化けしてしまいました。
+
+![](/images/2020-07-06-01-22-47.png)
+
+↑こんな感じ
+
+日本語対応フォントを入れて何度も試しましたが修正できず、結局は自作作ることにしました。
+（情報も少なかったので限界でした！改善策があるなら知りたい、、、）
+
+<br />
+
+## node-canvas
+
+
+https://github.com/reona5/dev/blob/master/scripts/generate-ogp.js
+
+ソースコードはこちらです。
+
+Fontは [Noto Sans JP - Google Font](https://fonts.google.com/specimen/Noto+Sans+JP) を利用しています。
+
+Canvasでのイメージ生成の処理というよりは、メタ情報を取得して各所に適用する部分で苦戦しました…
+
+もっとシンプルなやり方はありそう。
+
+<br />
+
+## さいごに
+
+私は業務やプライベートでSlackチャンネルに技術系の記事を貼ることが多く、やはり記事内容を含む画像の有り無しでは印象が全然違います。Qiitaとかわかりやすいですね。
+
+OGPの設定をしておけば、ブログのリンクをSNSに貼った際にインパクトを残せていいですね🔍
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
