@@ -35,7 +35,7 @@ const FONT_PATH = path.join(
   "NotoSansJP-Regular.otf"
 );
 
-function getRows(ctx, text) {
+const getRows = (ctx, text) => {
   const words = text.split(" ");
 
   let rows = [];
@@ -57,9 +57,9 @@ function getRows(ctx, text) {
   }
 
   return rows;
-}
+};
 
-function renderText(ctx, rows) {
+const renderText = (ctx, rows) => {
   const rowCount = rows.length;
   for (let i = 0; i < rowCount; i++) {
     const rowText = rows[i].join(" ");
@@ -70,9 +70,9 @@ function renderText(ctx, rows) {
 
     ctx.fillText(rowText, w, h);
   }
-}
+};
 
-async function generateImage(text, outputPath) {
+const generateImage = async (text, outputPath) => {
   const cvs = createCanvas(W, H);
   const ctx = cvs.getContext("2d");
 
@@ -91,9 +91,9 @@ async function generateImage(text, outputPath) {
   ctx.fillText("$ reona.dev_", (W - m.width) / 2, 250);
   const buf = cvs.toBuffer();
   await fs.writeFile(outputPath, buf);
-}
+};
 
-async function main() {
+(async () => {
   try {
     const files = await fs.readdir(docsDir);
     const data = await getMetadata(files, docsDir);
@@ -111,6 +111,4 @@ async function main() {
   } catch (e) {
     console.log(e);
   }
-}
-
-main();
+})();
