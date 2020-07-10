@@ -1,0 +1,41 @@
+import Layout from 'lib/components/layout'
+import {} from '@zeit-ui/react'
+
+export const meta = {
+  title: '[Swift] Access Control と Scope について',
+  date: '2020-07-08T03:55:56.354Z',
+  description: '',
+  image: '',
+}
+
+## はじめに
+
+私がよく使っている Ruby におけるアクセス制御には `Module#private` や `Module#protected` があります。
+これらはメソッドを定義する際にスコープを分ける目的で使用されます。
+
+一方で、表題の Swift で用いるアクセス修飾子はメソッド定義だけでなくクラス定義や変数の宣言時にも使います。（静的型付け言語では割と一般的みたいですね。）
+
+どのプログラミング言語においても変数やメソッド等のスコープを理解することは非常に重要なことですので、 Swift の Access Controlについてまとめます。
+
+## Access Control（アクセス修飾子）
+
+Swift 5.2 では、アクセスレベルは5段階あります。
+
+| Name | Description |
+|:---|:---|
+| open | 別のモジュールからでもアクセスでき、別モジュールで継承またはオーバーライドができる |
+| public |  別のモジュールからでもアクセスできるが、別モジュールでは継承、オーバーライドはできない |
+| internal | 同じモジュール内からのみアクセスできる |
+| fileprivate | 同じソースファイル内からのみアクセスできる |
+| private | 定義されたスコープ内でのみアクセスできる |
+
+ちなみにこれらのアクセス修飾子をつけなかった場合、アクセスレベルは `internal` がデフォルトです。
+また、 `open` と `fileprivate` は Swift 3.0 から追加になったようですね。
+
+業務でアクセスレベルを考える上で、使う場面が多くなってくるのは `private` と `internal` でしょう。
+クラス外から見える必要があるのかを考え、基本的にその必要がないようなら `private` メソッドを使うとよさそうです。
+アクセスレベルが高いと、予期せぬ動作が起きたり不正にアクセスされる可能性がでてくるためです。
+OSS開発など、他モジュールから干渉することを考える場合は `open` , `public` を使う場面が多くなりそうですね。
+
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
