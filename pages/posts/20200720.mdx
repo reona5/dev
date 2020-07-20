@@ -1,0 +1,90 @@
+import Layout from 'lib/components/layout'
+import {} from '@zeit-ui/react'
+
+export const meta = {
+  title: '[Vim] 言語ごとにコマンドを使い分ける',
+  date: '2020-07-20T11:39:15.973Z',
+  description: '',
+  image: '',
+}
+
+# はじめに
+
+`.vimrc` たまにいじりだすと止まらなくなりますよね。テスト勉強中に掃除しだしたら止まらないみたいに。
+
+最近だと、[coc.nvim](https://github.com/neoclide/coc.nvim)に非常にお世話になっています。
+VSCodeのようなLSP(Language Server Protocol)のサポートで、ほとんどの言語で強力な補完を実現してくれます。
+補完が感動モノなんですが、定義元ジャンプや参照元ジャンプ、簡易リファレンスも参照できて、超すごいです。
+以前はCtagsでタグを生成しジャンプするスタンダードな方法で開発していましたが、coc.nvimだとより高速です。
+
+最近はSwiftでの開発でXCodeとXVim2を使っていますが、標準のジャンプ機能がかなり優秀ですね。
+ただRubyの場合だとジャンプが機能してくれず、それはなかなかに困っていました。
+
+今回はファイルタイプに応じてジャンプのコマンドを使い分ける設定をしたので、以下に書いていきます。
+
+<br />
+
+## Ctagsのインストール
+
+Ctagsは2種類あります。
+
+- [exuberant-ctags](http://ctags.sourceforge.net/)
+- [universal-ctags](https://ctags.io/)
+
+アクセスしていただくとサイトデザインからも一目瞭然なんですが、前者はもう10年以上メンテナンスされていません。
+逆に後者は本記事執筆時点で最終更新から3日なので、よっぽどの理由がない限り後者の universal-ctags を選択するとよいでしょう。
+
+``` bash
+$ brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+```
+
+<br />
+
+### タグの生成
+
+```
+$ ctags -R .
+
+# Rubyファイルに限定する場合
+$ ctags -R . --languages=Ruby
+```
+
+調査中に[こちらの記事](https://dev.to/lucasprag/little-trick-to-use-ctags-to-jump-to-definition-even-inside-gems-like-rails-on-vim-244j)でたまたま見つけたのですが、以下を実行すればgemの内部コードへのパスを設定し、ジャンプできるようになります。いちいちブラウザで調べる必要がなくなったので嬉しい、、
+
+```
+$ bundle install --path=vendor/bundle
+```
+
+<br />
+
+## 設定
+
+[coc.nvim](https://github.com/neoclide/coc.nvim)に関しては、ドキュメントに具体的な設定が載っているので参考にするとよさそうです。ジャンプのコマンドはctagsのもので慣れてしまっているので、合わせる形で変更しました
+
+``` bash
+# dein.toml
+
+[[plugins]]
+repo = 'neoclide/coc.nvim'
+rev = 'release'
+hook_add = '''
+  let g:coc_global_extensions = [好みの拡張]
+  nmap <silent> <C-]> <Plug>(coc-definition)
+  nmap <silent> <C-t> <Plug>(coc-references)
+'''
+
+```
+
+``` bash
+# .vimrc
+
+set tags=./tags;
+autocmd filetype ruby nnoremap <C-]> g<C-]>
+
+```
+
+これでRubyファイルの場合はctags、その他のファイルだとcoc.nvimのジャンプが実行されるようになりました🎉
+
+<br />
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
