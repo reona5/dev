@@ -1,0 +1,38 @@
+import Layout from 'lib/components/layout'
+import {} from '@zeit-ui/react'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
+
+export const meta = {
+  title: '[coc.nvim] Failed to load the ESLint library for the document',
+  date: '2020-07-20T15:03:12.911Z',
+  description: '',
+  image: '',
+}
+
+coc.nvimでeslintに関するエラーがでたときの対処方法
+
+```
+[coc.nvim] Failed to load the ESLint library for the document
+```
+
+``` json
+# coc-settings.json(:CocConfig)
+
+  "eslint.options": {
+    "configFile": "eslint.{yml, js, json}のパス"
+  },
+  "eslint.nodePath": "node_modulesのパス",
+```
+
+以上の設定でエラーは解消。
+プロジェクト共通のものがあればそちらを優先すべきだが、基本はglobalなpathを指定すればよさそう。
+
+ちなみにeslint, prettierの設定に関しては、
+
+<TwitterTweetEmbed tweetId={'1275729912809361421'} />
+
+このツイートにもあるように、公式ドキュメントを参考に設定することでかなりシンプルな設定で済む。
+
+https://github.com/prettier/eslint-plugin-prettier#recommended-configuration
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
