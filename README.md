@@ -1,7 +1,5 @@
 # Blog (Next.js + TypeScript + MDX)
 
-based on [unix/unix.bio](https://github.com/unix/unix.bio)
-
 ## create a new post
 
 `$ yarn run post foo`
@@ -13,3 +11,7 @@ based on [unix/unix.bio](https://github.com/unix/unix.bio)
 ## Deploy
 
 `$ vercel`
+
+## License
+
+[MIT](https://github.com/reona5/dev/blob/master/LICENSE)
