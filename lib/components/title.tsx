@@ -1,37 +1,22 @@
-import React, { useMemo } from "react";
-import { msToString } from "../data-transform";
-import { useTheme } from "@zeit-ui/react";
-import { useRouter } from "next/router";
-import useViewsShow from "../use-views-show";
-import BLOG from "blog.config";
+import React, { useMemo } from 'react'
+import { msToString } from '../data-transform'
+import { useTheme } from '@zeit-ui/react'
 
 const DateDisplay = ({ date }) => {
-  const theme = useTheme();
-  const { asPath } = useRouter();
-  const [count, countUpdated] = useViewsShow(asPath);
+  const theme = useTheme()
 
-  const d = useMemo(() => new Date(date), []);
-  if (`${d}` === "Invalid Date") return null;
+  const d = useMemo(() => new Date(date), [])
+  if (`${d}` === 'Invalid Date') return null
 
-  const time = Date.now() - d.getTime();
-  const locale = "ja-jp";
-  const showViews = useMemo(() => BLOG.enableViews && countUpdated, [
-    countUpdated,
-  ]);
-  const views = useMemo(() => `${count} views`, [count]);
+  const time = Date.now() - d.getTime()
+  const locale = 'ja-jp'
 
   return (
     <p>
       <span className="dot">﹥</span>
-      {d.toLocaleString(locale).replace(/\//g, "-")}
+      {d.toLocaleString(locale).replace(/\//g, '-')}
       <span className="split"> / </span>
       {msToString(time)}
-      {showViews && (
-        <>
-          <span className="split"> / </span>
-          {views}
-        </>
-      )}
       <style jsx>{`
         p {
           color: ${theme.palette.accents_4};
@@ -68,11 +53,11 @@ const DateDisplay = ({ date }) => {
         }
       `}</style>
     </p>
-  );
-};
+  )
+}
 
 const Title = ({ title, date }) => {
-  const theme = useTheme();
+  const theme = useTheme()
 
   return (
     <div className="title">
@@ -117,7 +102,7 @@ const Title = ({ title, date }) => {
         }
       `}</style>
     </div>
-  );
-};
+  )
+}
 
-export default Title;
+export default Title
