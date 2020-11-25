@@ -27,7 +27,7 @@
     "imagemin-pngquant": "^9.0.0",
     "imagemin-svgo": "^8.0.0",
     "ms": "^2.1.2",
-    "next": "^9.4.4",
+    "next": "^9.5.4",
     "nextjs-sitemap-generator": "^1.0.0",
     "node": "^13.8.0",
     "prop-types": "^15.5.4",
