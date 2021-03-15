@@ -2,16 +2,11 @@ import React from "react";
 import { Link, useTheme } from "@zeit-ui/react";
 import NextLink from "next/link";
 import { msToString } from "lib/data-transform";
-const options = {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-};
 
 const getDateString = (date: string) => {
   const d = new Date(date);
   if (`${d}` === "Invalid Date") return "";
-  return new Date(date).toLocaleString("ja-jp", options);
+  return new Date(date).toLocaleString("ja-jp");
 };
 
 const time = (date: string) => {
