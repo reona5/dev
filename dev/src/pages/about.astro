@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/BlogPost.astro';
+import { SITE_DESCRIPTION } from '../consts'
 ---
 
 <Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
+	title="このサイトについて"
+	description={SITE_DESCRIPTION}
 	pubDate={new Date('August 08 2021')}
 	updatedDate={new Date('August 08 2022')}
 	heroImage="/placeholder-about.jpg"
