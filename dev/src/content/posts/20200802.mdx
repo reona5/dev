@@ -1,0 +1,74 @@
+---
+title: '[OpenAPI] yamlinc について'
+description: ''
+pubDate: '2020-08-02T08:41:40.911Z'
+---
+
+## はじめに
+
+以前OpenAPI仕様のAPIリファレンスについて記事を書いた。
+
+[OpenAPI (Swagger) で APIリファレンス作成](/posts/20200614)
+
+その後、以下のライブラリによるリファレンスの管理を開始したので紹介する。
+
+[javanile / yamlinc](https://github.com/javanile/yamlinc)
+
+## yamlinc について
+
+yamlincを使うと、コンポーネント化したOpenAPIのファイルを一つにまとめてくれる。
+基本的な使い方はREADMEを参照。
+
+これまでの管理と違う点は大きく2つ
+
+- `$include` という特殊なタグを使用してコンポーネントを読み込む。公式の `$ref` を置き換えるイメージでOK
+- `$ yamlinc my_swagger_doc.yml` コマンドによってコンパイルされ、一つにまとまった `my_swagger_doc.inc.yml` ファイルができる
+
+Swagger3.0以前はコンポーネント化できず、1つのファイルでリファレンス管理が行われていたが、yamlincを使えばコンポーネントとしての管理はもちろん、コンパイルによって全てのパスとその詳細が記されたファイルが自動生成される。
+
+yamlincという名前だが、`-o` オプションでファイル名を指定すればjsonフォーマットのファイル生成も可能。
+
+Dockerで開発している場合、 `--watch` オプションで監視してくれるので、変更したタイミングでコンパイルしてくれる。
+
+`--strict` オプションで構文エラーもログで指摘してくれる。
+
+## 詰まった点
+
+Railsプロジェクトで `vendor/bundle` がある場合、
+
+- コンパイルにかなりの時間がかかる
+  - 終わるまで7分かかり、その間 `rails` コマンドが叩けない。異常。
+- 変更がコンパイル後のファイルに反映されていない
+
+ということがあり、解決に時間がかかった。
+
+ログを確認すると、`vendor/bundle` 配下のOpenAPIコンポーネントも読み取ってコンパイルしていたので、一度 `vendor/bundle` を削除しdocker-composeを起動し直したが解決せず。
+
+再び `vendor/bundle` のコンポーネントがコンパイルされていたので、 `.bundle/config` で `BUNDLE_PARH = 'vendor/bundle'` の指定を削除。`docker-compose down` `docker-compose up` するも、効果なし。
+
+一度 `docker system prune --volumes` で不要なコンテナやボリュームを削除し、再度docker-composeを立ち上げると成功した。
+不要なデータがyamlincコンテナのvolumeに永続化されたままだった。
+
+- `vendor/bundle` を削除
+  - `BUNDLE_PARH` の指定が `vendor/bundle` の場合は削除
+- dockerのvolumesを削除
+
+正直 `vendor/bundle` ってなによ。って感じだったけど、Rubyistならおなじみの伊藤淳一さんが丁寧に解説してくれてた。
+
+[bundle install時に--path vendor/bundleを付ける必要性は本当にあるのか、もう一度よく考えてみよう](https://qiita.com/jnchito/items/99b1dbea1767a5095d85)
+
+この記事で思い出したけど、
+
+[[Vim] 定義元ジャンプを filetype で使い分ける](/posts/20200720)
+
+上の記事で `vendor/bundle` を用意することでgemコードへのタグジャンプを可能にしてたんだった。
+
+gemに関するタグは既に生成されてはいるけど念の為 `BUNDLE_PARH = 'vendor/bundle'` を設定して `bundle install` 、 `docker-compose up` してみると問題なかったので、とりあえずこのまま。
+
+## さいごに
+
+OpenAPIによるリファレンス管理は学習コストがそれなりにあって、チーム開発の場合は時間がかかりがち。
+
+yamlincを導入すればコンポーネント分けできて管理は楽だし、設定すれば構文チェックや自動コンパイルしてくれるのでAPIドキュメントの保守運用がめっちゃ楽になる。
+
+例えばこのドキュメントを元に [openapi-generator](https://github.com/OpenAPITools/openapi-generator) だったりでクライアントAPI作成時のモデルとなるコードの自動生成を行ったりすれば確実でDXも非常に良いのでおすすめ。

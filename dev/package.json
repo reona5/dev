@@ -1,5 +1,7 @@
 {
 	"name": "dev",
+	"private": true,
+	"license": "MIT",
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",

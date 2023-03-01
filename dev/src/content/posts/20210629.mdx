@@ -1,0 +1,62 @@
+---
+title: '[Vim] Docker 環境で Vim 上で RSpec を実行する'
+description: ''
+pubDate: '2021-06-29T06:33:14.640Z'
+---
+
+# はじめに
+
+タイトルには `Docker 環境で` と記したが、自動的に Docker 環境かそうでないかを識別するよう設定している。
+
+# 利用するライブラリ
+
+[Shougo/dein.vim](https://github.com/Shougo/dein.vim)
+
+[vim-test/vim-test](https://github.com/vim-test/vim-test)
+
+[tpope/vim-dispatch](https://github.com/tpope/vim-dispatch)
+
+# 環境
+
+MacOS BigSur Version 11.4
+
+iterm2 3.4.8
+
+Neovim v0.5.0-nightly
+
+# 設定
+
+```toml
+[[plugins]]
+repo = 'tpope/vim-dispatch'
+on_ft = ['ruby']
+
+[[plugins]]
+repo = 'vim-test/vim-test'
+depends = ['vim-dispatch']
+on_ft = ['ruby']
+hook_add = '''
+  function! DockerTransformer(cmd) abort
+    let container_name = system("docker-compose ps | grep 3000 | awk '{print $1}'")
+    if matchstr(container_name, "_app_") == "_app_"
+      return 'docker-compose exec app ' . a:cmd
+    elseif matchstr(container_name, "_web_") == "_web_"
+      return 'docker-compose exec web ' . a:cmd
+    else
+      return a:cmd
+    endif
+  endfunction
+
+  let g:test#custom_transformations = {'docker': function('DockerTransformer')}
+  let g:test#transformation = 'docker'
+  let g:test#strategy = 'dispatch'
+
+  nnoremap <Leader>tn :TestNearest<cr>
+  nnoremap <Leader>tf :TestFile<cr>
+'''
+```
+
+- `.rb` 拡張子のファイルでのみ起動するよう設定している
+- vim-test は Ruby に限らず多くの言語で利用可能だが、これまで使う機会がなかったため設定は Ruby のみ
+- 複数プロジェクトがある場合、プロジェクトに応じて `container_name` を設定することでテストコマンド実行時に自動的に判別してくれる。
+- vim-dispatch で非同期にテストを実行できる。tmux のペインが分割されて自動的にテストが走るので、デバッグもできる。

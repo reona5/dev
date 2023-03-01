@@ -1,0 +1,117 @@
+---
+title: 'Blog を MDX, Next.js で作成した'
+description: ''
+pubDate: '2020-06-05T15:01:25.274Z'
+---
+
+### なぜMDXとNext.jsで作成したか
+
+2ヶ月前にGitHub Pages × Hugoでブログを始めました。始めた経緯などは以下の記事に書いてあります。
+[GitHub Pages × Hugoで技術ブログを始めた](/posts/20200331)
+
+- GitHub Pagesを使うことでデプロイを自動化
+- ブログ記事は使い慣れているVimでMarkdownで書くことができる。
+- ページパフォーマンスも高い
+
+等のメリットがあり、割と気にいっていた反面、
+
+- 選択したテーマはブログ主体のものではなかった
+- もう少しカスタマイズしたい
+- 業務で触れる機会がないフロントエンドの技術を触りたい
+
+など、気になる点もいくつかありました。
+VueやReactは去年それぞれ1ヶ月ほど触った経験があったので、TypeScriptと相性が良いと言われているReactを選択しました。
+（普段Rubyを使っていることもあり、型のあるTypeScriptが触りたかった）
+
+また、Hugoからの移行ということもあって、まずはSSGのGatsbyも触ってみたのですが、
+
+- プロジェクト生成後のディレクトリ構成が割と煩雑
+- GraphQLが難しそう（これは食わず嫌い）
+
+上記の理由から、よりシンプルなNext.jsを選択しました。
+リポジトリはこちらです。
+[reona5/dev](https://github.com/reona5/dev)
+
+`github.io` も気に入ってはいましたが、良い機会なので `reona.dev` のカスタムドメインを取得しました。
+
+## MDX
+
+MDXはMarkdownにJSXを挿入できるフォーマットです。Markdownファイルは `.md` 、MDXファイルは `.mdx` です。オープンソースのライブラリとなっています。
+
+[mdx-js/mdx JSX in Markdown for ambitious projects](https://github.com/mdx-js/mdx)
+
+JSXを挿入できるので、Markdownで書くブログ記事にReactのコンポーネントを組み込むことができます。
+
+```
+import Layout from 'lib/components/layout'
+import { Link } from '@zeit-ui/react'
+
+export const meta = {
+  title: 'ブログタイトル',
+  date: '2020-06-01T00:00:00.000Z',
+  description: '',
+  image: '',
+}
+
+<Link href="https://twitter.com" icon color target="_blank">Twitter</Link>
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>
+```
+
+このように使いたいコンポーネントをimportします。
+Reactのコードを書くような感覚でブログ記事を書けるのがとても良いですね。
+
+## SEO対策
+
+[静的サイトジェネレータで作成したブログを検索結果に表示する](/posts/20200518)
+
+以前のブログでSEO周りの設定は一通り行いましたが、URLも変わったので再度Search Consoleに登録しました。
+
+<br />
+
+### Sitemap
+
+Next.js用のnextjs-sitemap-generatorを用いて生成し、Search Consoleに送信しました。
+
+[nextjs-sitemap-generator](https://www.npmjs.com/package/nextjs-sitemap-generator)
+
+## 画像圧縮
+
+[imagemin](https://github.com/imagemin/imagemin)
+
+パフォーマンスを落としたくなかったので、画像圧縮の仕組みを作りました。
+[scripts/imagemin.js](https://github.com/reona5/dev/blob/master/scripts/imagemin.js)にスクリプトを書いて、ビルド・デプロイ時に実行するようにします。
+
+```
+  "scripts": {
+    "start": "npm run collect && next dev && yarn imagemin",
+    "dev": "npm run collect && next dev && yarn imagemin",
+    "now-build": "npm run collect && next build && yarn imagemin",
+    "imagemin": "node scripts/imagemin.js"
+  }
+
+```
+
+## Twitter/Youtubeの埋め込み
+
+[react-twitter-embed](https://www.npmjs.com/package/react-twitter-embed)
+[react-youtube](https://www.npmjs.com/package/react-youtube)
+
+上記のライブラリは記事中にTweetやYoutubeのリッチなコンポーネントを提供してくれます。
+
+```
+import YouTube from 'react-youtube'
+import { TwitterTweetEmbed } from 'react-twitter-embed'
+
+<TwitterTweetEmbed tweetId={'1266741023612387334'} />
+<YouTube videoId="at-XZggSRho" />
+```
+
+Twitterのライブラリは他にも色んなコンポーネントを提供してくれているみたいです。
+
+## 自動デプロイ
+
+[Next.js チュートリアル](https://nextjs.org/learn/basics/deploying-nextjs-app)
+
+上記のチュートリアルでもデプロイ手順が書いてあるので参考にしました。独自ドメインでも設定は簡単でした。
+基本的に、`now` （もしくは `vercel` ）コマンドでデプロイできますが、GitHubリポジトリと紐付ければmasterブランチへのPush時にデプロイしてくれて便利です。

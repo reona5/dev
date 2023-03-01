@@ -1,0 +1,51 @@
+---
+title: '[XCode] ローカルサーバーと通信する'
+description: ''
+pubDate: '2020-06-27T10:13:56.068Z'
+---
+
+地味にハマったのでメモ。
+
+## やりたいこと
+
+- Railsプロジェクトで用意したAPIにiOSアプリの開発環境からアクセスしてデータを取得したい。
+  - Railsサーバー起動した状態で、XCodeシミュレータからlocalhost接続する。
+
+## 開発環境
+
+- MacOS Catalina
+- XCode 11.5
+
+## エラーログ
+
+``` shell
+2020-06-27 00:13:31.111948+0900 SampleApp[36026:3294237] App Transport Security has blocked a cleartext HTTP (http://) resource load since it is insecure. Temporary exceptions can be configured via your app's Info.plist file.
+2020-06-27 00:13:31.112049+0900 SampleApp[36026:3294237] Cannot start load of Task <B5B5EF60-F560-4344-BCDC-244DEBA3D77E>.<1> since it does not conform to ATS policy
+2020-06-27 00:13:31.115825+0900 SampleApp[36026:3294237] Task <B5B5EF60-F560-4344-BCDC-244DEBA3D77E>.<1> finished with error [-1022] Error Domain=NSURLErrorDomain Code=-1022 "The resource could not be loaded because the App Transport Security policy requires the use of a secure connection." UserInfo={NSUnderlyingError=0x6000039ed170 {Error Domain=kCFErrorDomainCFNetwrk Code=-1022 "(null)"}, NSErrorFailingURLStringKey=http://localhost:3000/api/users, NSErrorFailingURLKey=http://localhost:3000/api/users, NSLocalizedDescription=The resource could not be loaded because the App Transport Security policy requires the use of a secure connection.}
+```
+
+iOS9からデフォルトでATS（App Transport Security）が設定されており、https以外の通信はシャットアウトされているらしい。
+
+## 解決策
+
+`Info.prist` を右クリック > Open As > Sourse Code で以下のコードを挿入
+
+``` html
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
+</dict>
+```
+
+以下のようにATSを無効化することでも通信可能だが、セキュリティが担保されないので非推奨
+（何故かこの方法のみ説明している日本語記事が多い…）
+
+``` html
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+```
+
+エラーログが解消され、データが取得できることを確認できれば通信成功！
