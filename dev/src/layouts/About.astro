@@ -1,4 +1,5 @@
 ---
+import '@fontsource/inter'
 import type { CollectionEntry } from 'astro:content'
 import BaseHead from '../components/BaseHead.astro'
 import Header from '../components/Header.astro'
@@ -28,11 +29,21 @@ const { title, description, heroImage } = Astro.props
     </style>
   </head>
 
-  <body>
+  <body class="font-inter">
     <Header />
-    <main>
-      <article>
-        {heroImage && <img width={720} height={360} src={heroImage} alt="" />}
+    <main class="m-auto max-w-4xl p-6">
+      <section>
+        {
+          heroImage && (
+            <img
+              width={1080}
+              height={540}
+              src={heroImage}
+              alt=""
+              class="m-auto text-center"
+            />
+          )
+        }
         <h1 class="title">{title}</h1>
         <p>
           <a href="/">reona.dev</a> は Astro + Vercel によって作成されています。<a
@@ -41,7 +52,7 @@ const { title, description, heroImage } = Astro.props
         </p>
         <hr />
         <slot />
-      </article>
+      </section>
     </main>
     <Footer />
   </body>
