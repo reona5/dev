@@ -1,29 +1,43 @@
 ---
-import HeaderLink from './HeaderLink.astro'
 import { SITE_TITLE } from '../consts'
+
+const headerItems = [
+  {
+    name: 'Posts',
+    href: '/posts',
+    target: '_self',
+  },
+  {
+    name: 'About',
+    href: '/about',
+    target: '_self',
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/reona_5',
+    target: '_blank',
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/reona5',
+    target: '_blank',
+  },
+]
 ---
 
-<header>
-  <h2>
-    <HeaderLink href="/">{SITE_TITLE}</HeaderLink>
-  </h2>
-  <nav>
-    <HeaderLink href="/">Home</HeaderLink>
-    <HeaderLink href="/posts">Posts</HeaderLink>
-    <HeaderLink href="/about">About</HeaderLink>
-    <HeaderLink href="https://twitter.com/reona_5" target="_blank">
-      Twitter
-    </HeaderLink>
-    <HeaderLink href="https://github.com/reona5" target="_blank">
-      GitHub
-    </HeaderLink>
+<header class="max-w-4xl m-auto">
+  <a href="/" class="mx-6 absolute text-2xl">{SITE_TITLE}</a>
+  <nav class="flex justify-end m-6">
+    <ul class="flex justify-end text-lg">
+      {
+        headerItems.map(item => (
+          <li>
+            <a href={item.href} target={item.target} class="p-2">
+              {item.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
   </nav>
 </header>
-<style>
-  header {
-    margin: 0em 0 2em;
-  }
-  h2 {
-    margin: 0.5em 0;
-  }
-</style>

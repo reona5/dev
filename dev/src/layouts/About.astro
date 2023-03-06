@@ -14,40 +14,17 @@ const { title, description, heroImage } = Astro.props
 <html lang={SITE_LANGUAGE}>
   <head>
     <BaseHead title={title} description={description} />
-    <style>
-      .title {
-        font-size: 2em;
-        margin: 0.25em 0 0;
-      }
-      hr {
-        border-top: 1px solid #ddd;
-        margin: 1rem 0;
-      }
-      .last-updated-on {
-        font-style: italic;
-      }
-    </style>
   </head>
 
   <body class="font-inter">
     <Header />
     <main class="m-auto max-w-4xl p-6">
-      <section>
-        {
-          heroImage && (
-            <img
-              width={1080}
-              height={540}
-              src={heroImage}
-              alt=""
-              class="m-auto text-center"
-            />
-          )
-        }
+      <section class="prose max-w-none">
+        {heroImage && <img src={heroImage} alt="" />}
         <h1 class="title">{title}</h1>
         <p>
           <a href="/">reona.dev</a> は Astro + Vercel によって作成されています。<a
-            href="https://twitter.com/reona_5">reona5</a
+            href="https://twitter.com/reona_5" target="_blank">Reona Shimada</a
           > のプログラミングに関する学びや日々の出来事を発信するウェブサイトです。
         </p>
         <hr />
