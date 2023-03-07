@@ -1,14 +1,17 @@
 ---
-import Layout from '../layouts/About.astro';
+import Layout from '../layouts/About.astro'
 import { SITE_DESCRIPTION } from '../consts'
 ---
 
 <Layout
-	title="このサイトについて"
-	description={SITE_DESCRIPTION}
-	pubDate={new Date('February 26 2023')}
-	heroImage="/placeholder-about.jpg"
+  title="このサイトについて"
+  description={SITE_DESCRIPTION}
+  pubDate={new Date('February 26 2023')}
+  heroImage="/placeholder-about.jpg"
 >
   <h2 class="title">筆者について</h2>
-	<p>1994年5月生まれ。第一三共株式会社にて MR として数年勤めたのち、Web サービスの開発に興味を持ち2019年8月にキャリアチェンジしました。現在はメドピア株式会社に所属しております。</p>
+  <p>
+    1994年5月生まれ。第一三共株式会社にて MR として数年勤めたのち、Web
+    サービスの開発に興味を持ち2019年8月にキャリアチェンジしました。現在はメドピア株式会社に所属しております。
+  </p>
 </Layout>

@@ -8,7 +8,7 @@ import { getCollection } from 'astro:content'
 import FormattedDate from '../../components/FormattedDate.astro'
 
 const posts = (await getCollection('posts')).sort(
-  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
@@ -16,26 +16,10 @@ const posts = (await getCollection('posts')).sort(
 <html lang={SITE_LANGUAGE}>
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      ul {
-        list-style-type: none;
-        padding: unset;
-      }
-      ul li {
-        display: flex;
-      }
-      ul li :global(time) {
-        flex: 0 0 130px;
-        color: #595959;
-      }
-      ul li a:visited {
-        color: #8e32dc;
-      }
-    </style>
   </head>
   <body class="font-inter">
     <Header />
-    <main class="m-auto max-w-4xl p-6">
+    <main class="m-auto max-w-4xl p-8">
       <section>
         <ul>
           {

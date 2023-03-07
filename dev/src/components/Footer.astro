@@ -1,13 +1,54 @@
 ---
-const today = new Date();
+import { Image } from '@astrojs/image/components'
+
+const headerItems = [
+  {
+    name: 'RSS',
+    href: '/rss.xml',
+    target: '_blank',
+    imagePath: '/images/rss-icon.png',
+  },
+  {
+    name: 'Twitter',
+    href: 'https://twitter.com/reona_5',
+    target: '_blank',
+    imagePath: '/images/twitter-icon.png',
+  },
+  {
+    name: 'GitHub',
+    href: 'https://github.com/reona5',
+    target: '_blank',
+    imagePath: '/images/github-black-icon.png',
+  },
+]
+const today = new Date()
 ---
 
-<footer>
-	&copy; {today.getFullYear()} Reona Shimada. All rights reserved.
+<footer class="flex justify-between max-w-4xl m-auto p-8">
+  <p>
+    &copy; {today.getFullYear()} Reona Shimada. All rights reserved.
+  </p>
+  <nav>
+    <ul class="flex p-0">
+      {
+        headerItems.map(item => (
+          <li class="pr-4">
+            <a href={item.href} target={item.target}>
+              {item.imagePath ? (
+                <Image
+                  src={item.imagePath}
+                  alt={`${item.name} icon`}
+                  width={24}
+                  height={24}
+                  format="png"
+                />
+              ) : (
+                item.name
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
 </footer>
-<style>
-	footer {
-		padding: 25px;
-		text-align: center;
-	}
-</style>

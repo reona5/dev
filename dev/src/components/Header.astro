@@ -1,5 +1,6 @@
 ---
 import { SITE_TITLE } from '../consts'
+import { Image } from '@astrojs/image/components'
 
 const headerItems = [
   {
@@ -12,27 +13,17 @@ const headerItems = [
     href: '/about',
     target: '_self',
   },
-  {
-    name: 'Twitter',
-    href: 'https://twitter.com/reona_5',
-    target: '_blank',
-  },
-  {
-    name: 'GitHub',
-    href: 'https://github.com/reona5',
-    target: '_blank',
-  },
 ]
 ---
 
 <header class="max-w-4xl m-auto">
-  <a href="/" class="mx-6 absolute text-2xl">{SITE_TITLE}</a>
-  <nav class="flex justify-end m-6">
+  <a href="/" class="py-2 m-8 absolute text-2xl">{SITE_TITLE}</a>
+  <nav class="flex justify-end p-8">
     <ul class="flex justify-end text-lg">
       {
         headerItems.map(item => (
-          <li>
-            <a href={item.href} target={item.target} class="p-2">
+          <li class="p-2">
+            <a href={item.href} target={item.target}>
               {item.name}
             </a>
           </li>
