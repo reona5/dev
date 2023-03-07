@@ -8,7 +8,7 @@ pubDate: '2020-07-11T12:56:57.251Z'
 
 `static` はクラスやクラスプロパティの宣言時に `class` キーワードをつけるような感覚で、プロパティやメソッドの宣言時に使う。
 
-```
+```swift
 class Cat {
   static let sex: String = "male"
 
@@ -27,7 +27,7 @@ Cat.meow()
 
 参照する際にはインスタンス生成されないので、メモリの使用量を抑えることができる。
 
-```
+```swift
 class Credential {
   static let secretKey = "xxx"
 }
@@ -36,7 +36,7 @@ class Credential {
 let credential = Credential()
 ```
 
-```
+```swift
 class Credential {
   static let secretKey = "xxx"
 
@@ -56,7 +56,7 @@ func authorize(credential: Credential) {
 }
 ```
 
-```
+```swift
 enum Credential {
   static let secretKey = "xxx"
 }

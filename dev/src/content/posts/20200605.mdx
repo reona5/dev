@@ -42,7 +42,7 @@ MDXはMarkdownにJSXを挿入できるフォーマットです。Markdownファ�
 
 JSXを挿入できるので、Markdownで書くブログ記事にReactのコンポーネントを組み込むことができます。
 
-```
+```mdx
 import Layout from 'lib/components/layout'
 import { Link } from '@zeit-ui/react'
 
@@ -67,8 +67,6 @@ Reactのコードを書くような感覚でブログ記事を書けるのがと
 
 以前のブログでSEO周りの設定は一通り行いましたが、URLも変わったので再度Search Consoleに登録しました。
 
-<br />
-
 ### Sitemap
 
 Next.js用のnextjs-sitemap-generatorを用いて生成し、Search Consoleに送信しました。
@@ -82,7 +80,7 @@ Next.js用のnextjs-sitemap-generatorを用いて生成し、Search Consoleに�
 パフォーマンスを落としたくなかったので、画像圧縮の仕組みを作りました。
 [scripts/imagemin.js](https://github.com/reona5/dev/blob/master/scripts/imagemin.js)にスクリプトを書いて、ビルド・デプロイ時に実行するようにします。
 
-```
+```json
   "scripts": {
     "start": "npm run collect && next dev && yarn imagemin",
     "dev": "npm run collect && next dev && yarn imagemin",
@@ -99,7 +97,7 @@ Next.js用のnextjs-sitemap-generatorを用いて生成し、Search Consoleに�
 
 上記のライブラリは記事中にTweetやYoutubeのリッチなコンポーネントを提供してくれます。
 
-```
+```mdx
 import YouTube from 'react-youtube'
 import { TwitterTweetEmbed } from 'react-twitter-embed'
 
