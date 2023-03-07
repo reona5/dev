@@ -18,13 +18,13 @@ const posts = (await getCollection('posts')).sort(
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="font-inter">
-    <Header />
+    <Header currentPage="Posts" />
     <main class="m-auto max-w-4xl p-8">
       <section>
-        <ul>
+        <ol>
           {
             posts.map(post => (
-              <li>
+              <li class="mb-6">
                 <FormattedDate date={post.data.pubDate} />
                 <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
               </li>

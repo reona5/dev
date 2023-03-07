@@ -1,29 +1,30 @@
 ---
 import { SITE_TITLE } from '../consts'
-import { Image } from '@astrojs/image/components'
 
 const headerItems = [
   {
     name: 'Posts',
     href: '/posts',
-    target: '_self',
   },
   {
     name: 'About',
     href: '/about',
-    target: '_self',
   },
-]
+] as const
+type Item = typeof headerItems[number]['name']
+const { currentPage } = Astro.props
+const isCurrent = (item: Item) => item === currentPage
+const ariaCurrent: { 'aria-current': 'page' | undefined } = { 'aria-current': 'page' }
 ---
 
 <header class="max-w-4xl m-auto">
-  <a href="/" class="py-2 m-8 absolute text-2xl">{SITE_TITLE}</a>
+  <a href="/" class="m-8 absolute text-2xl">{SITE_TITLE}</a>
   <nav class="flex justify-end p-8">
-    <ul class="flex justify-end text-lg">
+    <ul class="flex justify-end text-lg gap-4">
       {
         headerItems.map(item => (
-          <li class="p-2">
-            <a href={item.href} target={item.target}>
+          <li>
+            <a {...(isCurrent(item.name) && ariaCurrent)} href={item.href} class={ isCurrent(item.name) ? 'underline' : undefined }>
               {item.name}
             </a>
           </li>

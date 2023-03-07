@@ -26,13 +26,13 @@ const today = new Date()
 
 <footer class="flex justify-between max-w-4xl m-auto p-8">
   <p>
-    &copy; {today.getFullYear()} Reona Shimada. All rights reserved.
+    &copy; {today.getFullYear()} Reona Shimada.
   </p>
   <nav>
-    <ul class="flex p-0">
+    <ul class="flex p-0 gap-4">
       {
         headerItems.map(item => (
-          <li class="pr-4">
+          <li>
             <a href={item.href} target={item.target}>
               {item.imagePath ? (
                 <Image
