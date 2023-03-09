@@ -20,18 +20,19 @@ const posts = (await getCollection('posts')).sort(
   <body class="font-inter">
     <Header currentPage="Posts" />
     <main class="m-auto max-w-4xl p-8">
-      <section>
-        <ol>
-          {
-            posts.map(post => (
-              <li class="mb-6">
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </section>
+      <h1 class="text-3xl font-bold mb-8">記事一覧</h1>
+      <ol class="grid gap-8">
+        {
+          posts.map(post => (
+            <li class="grid">
+              <FormattedDate date={post.data.pubDate} />
+              <a href={`/posts/${post.slug}/`} class="text-lg">
+                {post.data.title}
+              </a>
+            </li>
+          ))
+        }
+      </ol>
     </main>
     <Footer />
   </body>
