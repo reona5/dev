@@ -11,11 +11,11 @@ iterm2でtmux, Neovimと使い普段開発をしているが、以下のよう�
 
 `import` の後ろにカーソルがあるが、実際のカーソル位置は1行目 `import` の手前。
 
-![](/images/2020-08-23-23-14-24.png)
+![](/assets/images/2020-08-23-23-14-24.png)
 
 1画面に複数windowがある場合は端に文字が残ることが多かった。（残らないときもあった）
 
-![](/images/2020-08-23-23-21-06.png)
+![](/assets/images/2020-08-23-23-21-06.png)
 
 開発ができないことはないが、開発スピードに影響が出るのと、単純に必要ない文字が残るのは邪魔でストレスだった。
 
@@ -25,7 +25,7 @@ iterm2でtmux, Neovimと使い普段開発をしているが、以下のよう�
 
 結果、
 
-```
+```vim
 set ambiwidth=double (規定では `single`)
 ```
 
@@ -39,9 +39,9 @@ https://vim-jp.org/vimdoc-ja/options.html#'ambiwidth'
 
 ☆や※などの記号がVim上で崩れてしまうのを防ぐために設定していたが、`single`にすることで正常に描画されるようになった。
 
-![](/images/2020-08-23-23-14-49.png)
+![](/assets/images/2020-08-23-23-14-49.png)
 
-![](/images/2020-08-23-23-14-55.png)
+![](/assets/images/2020-08-23-23-14-55.png)
 
 
 [Vim-airline でambiwidth=double とするとデザインが崩れる件についての対策](https://qiita.com/TsutomuNakamura/items/bd9139942973dfc469cc)

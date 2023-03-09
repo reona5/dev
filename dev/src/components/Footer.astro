@@ -1,24 +1,21 @@
 ---
-import { Image } from '@astrojs/image/components'
+import { Image } from 'astro:assets'
 
 const headerItems = [
   {
     name: 'RSS',
     href: '/rss.xml',
-    target: '_blank',
-    imagePath: '/images/rss-icon.png',
+    imagePath: '/assets/rss-icon.png',
   },
   {
     name: 'Twitter',
     href: 'https://twitter.com/reona_5',
-    target: '_blank',
-    imagePath: '/images/twitter-icon.png',
+    imagePath: '/assets/twitter-icon.png',
   },
   {
     name: 'GitHub',
     href: 'https://github.com/reona5',
-    target: '_blank',
-    imagePath: '/images/github-black-icon.png',
+    imagePath: '/assets/github-black-icon.png',
   },
 ]
 const today = new Date()
@@ -33,14 +30,13 @@ const today = new Date()
       {
         headerItems.map(item => (
           <li>
-            <a href={item.href} target={item.target}>
+            <a href={item.href} target="_blank">
               {item.imagePath ? (
                 <Image
                   src={item.imagePath}
                   alt={`${item.name} icon`}
                   width={24}
                   height={24}
-                  format="png"
                 />
               ) : (
                 item.name

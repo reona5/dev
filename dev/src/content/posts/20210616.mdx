@@ -78,7 +78,7 @@ end
 
 メソッドの中ではトランザクション内で `lock!` を実行し、メソッドに渡したブロックを実行している。
 
-# MySQL5.7 の GET_LOCK, RELEASE_LOCK
+## MySQL5.7 の GET_LOCK, RELEASE_LOCK
 
 MySQL では排他ロックの機能として `GET_LOCK(str, timeout)` , `RELEASE_LOCK(str)` がある。
 
