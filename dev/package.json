@@ -10,8 +10,8 @@
 		"astro": "astro"
 	},
 	"dependencies": {
-		"@astrojs/image": "^0.15.1",
-		"@astrojs/mdx": "^0.17.2",
+		"@astrojs/image": "^0.16.0",
+		"@astrojs/mdx": "^0.18.0",
 		"@astrojs/rss": "^2.1.1",
 		"@astrojs/sitemap": "^1.1.0",
 		"@astrojs/tailwind": "^3.0.1",
@@ -24,7 +24,7 @@
 	"devDependencies": {
 		"@typescript-eslint/parser": "^5.54.0",
 		"eslint": "^8.35.0",
-		"eslint-plugin-astro": "^0.23.0",
+		"eslint-plugin-astro": "^0.24.0",
 		"prettier": "^2.8.4",
 		"prettier-plugin-astro": "^0.8.0",
 		"vite": "^4.1.4"
