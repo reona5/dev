@@ -1,24 +1,27 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from "astro:assets";
+import rssIcon from "../assets/rss-icon.png";
+import twitterIcon from "../assets/twitter-icon.png";
+import githubIcon from "../assets/github-black-icon.png";
 
 const headerItems = [
   {
-    name: 'RSS',
-    href: '/rss.xml',
-    imagePath: '/assets/rss-icon.png',
+    name: "RSS",
+    href: "/rss.xml",
+    imagePath: rssIcon,
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/reona_5',
-    imagePath: '/assets/twitter-icon.png',
+    name: "Twitter",
+    href: "https://twitter.com/reona_5",
+    imagePath: twitterIcon,
   },
   {
-    name: 'GitHub',
-    href: 'https://github.com/reona5',
-    imagePath: '/assets/github-black-icon.png',
+    name: "GitHub",
+    href: "https://github.com/reona5",
+    imagePath: githubIcon,
   },
-]
-const today = new Date()
+];
+const today = new Date();
 ---
 
 <footer class="flex justify-between max-w-4xl m-auto p-8">
@@ -28,15 +31,14 @@ const today = new Date()
   <nav>
     <ul class="flex p-0 gap-4">
       {
-        headerItems.map(item => (
+        headerItems.map((item) => (
           <li>
             <a href={item.href} target="_blank">
               {item.imagePath ? (
                 <Image
                   src={item.imagePath}
-                  alt={`${item.name} icon`}
                   width={24}
-                  height={24}
+                  alt={`${item.name} icon`}
                 />
               ) : (
                 item.name

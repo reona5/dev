@@ -5,6 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/static";
 
 export default defineConfig({
+  publicDir: "./src/assets",
   output: "static",
   adapter: vercel({
     analytics: true,
