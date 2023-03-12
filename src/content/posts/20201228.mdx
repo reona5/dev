@@ -1,0 +1,35 @@
+---
+title: '[Rails] URI::InvalidURIError (bad URI(is not URI?): nil) Active Storage service_url'
+description: ''
+pubDate: '2020-12-28T05:29:29.032Z'
+---
+
+APImode で ActiveStorage を利用した際、開発環境で以下のエラーが発生したため対処方法を記録
+
+## エラー
+
+`URI::InvalidURIError (bad URI(is not URI?): nil) Active Storage service_url`
+
+https://apidock.com/rails/ActiveStorage/Blob/service_url
+
+## 原因
+
+`ActiveStorage::Current.host` に値が入っていない
+
+## 解決法
+
+基底クラスに以下を定義
+
+```rb
+before_action do
+  return unless Rails.env.development?
+
+  ActiveStorage::Current.host = request.base_url
+end
+```
+
+## 参考
+
+[ActiveStorage with Rails API](https://github.com/rails/rails/issues/32500)
+
+[Rails ActiveStorage URI InvalidError](http://dev.hungryhub.com/rails-activestorage/)

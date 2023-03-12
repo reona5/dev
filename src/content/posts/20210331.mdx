@@ -1,0 +1,92 @@
+---
+title: '[Vuex] axios を使った action を呼び出し元で同期的に扱いたい'
+description: ''
+pubDate: '2021-03-31T15:23:04.456Z'
+---
+
+Vuex の action で axios を用いて API を実行する処理を利用する際に詰まったため記録
+
+## 目的
+
+store 外で actions を用いる際に、action の実行結果を待機した上で別の処理を実行したい。
+
+## コード
+
+``` javascript
+// items.js
+
+const state = {
+  items: []
+}
+
+const getters = {
+  getItems: state => state.items
+}
+
+const actions = {
+  fetchItems({ commit, state }) {
+    axios.get(`/api/items`)
+      .then(response => {
+        commit('receiveItems', response.data);
+      })
+  }
+}
+
+const mutations = {
+  receiveItems (state, items) {
+    state.items = items;
+  }
+}
+
+
+// item.vue
+
+...
+mounted () {
+  this.showItems()
+}
+
+methods: {
+  showItems () {
+    items = this.$store.getters('items/getItems')
+    this.$store.dispatch('items/fetchItems')
+      .then(() => {
+        console.log(items)
+      })
+ }
+}
+```
+
+- console 上に item の一覧が配列となって表示されていることを期待するが、結果は空。
+
+## 解決方法
+
+``` javascript
+// items.js
+
+...
+const actions = {
+  fetchItems({ commit, state }) {
+    return axios.get(`/api/items`)
+      .then(response => {
+        commit('receiveItems', response.data);
+      })
+  }
+}
+```
+
+
+## 原因
+
+基本中の基本だが、JavaScript の場合、関数の返り値を呼び出し元で扱いたい場合はでは `return` で返さないといけない。
+
+問題のコードでもアクション自体は実行できるが、Promise オブジェクトが返り値として返らないため呼び出し元では `.then()` をチェーンできない。
+
+
+## 参考
+
+[axios/axios](https://github.com/axios/axios)
+
+[Vuex アクション](https://vuex.vuejs.org/ja/guide/actions.html)
+
+[MDN/return](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/return)

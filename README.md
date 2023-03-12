@@ -1,17 +1,27 @@
-# Blog (Next.js + TypeScript + MDX)
+# [reona.dev](https://reona.dev/)
 
-## create a new post
+This is my Blog made by [Astro](https://astro.build/) 🚀
 
-`$ yarn run post foo`
+https://reona.dev/
 
-## Preview
+## Setup
 
-`$ yarn dev`
+```shell
+git clone https://github.com/reona5/dev.git
+cd dev
+yarn install
+yarn dev
+```
 
-## Deploy
+## Commands
 
-`$ vercel`
+All commands are run from the root of the project, from a terminal:
 
-## License
-
-[MIT](https://github.com/reona5/dev/blob/master/LICENSE)
+| Command             | Action                                           |
+| :------------------ | :----------------------------------------------- |
+| `yarn install`      | Installs dependencies                            |
+| `yarn dev`          | Starts local dev server at `localhost:3000`      |
+| `yarn build`        | Build your production site to `./dist/`          |
+| `yarn preview`      | Preview your build locally, before deploying     |
+| `yarn astro ...`    | Run CLI commands like `astro add`, `astro check` |
+| `yarn astro --help` | Get help using the Astro CLI                     |
