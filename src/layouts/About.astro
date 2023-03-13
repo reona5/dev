@@ -6,10 +6,11 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_LANGUAGE } from "../consts";
 import { Image } from "astro:assets";
+import aboutImage from "../assets/placeholder-about.jpg";
 
 type Props = CollectionEntry<"posts">["data"];
 
-const { title, description, heroImage } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang={SITE_LANGUAGE}>
@@ -21,7 +22,7 @@ const { title, description, heroImage } = Astro.props;
     <Header currentPage="About" />
     <main class="m-auto max-w-4xl p-8">
       <section class="prose max-w-none">
-        {heroImage && <Image src={heroImage} alt="" width={850} class="pb-8" />}
+        <Image src={aboutImage} alt="" width={850} height={478} class="pb-8" />
         <h1 class="title">{title}</h1>
         <p>
           <a href="/">reona.dev</a> は Astro + Vercel によって作成されています。<a
