@@ -5,4 +5,3 @@ export const SITE_TITLE = "reona.dev";
 export const SITE_DESCRIPTION =
   "reona.dev は Astro + Vercel によって作成されています。reona5 のプログラミングに関する学びや日々の出来事を発信するウェブサイトです。";
 export const SITE_LANGUAGE = "ja";
-export const GA_ID: string = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "";

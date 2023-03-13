@@ -3,8 +3,6 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import vercel from "@astrojs/vercel/static";
-import partytown from "@astrojs/partytown";
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
@@ -21,15 +19,5 @@ export default defineConfig({
     },
   },
   site: "https://reona.dev",
-  integrations: [
-    mdx(),
-    sitemap(),
-    tailwind(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
-    react(),
-  ],
+  integrations: [mdx(), sitemap(), tailwind()],
 });

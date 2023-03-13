@@ -1,6 +1,4 @@
 ---
-import { isGaIdExists, GoogleAnalytics } from "../lib/gtag"
-
 export interface Props {
   title: string;
   description: string;
@@ -11,8 +9,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 ---
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-{ isGaIdExists && <GoogleAnalytics /> }
+<script defer src="/_vercel/insights/script.js"></script>
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />

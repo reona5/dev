@@ -10,6 +10,7 @@
     "outputDirectory": null,
     "rootDirectory": null,
     "directoryListing": false,
-    "nodeVersion": "18.x"
+    "nodeVersion": "18.x",
+    "analyticsId": "BKrW4PpNeXGpbNKX9gB3VGHRZu1"
   }
 }
