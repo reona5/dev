@@ -1,20 +1,22 @@
 ---
-import { SITE_TITLE } from '../consts'
+import { SITE_TITLE } from "../consts";
 
 const headerItems = [
   {
-    name: 'Posts',
-    href: '/posts',
+    name: "Posts",
+    href: "/posts",
   },
   {
-    name: 'About',
-    href: '/about',
+    name: "About",
+    href: "/about",
   },
-] as const
-type Item = typeof headerItems[number]['name']
-const { currentPage } = Astro.props
-const isCurrent = (item: Item) => item === currentPage
-const ariaCurrent: { 'aria-current': 'page' | undefined } = { 'aria-current': 'page' }
+] as const;
+type Item = typeof headerItems[number]["name"];
+const { currentPage } = Astro.props;
+const isCurrent = (item: Item) => item === currentPage;
+const ariaCurrent: { "aria-current": "page" | undefined } = {
+  "aria-current": "page",
+};
 ---
 
 <header class="max-w-4xl m-auto">
@@ -22,9 +24,13 @@ const ariaCurrent: { 'aria-current': 'page' | undefined } = { 'aria-current': 'p
   <nav class="flex justify-end p-8">
     <ul class="flex justify-end text-lg gap-4">
       {
-        headerItems.map(item => (
+        headerItems.map((item) => (
           <li>
-            <a {...(isCurrent(item.name) && ariaCurrent)} href={item.href} class={ isCurrent(item.name) ? 'underline' : undefined }>
+            <a
+              {...(isCurrent(item.name) && ariaCurrent)}
+              href={item.href}
+              class={isCurrent(item.name) ? "underline" : undefined}
+            >
               {item.name}
             </a>
           </li>

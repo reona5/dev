@@ -1,13 +1,13 @@
 ---
 export interface Props {
-  title: string
-  description: string
-  image?: string
+  title: string;
+  description: string;
+  image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props
+const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -15,13 +15,17 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 
- <!-- Chrome / Firefox / Edge -->
+<!-- Chrome / Firefox / Edge -->
 <link
   rel="icon"
   href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text x=%2250%%22 y=%2250%%22 style=%22dominant-baseline:central;text-anchor:middle;font-size:90px;%22>🫰</text></svg>"
 />
- <!-- Safari / IE -->
- <link rel="icon alternate" type="image/png" href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1faf0.png" />
+<!-- Safari / IE -->
+<link
+  rel="icon alternate"
+  type="image/png"
+  href="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1faf0.png"
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -30,9 +34,6 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
-
-<!-- Script for Vercel Analytics -->
-<script defer src="/_vercel/insights/script.js"></script>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
