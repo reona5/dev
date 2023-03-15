@@ -20,7 +20,7 @@ const posts = (await getCollection('posts')).sort(
   <body class="font-inter">
     <Header currentPage="Posts" />
     <main class="m-auto max-w-4xl p-8">
-      <h1 class="text-3xl font-bold mb-8">記事一覧</h1>
+      <h1 class="mb-8 text-3xl font-bold">記事一覧</h1>
       <ol class="grid gap-8">
         {
           posts.map(post => (

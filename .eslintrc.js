@@ -28,4 +28,6 @@ module.exports = {
       },
     },
   ],
+  // env.d.ts: Automatically generated file by Astro.
+  ignorePatterns: ["src/env.d.ts"],
 };

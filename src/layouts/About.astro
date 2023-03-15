@@ -1,14 +1,11 @@
 ---
 import "@fontsource/inter";
-import type { CollectionEntry } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_LANGUAGE } from "../consts";
 import { Image } from "astro:assets";
 import aboutImage from "../assets/placeholder-about.jpg";
-
-type Props = CollectionEntry<"posts">["data"];
 
 const { title, description } = Astro.props;
 ---
@@ -23,7 +20,7 @@ const { title, description } = Astro.props;
     <main class="m-auto max-w-4xl p-8">
       <section class="prose max-w-none">
         <Image src={aboutImage} alt="" width={850} height={478} class="pb-8" />
-        <h1 class="title">{title}</h1>
+        <h1>{title}</h1>
         <p>
           <a href="/">reona.dev</a> は Astro + Vercel によって作成されています。<a
             href="https://twitter.com/reona_5"

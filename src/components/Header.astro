@@ -19,10 +19,10 @@ const ariaCurrent: { "aria-current": "page" | undefined } = {
 };
 ---
 
-<header class="max-w-4xl m-auto">
-  <a href="/" class="m-8 absolute text-2xl">{SITE_TITLE}</a>
+<header class="m-auto max-w-4xl">
+  <a href="/" class="absolute m-8 text-2xl">{SITE_TITLE}</a>
   <nav class="flex justify-end p-8">
-    <ul class="flex justify-end text-lg gap-4">
+    <ul class="flex justify-end gap-4 text-lg">
       {
         headerItems.map((item) => (
           <li>
