@@ -19,12 +19,12 @@ const headerItems = [
 const today = new Date();
 ---
 
-<footer class="flex justify-between max-w-4xl m-auto p-8">
+<footer class="m-auto flex max-w-4xl justify-between p-8">
   <p>
     &copy; {today.getFullYear()} Reona Shimada.
   </p>
   <nav>
-    <ul class="flex p-0 gap-4">
+    <ul class="flex gap-4 p-0">
       {
         headerItems.map((item) => (
           <li>
