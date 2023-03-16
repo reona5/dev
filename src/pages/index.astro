@@ -18,14 +18,12 @@ const posts = (await getCollection('posts'))
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body class="font-inter">
-    <Header title={SITE_TITLE} />
+    <Header />
     <main class="m-auto grid max-w-4xl gap-12 p-8">
-      <section>
-        <h2 class="my-2 text-2xl font-bold">Hello, I'm Reona Shimada👋</h2>
-        <p>
-          プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
-        </p>
-      </section>
+      <h2 class="my-2 text-2xl font-bold">Hello, I'm Reona Shimada👋</h2>
+      <p>
+        プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
+      </p>
       <section>
         <ol class="mb-8 grid gap-8">
           {

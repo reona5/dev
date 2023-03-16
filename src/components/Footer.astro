@@ -1,5 +1,5 @@
 ---
-const headerItems = [
+const footerItems = [
   {
     name: "RSS",
     href: "/rss.xml",
@@ -15,7 +15,7 @@ const headerItems = [
     href: "https://github.com/reona5",
     imagePath: "/github-black-icon.svg",
   },
-];
+] as const;
 const today = new Date();
 ---
 
@@ -26,19 +26,15 @@ const today = new Date();
   <nav>
     <ul class="flex gap-4 p-0">
       {
-        headerItems.map((item) => (
+        footerItems.map((item) => (
           <li>
             <a href={item.href} target="_blank">
-              {item.imagePath ? (
-                <img
-                  src={item.imagePath}
-                  width={24}
-                  height={24}
-                  alt={`${item.name} icon`}
-                />
-              ) : (
-                item.name
-              )}
+              <img
+                src={item.imagePath}
+                width={24}
+                height={24}
+                alt={`${item.name} icon`}
+              />
             </a>
           </li>
         ))

@@ -1,20 +1,22 @@
 ---
 import "@fontsource/inter";
 import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
+import Header, { HeaderItem } from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_LANGUAGE } from "../consts";
 
-const { title, description } = Astro.props;
+export type Props = { title: string; description: string; currentPage?: HeaderItem };
+const { title, description, currentPage } = Astro.props;
 ---
 
+<!DOCTYPE html>
 <html lang={SITE_LANGUAGE}>
   <head>
     <BaseHead title={title} description={description} />
   </head>
 
   <body class="font-inter">
-    <Header currentPage="About" />
+    <Header currentPage={currentPage} />
     <main class="m-auto max-w-4xl p-8">
       <slot />
     </main>
