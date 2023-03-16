@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+
+const posts = (
+  await getCollection("posts", ({ data }) => {
+    return data.draft === true;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout
+  title="下書き一覧"
+  description="下書き一覧です。"
+  currentPage="Drafts"
+>
+  <h1 class="mb-8 text-3xl font-bold">下書き一覧</h1>
+  <ol class="grid gap-8">
+    {
+      posts.map((post) => (
+        <li class="grid">
+          <FormattedDate date={post.data.pubDate} />
+          <a href={`/posts/${post.slug}/`} class="text-lg underline">
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</BaseLayout>
