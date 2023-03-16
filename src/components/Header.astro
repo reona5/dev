@@ -9,7 +9,7 @@ export type Props = { currentPage?: HeaderItem };
 
 const { currentPage } = Astro.props;
 type Item = (typeof headerItems)[number]["name"];
-const isCurrent = (item: Item) => item === currentPage;
+const isCurrentItem = (item: Item) => item === currentPage;
 const ariaCurrent: { "aria-current": "page" | undefined } = {
   "aria-current": "page",
 };
@@ -23,9 +23,9 @@ const ariaCurrent: { "aria-current": "page" | undefined } = {
         headerItems.map((item) => (
           <li>
             <a
-              {...(isCurrent(item.name) && ariaCurrent)}
               href={item.href}
-              class={isCurrent(item.name) ? "underline" : undefined}
+              class={isCurrentItem(item.name) ? "underline" : undefined}
+              {...(isCurrentItem(item.name) && ariaCurrent)}
             >
               {item.name}
             </a>
