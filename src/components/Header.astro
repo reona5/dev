@@ -1,8 +1,9 @@
 ---
 import { SITE_TITLE } from "../consts";
 const headerItems = [
-  { name: "Posts", href: "/posts" },
   { name: "About", href: "/about" },
+  { name: "Posts", href: "/posts" },
+  { name: "Drafts", href: "/drafts" },
 ] as const;
 export type HeaderItem = (typeof headerItems)[number]["name"];
 export type Props = { currentPage?: HeaderItem };

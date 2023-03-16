@@ -5,17 +5,17 @@ import FormattedDate from "../../components/FormattedDate.astro";
 
 const posts = (
   await getCollection("posts", ({ data }) => {
-    return data.draft !== true;
+    return data.draft === true;
   })
 ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout
-  title="記事一覧"
-  description="ブログ記事一覧です。"
-  currentPage="Posts"
+  title="下書き一覧"
+  description="下書き一覧です。"
+  currentPage="Drafts"
 >
-  <h1 class="mb-8 text-3xl font-bold">記事一覧</h1>
+  <h1 class="mb-8 text-3xl font-bold">下書き一覧</h1>
   <ol class="grid gap-8">
     {
       posts.map((post) => (

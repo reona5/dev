@@ -12,7 +12,8 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "yarn lint:check && astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
     "@astrojs/mdx": "^0.18.0",

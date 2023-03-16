@@ -10,6 +10,7 @@ const posts = defineCollection({
       .string()
       .or(z.date())
       .transform((val) => new Date(val)),
+    draft: z.boolean(),
     updatedDate: z
       .string()
       .optional()
