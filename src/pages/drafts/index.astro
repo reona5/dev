@@ -21,7 +21,7 @@ const posts = (
       posts.map((post) => (
         <li class="grid">
           <FormattedDate date={post.data.pubDate} />
-          <a href={`/posts/${post.slug}/`} class="text-lg underline">
+          <a href={`/drafts/${post.slug}/`} class="text-lg underline">
             {post.data.title}
           </a>
         </li>
