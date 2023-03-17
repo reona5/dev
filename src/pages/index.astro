@@ -31,19 +31,27 @@ const posts = (
         </p>
       </section>
       <section>
-        <ol class="mb-8 grid gap-8">
-          {
-            posts.map((post) => (
-              <li class="grid">
-                <FormattedDate date={post.data.pubDate} />
-                <a href={`/posts/${post.slug}/`} class="text-lg underline">
-                  {post.data.title}
-                </a>
-              </li>
-            ))
-          }
-        </ol>
-        <a href="/posts" class="text-lg underline">＞ 記事一覧へ</a>
+        {
+          posts.length !== 0 ? (
+            <>
+              <ol class="mb-8 grid gap-8">
+                {posts.map((post) => (
+                  <li class="grid">
+                    <FormattedDate date={post.data.pubDate} />
+                    <a href={`/posts/${post.slug}/`} class="text-lg underline">
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+              <a href="/posts" class="text-lg underline">
+                >> 記事一覧へ
+              </a>
+            </>
+          ) : (
+            <p class="text-xl">📝 記事はありません。</p>
+          )
+        }
       </section>
     </main>
     <Footer />
