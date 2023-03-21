@@ -1,0 +1,47 @@
+---
+---
+
+<script>
+  const menu = document.getElementById("menu");
+  const dialog = document.getElementById("dialog");
+  if (menu === null || dialog === null)
+    throw new Error("Menu element is invisible.");
+
+  menu.addEventListener("click", function () {
+    menu.classList.toggle("expanded");
+    dialog.classList.toggle("hidden");
+  });
+</script>
+
+<div class="sm:hidden">
+  <button
+    id="menu"
+    class="grid h-5 w-10 items-center justify-center border-none bg-transparent focus:outline-none"
+    aria-label="メニュー"
+  >
+    <span
+      id="line"
+      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-300 ease-out"
+    ></span>
+    <span
+      id="line"
+      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-300 ease-out"
+    ></span>
+  </button>
+  <div
+    id="dialog"
+    class="absolute right-5 hidden rounded-lg bg-gray-50 p-6 shadow-lg"
+  >
+    <slot />
+  </div>
+</div>
+
+<style>
+  #menu.expanded #line:first-child {
+    transform: translateY(5px) rotate(45deg);
+  }
+
+  #menu.expanded #line:last-child {
+    transform: translateY(-5px) rotate(-45deg);
+  }
+</style>

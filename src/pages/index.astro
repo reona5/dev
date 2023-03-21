@@ -23,18 +23,18 @@ const posts = (
   </head>
   <body class="font-inter">
     <Header />
-    <main class="m-auto max-w-4xl p-8">
+    <main class="m-auto max-w-4xl p-6">
       <section class="mb-10 grid gap-4">
         <h2 class="text-xl font-bold">Hello, I'm Reona Shimada👋</h2>
         <p>
           プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
         </p>
       </section>
-      <section>
+      <section class="grid gap-8">
         {
           posts.length !== 0 ? (
             <>
-              <ol class="mb-8 grid gap-8">
+              <ol class="my-4 grid gap-8">
                 {posts.map((post) => (
                   <li class="grid">
                     <FormattedDate date={post.data.pubDate} />
@@ -45,7 +45,7 @@ const posts = (
                 ))}
               </ol>
               <a href="/posts" class="text-lg underline">
-                >> 記事一覧へ
+                &gt;&gt; 記事一覧へ
               </a>
             </>
           ) : (
