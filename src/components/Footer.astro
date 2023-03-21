@@ -1,5 +1,5 @@
 ---
-const footerItems = [
+const icons = [
   {
     name: "RSS",
     href: "/rss.xml",
@@ -19,28 +19,32 @@ const footerItems = [
 const today = new Date();
 ---
 
-<footer class="m-auto flex max-w-4xl justify-between p-8">
-  <p>
-    &copy; {today.getFullYear()} Reona Shimada.
-  </p>
-  <nav>
-    <ul class="flex gap-4 p-0">
-      {
-        footerItems.map((item) => (
-          <li>
-            <a href={item.href} target="_blank" rel="noreferrer">
-              <img
-                src={item.imagePath}
-                width={24}
-                height={24}
-                alt={`${item.name} icon`}
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </nav>
+<footer>
+  <div class="m-auto max-w-4xl justify-center p-6">
+    <div class="flex justify-between">
+      <span>
+        &copy; {today.getFullYear()} Reona Shimada.
+      </span>
+      <nav>
+        <ul class="flex gap-4 p-0">
+          {
+            icons.map((item) => (
+              <li>
+                <a href={item.href} target="_blank" rel="noreferrer">
+                  <img
+                    src={item.imagePath}
+                    width={24}
+                    height={24}
+                    alt={`${item.name} icon`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
 </footer>
