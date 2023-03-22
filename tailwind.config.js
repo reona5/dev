@@ -1,31 +1,32 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}'],
+  darkMode: "class",
+  content: ["./src/**/*.{astro,js,md,mdx,ts}"],
   theme: {
     extend: {
       typography: {
         DEFAULT: {
           css: {
-            'code::before': {
+            "code::before": {
               content: '""',
             },
-            'code::after': {
+            "code::after": {
               content: '""',
             },
             code: {
-              fontFamily: 'Fira Code, monospace',
+              fontFamily: "Fira Code, monospace",
               span: {
-                fontFamily: 'Fira Code, monospace',
+                fontFamily: "Fira Code, monospace",
               },
             },
-            'p, li': {
+            "p, li": {
               code: {
-                color: 'white',
-                backgroundColor: '#0D1117',
-                padding: '4px 6px',
-                borderRadius: '4px',
-                fontWeight: '300',
+                color: "white",
+                backgroundColor: "#0D1117",
+                padding: "4px 6px",
+                borderRadius: "4px",
+                fontWeight: "300",
               },
             },
           },
@@ -33,8 +34,8 @@ module.exports = {
       },
     },
     fontFamily: {
-      inter: ['Inter', ...defaultTheme.fontFamily.sans],
+      inter: ["Inter", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [require('@tailwindcss/typography')],
-}
+  plugins: [require("@tailwindcss/typography")],
+};

@@ -20,28 +20,28 @@
     aria-label="メニュー"
   >
     <span
-      id="line"
-      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-300 ease-out"
+      id="upper-line"
+      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-200 ease-out dark:bg-white"
     ></span>
     <span
-      id="line"
-      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-300 ease-out"
+      id="lower-line"
+      class="h-0.5 w-6 origin-center bg-gray-800 transition-all duration-200 ease-out dark:bg-white"
     ></span>
   </button>
   <div
     id="dialog"
-    class="absolute right-5 hidden rounded-lg bg-gray-50 p-6 shadow-lg"
+    class="absolute right-5 hidden rounded-lg bg-gray-50 p-6 shadow-lg dark:bg-slate-900 dark:text-white"
   >
     <slot />
   </div>
 </div>
 
 <style>
-  #menu.expanded #line:first-child {
+  #menu.expanded #upper-line {
     transform: translateY(5px) rotate(45deg);
   }
 
-  #menu.expanded #line:last-child {
+  #menu.expanded #lower-line {
     transform: translateY(-5px) rotate(-45deg);
   }
 </style>

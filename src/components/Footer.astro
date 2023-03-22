@@ -1,5 +1,5 @@
 ---
-const icons = [
+const items = [
   {
     name: "RSS",
     href: "/rss.xml",
@@ -20,17 +20,40 @@ const today = new Date();
 ---
 
 <footer>
-  <div class="m-auto max-w-4xl justify-center p-6">
-    <div class="flex justify-between">
-      <span>
-        &copy; {today.getFullYear()} Reona Shimada.
-      </span>
-      <nav>
-        <ul class="flex gap-4 p-0">
-          {
-            icons.map((item) => (
-              <li>
-                <a href={item.href} target="_blank" rel="noreferrer">
+  <div
+    class="m-auto flex max-w-4xl justify-between bg-white p-6 dark:bg-gray-900 dark:text-white"
+  >
+    <span>
+      &copy; {today.getFullYear()} Reona Shimada.
+    </span>
+    <nav>
+      <ul class="flex gap-4 p-0">
+        {
+          items.map((item) => (
+            <li>
+              <a href={item.href} target="_blank" rel="noreferrer">
+                {item.name === "GitHub" ? (
+                  <>
+                    <img
+                      src="/github-white-icon.svg"
+                      width={24}
+                      height={24}
+                      alt={`${item.name} icon`}
+                      loading="lazy"
+                      decoding="async"
+                      class="hidden dark:inline"
+                    />
+                    <img
+                      src={item.imagePath}
+                      width={24}
+                      height={24}
+                      alt={`${item.name} icon`}
+                      loading="lazy"
+                      decoding="async"
+                      class="dark:hidden"
+                    />
+                  </>
+                ) : (
                   <img
                     src={item.imagePath}
                     width={24}
@@ -39,12 +62,12 @@ const today = new Date();
                     loading="lazy"
                     decoding="async"
                   />
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-    </div>
+                )}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
   </div>
 </footer>

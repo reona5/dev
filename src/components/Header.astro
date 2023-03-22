@@ -1,4 +1,5 @@
 ---
+import ThemeIcon from "./ThemeIcon.astro";
 import MenuIcon from "./MenuIcon.astro";
 import { SITE_TITLE } from "../consts";
 const headerItems = [
@@ -17,10 +18,10 @@ const ariaCurrent: { "aria-current": "page" | undefined } = {
 };
 ---
 
-<header class="sticky top-0 bg-white sm:static">
+<header class="sticky top-0 bg-white dark:bg-gray-900 dark:text-white sm:static">
   <div class="m-auto flex max-w-4xl items-center justify-between p-6">
     <a href="/" class="text-xl">{SITE_TITLE}</a>
-    <nav class="invisible inline sm:visible">
+    <nav class="hidden sm:inline">
       <ul class="flex gap-3 text-lg">
         {
           headerItems.map((item) => (
@@ -35,9 +36,13 @@ const ariaCurrent: { "aria-current": "page" | undefined } = {
             </li>
           ))
         }
+        <li>
+          <ThemeIcon buttonClass="hidden sm:inline" />
+        </li>
       </ul>
     </nav>
     <MenuIcon>
+      <ThemeIcon buttonClass="sm:hidden mb-5" />
       <nav class="inline">
         <ul class="grid items-end gap-3 text-lg">
           {
