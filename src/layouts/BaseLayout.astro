@@ -5,7 +5,11 @@ import Header, { HeaderItem } from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_LANGUAGE } from "../consts";
 
-export type Props = { title: string; description: string; currentPage?: HeaderItem };
+export type Props = {
+  title: string;
+  description: string;
+  currentPage?: HeaderItem;
+};
 const { title, description, currentPage } = Astro.props;
 ---
 
@@ -15,7 +19,7 @@ const { title, description, currentPage } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="font-inter">
+  <body class="font-inter dark:bg-gray-900 dark:text-white">
     <Header currentPage={currentPage} />
     <main class="m-auto max-w-4xl p-6">
       <slot />

@@ -8,9 +8,9 @@ const { title, description } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} currentPage="About">
-  <section class="prose max-w-none">
+  <section class="prose max-w-none dark:prose-invert">
     <Image src={aboutImage} alt="" width={850} height={478} class="pb-8" />
-    <h1>{title}</h1>
+    <h1 class="dark:bg-gray-900 dark:text-white">{title}</h1>
     <p>
       <a href="/">reona.dev</a> は Astro + Vercel によって作成されています。<a
         href="https://twitter.com/reona_5"
