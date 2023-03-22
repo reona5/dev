@@ -13,9 +13,9 @@ yarn install
 yarn dev
 ```
 
-## Commands
+## Usage
 
-All commands are run from the root of the project, from a terminal:
+Here are some useful commands you can use to work with this project:
 
 | Command             | Action                                           |
 | :------------------ | :----------------------------------------------- |
@@ -25,3 +25,7 @@ All commands are run from the root of the project, from a terminal:
 | `yarn preview`      | Preview your build locally, before deploying     |
 | `yarn astro ...`    | Run CLI commands like `astro add`, `astro check` |
 | `yarn astro --help` | Get help using the Astro CLI                     |
+
+## License
+
+This project is licensed under the [MIT license](https://github.com/reona5/dev/blob/main/LICENSE).
