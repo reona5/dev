@@ -1,6 +1,6 @@
 # [reona.dev](https://reona.dev/)
 
-This is my Blog made by [Astro](https://astro.build/) 🚀
+This is my blog made by [Astro](https://astro.build/) 🚀
 
 https://reona.dev/
 
