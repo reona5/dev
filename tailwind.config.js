@@ -22,7 +22,7 @@ module.exports = {
             },
             "p, li": {
               code: {
-                color: "white",
+                color: "#C9D1D9",
                 backgroundColor: "#0D1117",
                 padding: "4px 6px",
                 borderRadius: "4px",
