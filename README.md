@@ -1,3 +1,6 @@
+[![vercel](https://img.shields.io/github/deployments/reona5/dev/production?label=vercel&logo=vercel&logoColor=white)](https://github.com/reona5/dev/deployments)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/reona5/dev/blob/main/LICENSE)
+
 # [reona.dev](https://reona.dev/)
 
 This is my blog made by [Astro](https://astro.build/) 🚀
