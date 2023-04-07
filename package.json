@@ -31,7 +31,7 @@
   "devDependencies": {
     "@markuplint/astro-parser": "^3.6.1",
     "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.1",
     "eslint": "^8.37.0",
     "eslint-plugin-astro": "^0.26.1",
     "eslint-plugin-tailwindcss": "^3.10.1",
