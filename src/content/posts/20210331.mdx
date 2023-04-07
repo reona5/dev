@@ -1,7 +1,7 @@
 ---
-title: '[Vuex] axios を使った action を呼び出し元で同期的に扱いたい'
-description: ''
-pubDate: '2021-03-31T15:23:04.456Z'
+title: "[Vuex] axios を使った action を呼び出し元で同期的に扱いたい"
+description: ""
+pubDate: "2021-03-31T15:23:04.456Z"
 draft: false
 ---
 
@@ -13,7 +13,7 @@ store 外で actions を用いる際に、action の実行結果を待機した�
 
 ## コード
 
-``` javascript
+```javascript
 // items.js
 
 const state = {
@@ -62,7 +62,7 @@ methods: {
 
 ## 解決方法
 
-``` javascript
+```javascript
 // items.js
 
 ...
@@ -76,13 +76,11 @@ const actions = {
 }
 ```
 
-
 ## 原因
 
 基本中の基本だが、JavaScript の場合、関数の返り値を呼び出し元で扱いたい場合はでは `return` で返さないといけない。
 
 問題のコードでもアクション自体は実行できるが、Promise オブジェクトが返り値として返らないため呼び出し元では `.then()` をチェーンできない。
-
 
 ## 参考
 

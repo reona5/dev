@@ -1,7 +1,7 @@
 ---
-title: '[Next.js] Headタグ内のタグ重複を防ぐ'
-description: ''
-pubDate: '2020-06-14T08:28:13.461Z'
+title: "[Next.js] Headタグ内のタグ重複を防ぐ"
+description: ""
+pubDate: "2020-06-14T08:28:13.461Z"
 draft: false
 ---
 
@@ -9,8 +9,8 @@ draft: false
 
 重複を避けたいタグに `key` オプションを追加し、同名のキーを設定します。
 
-``` javascript
-import Head from 'next/head'
+```javascript
+import Head from "next/head";
 
 function IndexPage() {
   return (
@@ -24,57 +24,57 @@ function IndexPage() {
       </Head>
       <p>Hello world!</p>
     </div>
-  )
+  );
 }
 
-export default IndexPage
+export default IndexPage;
 ```
 
-こちらのコードの場合、重複しているmetaタグのうち後者のみがレンダリングされます。
+こちらのコードの場合、重複している meta タグのうち後者のみがレンダリングされます。
 
 [next/head](https://nextjs.org/docs/api-reference/next/head)
 [Dedupe only items with unique key #5800](https://github.com/vercel/next.js/pull/5800)
 
 ### 背景
 
-当ブログは、ブログに関する情報は `pages/_app.tsx` のHeadタグ内に、ブログ記事ごとの情報は `lib/components/layout.tsx` のHeadタグ内にメタ情報として設定してあります。
-しかし、上記で示したようなmetaタグの `key` オプションが設定されていなかったため、`og:title` 等の[OGP](https://ogp.me/)に関するmetaタグが重複したままparseされてしまい、例えばSlackチャンネルにブログ記事のリンクを貼り付けた際に、各記事のタイトル等のメタ情報が表示されませんでした。
+当ブログは、ブログに関する情報は `pages/_app.tsx` の Head タグ内に、ブログ記事ごとの情報は `lib/components/layout.tsx` の Head タグ内にメタ情報として設定してあります。
+しかし、上記で示したような meta タグの `key` オプションが設定されていなかったため、`og:title` 等の[OGP](https://ogp.me/)に関する meta タグが重複したまま parse されてしまい、例えば Slack チャンネルにブログ記事のリンクを貼り付けた際に、各記事のタイトル等のメタ情報が表示されませんでした。
 
 ### その他の方法
 
 [nfl / react-helmet](https://github.com/nfl/react-helmet)
 
-こちらのreact-helmetというライブラリを使っても解決できそうです。
+こちらの react-helmet というライブラリを使っても解決できそうです。
 
-Headタグ内のmetaタグが重複した場合、ネストしている子コンポーネントのタグをparseします。
+Head タグ内の meta タグが重複した場合、ネストしている子コンポーネントのタグを parse します。
 
 使い方も簡単で、
 
-``` javascript
+```javascript
 import React from "react";
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 
 class Application extends React.Component {
-  render () {
+  render() {
     return (
-        <div className="application">
-            <Helmet>
-                <meta charSet="utf-8" />
-                <title>My Title</title>
-                <link rel="canonical" href="http://mysite.com/example" />
-            </Helmet>
-            ...
-        </div>
+      <div className="application">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>My Title</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
+        ...
+      </div>
     );
   }
-};
+}
 ```
 
 このように対象のタグを `<Helmet>` で囲むだけで対応してくれます。
 
-ただ、Nextプロジェクトで試してみたところ、
+ただ、Next プロジェクトで試してみたところ、
 
-``` shell
+```shell
 Unhandled Runtime Error
 TypeError: Cannot read property 'tagName' of null
 ```
@@ -83,16 +83,16 @@ TypeError: Cannot read property 'tagName' of null
 
 [react-helmet example](https://github.com/vercel/next.js/tree/canary/examples/with-react-helmet)
 
-Next.jsの場合はこちらのサンプルリポジトリを参考にすると実現できそうです💪
+Next.js の場合はこちらのサンプルリポジトリを参考にすると実現できそうです 💪
 
-とはいえ、Next.jsの場合は最初のやり方で対処してくれるので、 `react-helmet` を使う必要はなさそうです。
+とはいえ、Next.js の場合は最初のやり方で対処してくれるので、 `react-helmet` を使う必要はなさそうです。
 
 ## さいごに
 
-今回の件でドキュメントの重要性を再確認できました。Next.jsの場合ドキュメントは英語ではありますが、フレームワーク自体がシンプルなのでドキュメントも読みやすいです。なので、毛嫌いせずに読み込んでみます。
+今回の件でドキュメントの重要性を再確認できました。Next.js の場合ドキュメントは英語ではありますが、フレームワーク自体がシンプルなのでドキュメントも読みやすいです。なので、毛嫌いせずに読み込んでみます。
 
-OpenGraphに関しては、以下のサイトでURLを入力することでプロパティ設定を調べることができます。
+OpenGraph に関しては、以下のサイトで URL を入力することでプロパティ設定を調べることができます。
 
 [Facebook for Developers / シェアデバッガー](https://developers.facebook.com/tools/debug/)
 
-修正が必要な箇所や、SNSにURLを投稿した際のプレビューなども確認することができます。
+修正が必要な箇所や、SNS に URL を投稿した際のプレビューなども確認することができます。

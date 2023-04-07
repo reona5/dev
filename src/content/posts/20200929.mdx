@@ -1,7 +1,7 @@
 ---
-title: '[SwiftUI] タグを自動的に改行させる'
-description: ''
-pubDate: '2020-09-29T12:28:55.894Z'
+title: "[SwiftUI] タグを自動的に改行させる"
+description: ""
+pubDate: "2020-09-29T12:28:55.894Z"
 draft: false
 ---
 
@@ -17,7 +17,7 @@ SwiftUI でタグを配置する際に詰まったため備忘録。
 
 ### 詰まった部分
 
-``` swift
+```swift
 import SwiftUI
 
 struct ContentView: View {
@@ -46,7 +46,7 @@ struct ContentView: View {
 
 [SwiftUI HStack with Wrap](https://stackoverflow.com/questions/58842453/swiftui-hstack-with-wrap)
 
-``` swift
+```swift
 import SwiftUI
 
 struct ContentView: View {
@@ -103,6 +103,6 @@ struct ContentView: View {
 
 `alignmentGuide` で 横幅を指定することで、タグを自動的に改行する。
 
-元記事では `GeometryReader` を使って端末の画面サイズを指定していたが、他のコードに影響がありレイアウトが崩れたため、330にサイズを限定した。
+元記事では `GeometryReader` を使って端末の画面サイズを指定していたが、他のコードに影響がありレイアウトが崩れたため、330 にサイズを限定した。
 
-また、実際にはサーバーのAPIからタグの配列を取得して表示させる。
+また、実際にはサーバーの API からタグの配列を取得して表示させる。

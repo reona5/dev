@@ -1,11 +1,11 @@
 ---
-title: '[coc.nvim] Failed to load the ESLint library for the document'
-description: ''
-pubDate: '2020-07-20T15:03:12.911Z'
+title: "[coc.nvim] Failed to load the ESLint library for the document"
+description: ""
+pubDate: "2020-07-20T15:03:12.911Z"
 draft: false
 ---
 
-coc.nvimでeslintに関するエラーがでたときの対処方法
+coc.nvim で eslint に関するエラーがでたときの対処方法
 
 参考: https://github.com/neoclide/coc-eslint/issues/11
 
@@ -13,7 +13,7 @@ coc.nvimでeslintに関するエラーがでたときの対処方法
 [coc.nvim] Failed to load the ESLint library for the document
 ```
 
-``` json
+```json
 # coc-settings.json(:CocConfig)
 
   "eslint.options": {
@@ -23,8 +23,8 @@ coc.nvimでeslintに関するエラーがでたときの対処方法
 ```
 
 以上の設定でエラーは解消。
-プロジェクト共通のものがあればそちらを優先すべきだが、基本はglobalなpathを指定すればよさそう。
+プロジェクト共通のものがあればそちらを優先すべきだが、基本は global な path を指定すればよさそう。
 
-ちなみにeslint, prettierの設定に関しては、公式ドキュメントを参考に設定することでかなりシンプルな設定で済む。
+ちなみに eslint, prettier の設定に関しては、公式ドキュメントを参考に設定することでかなりシンプルな設定で済む。
 
 https://github.com/prettier/eslint-plugin-prettier#recommended-configuration

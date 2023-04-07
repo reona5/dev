@@ -1,53 +1,51 @@
 ---
-title: 'node-canvas で OGP に対応した'
-description: ''
-pubDate: '2020-07-05T15:48:54.100Z'
+title: "node-canvas で OGP に対応した"
+description: ""
+pubDate: "2020-07-05T15:48:54.100Z"
 draft: false
 ---
 
-
 ## はじめに
 
-ブログ記事のmetaタグを読み取って動的にOGP画像を作成するスクリプト [Automattic / node-canvas](https://github.com/Automattic/node-canvas) を使って作成しました。
+ブログ記事の meta タグを読み取って動的に OGP 画像を作成するスクリプト [Automattic / node-canvas](https://github.com/Automattic/node-canvas) を使って作成しました。
 
 ![](/2020-07-06-01-13-49.png)
 
-[[Next.js] Headタグ内のタグ重複を防ぐ](/posts/20200614)
+[[Next.js] Head タグ内のタグ重複を防ぐ](/posts/20200614)
 
-↑こちらの記事ではブログ記事ごとに動的にOGPを設定する方法を書いています。
+↑ こちらの記事ではブログ記事ごとに動的に OGP を設定する方法を書いています。
 
 ## og-image
 
-ちなみにOpenGraph用の画像生成ライブラリとして、Vercelの公式ライブラリがあります。
+ちなみに OpenGraph 用の画像生成ライブラリとして、Vercel の公式ライブラリがあります。
 
 [vercel / og-image](https://github.com/vercel/og-image)
 
-当ブログはVercelで自動デプロイしています。
+当ブログは Vercel で自動デプロイしています。
 はじめはこのリポジトリをフォークをして設定をいじりながら設定していました。
 しかし、日本語対応フォントがライブラリに入っていないので記事タイトルが文字化けしてしまいました。
 
 ![](/2020-07-06-01-22-47.png)
 
-↑こんな感じ
+↑ こんな感じ
 
 日本語対応フォントを入れて何度も試しましたが修正できず、結局は自作作ることにしました。
 （情報も少なかったので限界でした！改善策があるなら知りたい、、、）
 
 ## node-canvas
 
-
 https://github.com/reona5/dev/blob/master/scripts/generate-ogp.js
 
 ソースコードはこちらです。
 
-Fontは [Noto Sans JP - Google Font](https://fonts.google.com/specimen/Noto+Sans+JP) を利用しています。
+Font は [Noto Sans JP - Google Font](https://fonts.google.com/specimen/Noto+Sans+JP) を利用しています。
 
-Canvasでのイメージ生成の処理というよりは、メタ情報を取得して各所に適用する部分で苦戦しました…
+Canvas でのイメージ生成の処理というよりは、メタ情報を取得して各所に適用する部分で苦戦しました…
 
 もっとシンプルなやり方はありそう。
 
 ## さいごに
 
-私は業務やプライベートでSlackチャンネルに技術系の記事を貼ることが多く、やはり記事内容を含む画像の有り無しでは印象が全然違います。Qiitaとかわかりやすいですね。
+私は業務やプライベートで Slack チャンネルに技術系の記事を貼ることが多く、やはり記事内容を含む画像の有り無しでは印象が全然違います。Qiita とかわかりやすいですね。
 
-OGPの設定をしておけば、ブログのリンクをSNSに貼った際にインパクトを残せていいですね🔍
+OGP の設定をしておけば、ブログのリンクを SNS に貼った際にインパクトを残せていいですね 🔍
