@@ -1,0 +1,24 @@
+name: Lighthouse CI
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lighthouseci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: cache node_modules
+        id: node_modules_cache_id
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+          key: node-v${{ matrix.node-version }}-deps-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+      - run: |
+          yarn install && yarn global add @lhci/cli@0.11.x
+          yarn build
+          lhci autorun --collect.staticDistDir=".vercel/output/static/"
