@@ -38,6 +38,6 @@
     "markuplint": "^3.8.0",
     "prettier": "^2.8.7",
     "prettier-plugin-astro": "^0.8.0",
-    "vite": "^4.2.1"
+    "vite": "^4.3.3"
   }
 }
