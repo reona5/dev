@@ -1,0 +1,30 @@
+---
+import FormattedDate from "./FormattedDate.astro";
+import type { CollectionEntry } from "astro:content";
+
+export type Props = {
+  posts: CollectionEntry<"posts">[];
+  isDraft: boolean;
+};
+const { posts, isDraft } = Astro.props;
+---
+
+{
+  posts.length !== 0 ? (
+    <ol class="grid gap-8">
+      {posts.map((post) => (
+        <li class="grid">
+          <FormattedDate date={post.data.pubDate} />
+          <a
+            href={`/${isDraft ? "drafts" : "posts"}/${post.slug}/`}
+            class="text-lg underline"
+          >
+            {post.data.title}
+          </a>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="text-lg">📝 {isDraft ? "下書き" : "記事"} はありません。</p>
+  )
+}
