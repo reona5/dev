@@ -8,11 +8,11 @@ const headerItems = [
   { name: "Tags", href: "/tags" },
   { name: "Drafts", href: "/drafts" },
 ] as const;
-export type HeaderItem = (typeof headerItems)[number]["name"];
+export type HeaderItem = typeof headerItems[number]["name"];
 export type Props = { currentPage?: HeaderItem };
 
 const { currentPage } = Astro.props;
-type Item = (typeof headerItems)[number]["name"];
+type Item = typeof headerItems[number]["name"];
 const isCurrentItem = (item: Item) => item === currentPage;
 const ariaCurrent: { "aria-current": "page" | undefined } = {
   "aria-current": "page",

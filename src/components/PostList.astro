@@ -21,10 +21,10 @@ const { posts, isDraft } = Astro.props;
           >
             {post.data.title}
           </a>
-          <p class="text-sm truncate">{post.data.description}</p>
+          <p class="truncate text-sm">{post.data.description}</p>
           <div class="flex flex-wrap">
             {post.data.tags.map((tag) => (
-              <p class="mr-1 my-1 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black dark:text-white">
+              <p class="my-1 mr-1 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black dark:text-white">
                 <a href={`/tags/${tag}`}>{tag}</a>
               </p>
             ))}
