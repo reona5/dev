@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostList from "../../components/PostList.astro";
 import { getCollection } from "astro:content";
-import FormattedDate from "../../components/FormattedDate.astro";
 
 const posts = (
   await getCollection("posts", ({ data }) => {
@@ -16,20 +16,5 @@ const posts = (
   currentPage="Drafts"
 >
   <h1 class="mb-8 text-3xl font-bold">下書き一覧</h1>
-  {
-    posts.length !== 0 ? (
-      <ol class="grid gap-8">
-        {posts.map((post) => (
-          <li class="grid">
-            <FormattedDate date={post.data.pubDate} />
-            <a href={`/drafts/${post.slug}/`} class="text-lg underline">
-              {post.data.title}
-            </a>
-          </li>
-        ))}
-      </ol>
-    ) : (
-      <p class="text-xl">📝 下書きはありません。</p>
-    )
-  }
+  <PostList posts={posts} isDraft={true} />
 </BaseLayout>

@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostList from "../../components/PostList.astro";
+import { SITE_TITLE } from "../../consts";
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = (
+    await getCollection("posts", ({ data }) => {
+      return data.draft !== true;
+    })
+  ).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+  return tags.map((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+export type Props = {
+  posts: CollectionEntry<"posts">[];
+};
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout
+  title={tag ?? SITE_TITLE}
+  description={`${tag}のブログ記事一覧です。`}
+  currentPage="Tags"
+>
+  <h1 class="mb-8 text-3xl font-bold">{tag}の記事一覧</h1>
+  <PostList posts={posts} isDraft={false} />
+</BaseLayout>
