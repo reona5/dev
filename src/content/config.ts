@@ -11,6 +11,7 @@ const posts = defineCollection({
       .or(z.date())
       .transform((val) => new Date(val)),
     draft: z.boolean(),
+    tags: z.array(z.string()).nonempty(),
     updatedDate: z
       .string()
       .optional()
