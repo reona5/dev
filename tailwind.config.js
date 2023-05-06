@@ -1,3 +1,5 @@
+// https://tailwindcss.com/docs/configuration#type-script-types
+/** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
