@@ -1,5 +1,6 @@
 ---
-import FormattedDate from "./FormattedDate.astro";
+import TagList from '@components/TagList.astro'
+import FormattedDate from "@components/FormattedDate.astro";
 import type { CollectionEntry } from "astro:content";
 
 export type Props = {
@@ -22,13 +23,7 @@ const { posts, isDraft } = Astro.props;
             {post.data.title}
           </a>
           <p class="truncate text-sm">{post.data.description}</p>
-          <div class="flex flex-wrap">
-            {post.data.tags.map((tag) => (
-              <p class="my-1 mr-1 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black dark:text-white">
-                <a href={`/tags/${tag}`}>{tag}</a>
-              </p>
-            ))}
-          </div>
+          <TagList tags={post.data.tags} />
         </li>
       ))}
     </ol>

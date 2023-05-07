@@ -12,10 +12,6 @@ const posts = defineCollection({
       .transform((val) => new Date(val)),
     draft: z.boolean(),
     tags: z.array(z.string()).nonempty(),
-    updatedDate: z
-      .string()
-      .optional()
-      .transform((str) => (str ? new Date(str) : undefined)),
     heroImage: z.string().optional(),
   }),
 });
