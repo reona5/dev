@@ -6,12 +6,13 @@
     "lint": "eslint ./src",
     "lint:debug": "eslint ./src --debug",
     "lint:fix": "eslint ./src --fix",
-    "lint:check": "astro check && yarn lint:fix && tsc --noEmit",
+    "lint:check": "astro check && tsc --noEmit",
     "create:post": "ruby src/scripts/create_post.rb",
     "html:lint": "markuplint \"src/**/*.astro\"",
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "yarn lint:check && astro build",
+    "prebuild": "pnpm lint:check && pnpm lint:fix",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -38,6 +39,7 @@
     "markuplint": "^3.10.0",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.8.0",
+    "typescript": "^5.0.4",
     "vite": "^4.3.5"
   }
 }

@@ -12,8 +12,8 @@ https://reona.dev/
 ```shell
 git clone https://github.com/reona5/dev.git
 cd dev
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 ## Usage
@@ -22,12 +22,12 @@ Here are some useful commands you can use to work with this project:
 
 | Command             | Action                                                   |
 | :------------------ | :------------------------------------------------------- |
-| `yarn install`      | Installs dependencies                                    |
-| `yarn dev`          | Starts local dev server at `localhost:3000`              |
-| `yarn build`        | Build your production site to `./.vercel/output/static/` |
-| `yarn preview`      | Preview your build locally, before deploying             |
-| `yarn astro ...`    | Run CLI commands like `astro add`, `astro check`         |
-| `yarn astro --help` | Get help using the Astro CLI                             |
+| `pnpm install`      | Installs dependencies                                    |
+| `pnpm dev`          | Starts local dev server at `localhost:3000`              |
+| `pnpm build`        | Build your production site to `./.vercel/output/static/` |
+| `pnpm preview`      | Preview your build locally, before deploying             |
+| `pnpm astro ...`    | Run CLI commands like `astro add`, `astro check`         |
+| `pnpm astro --help` | Get help using the Astro CLI                             |
 
 ## License
 
