@@ -19,7 +19,9 @@ const { title, description, currentPage } = Astro.props;
     <BaseHead title={title} description={description} />
   </head>
 
-  <body class="font-inter dark:bg-gray-900 dark:text-white">
+  <body
+    class="font-inter dark:bg-gray-900 dark:text-white transition ease-in-out"
+  >
     <Header currentPage={currentPage} />
     <main class="m-auto max-w-4xl p-6">
       <slot />
