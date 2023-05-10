@@ -1,0 +1,32 @@
+name: github pages
+
+on:
+  push:
+    branches:
+      - source
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v2
+
+      - name: Clone submodule
+        run: git submodule update --init --recursive
+
+      - name: Hugo Setup
+        uses: peaceiris/actions-hugo@v2.4.8
+        with:
+          hugo-version: latest
+          extended: true
+
+      - name: Build Hugo
+        run: hugo -v
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3.5.6
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./public
+          publish_branch: master
