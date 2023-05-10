@@ -16,7 +16,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Hugo Setup
-        uses: peaceiris/actions-hugo@v2.4.8
+        uses: peaceiris/actions-hugo@v2.6.0
         with:
           hugo-version: latest
           extended: true
