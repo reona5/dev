@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
+    "markuplint": "markuplint './**/*.{jsx,tsx}'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.1",
@@ -22,16 +23,21 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@markuplint/jsx-parser": "^3.7.0",
+    "@markuplint/react-spec": "^3.8.0",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "18.16.1",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.1",
+    "@typescript-eslint/parser": "^5.59.8",
     "autoprefixer": "10.4.14",
     "eslint": "8.39.0",
     "eslint-config-next": "13.3.1",
     "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-tailwindcss": "^3.12.1",
     "markuplint": "^3.10.0",
     "prettier": "^2.8.8",
+    "prettier-plugin-organize-imports": "^3.2.2",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"

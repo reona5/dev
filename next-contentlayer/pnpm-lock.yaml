@@ -27,6 +27,12 @@ dependencies:
     version: 18.2.0(react@18.2.0)
 
 devDependencies:
+  '@markuplint/jsx-parser':
+    specifier: ^3.7.0
+    version: 3.7.0(@markuplint/ml-core@3.10.0)(typescript@5.0.4)
+  '@markuplint/react-spec':
+    specifier: ^3.8.0
+    version: 3.8.0(@markuplint/ml-core@3.10.0)
   '@tailwindcss/typography':
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.2)
@@ -39,6 +45,9 @@ devDependencies:
   '@types/react-dom':
     specifier: 18.2.1
     version: 18.2.1
+  '@typescript-eslint/parser':
+    specifier: ^5.59.8
+    version: 5.59.8(eslint@8.39.0)(typescript@5.0.4)
   autoprefixer:
     specifier: 10.4.14
     version: 10.4.14(postcss@8.4.23)
@@ -51,15 +60,21 @@ devDependencies:
   eslint-config-prettier:
     specifier: ^8.8.0
     version: 8.8.0(eslint@8.39.0)
+  eslint-plugin-tailwindcss:
+    specifier: ^3.12.1
+    version: 3.12.1(tailwindcss@3.3.2)
   markuplint:
     specifier: ^3.10.0
     version: 3.10.0(@types/node@18.16.1)(ts-node@10.9.1)(typescript@5.0.4)
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
+  prettier-plugin-organize-imports:
+    specifier: ^3.2.2
+    version: 3.2.2(prettier@2.8.8)(typescript@5.0.4)
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
-    version: 0.3.0(prettier@2.8.8)
+    version: 0.3.0(prettier-plugin-organize-imports@3.2.2)(prettier@2.8.8)
   tailwindcss:
     specifier: 3.3.2
     version: 3.3.2(ts-node@10.9.1)
@@ -713,6 +728,21 @@ packages:
     resolution: {integrity: sha512-xcWHRKviM52T8gli0wqojTaKZpWFYTOmi3BSN/p4Uk8eh9bIKV3o2qgJUYMEABWyxYewZv7ZpaptMt7WmxiDwA==}
     dev: true
 
+  /@markuplint/jsx-parser@3.7.0(@markuplint/ml-core@3.10.0)(typescript@5.0.4):
+    resolution: {integrity: sha512-kZ8bg7C8daPG4aRy4yVKFMJwiCZLvTzcZM2+Pf4VKa+YiEKKQZqBA4b6rlpg1p2oEAZDbyDynVjYVjv//jEX5g==}
+    dependencies:
+      '@markuplint/html-parser': 3.8.0(@markuplint/ml-core@3.10.0)
+      '@markuplint/ml-ast': 3.1.0
+      '@markuplint/parser-utils': 3.8.0(@markuplint/ml-core@3.10.0)
+      '@typescript-eslint/types': 5.59.8
+      '@typescript-eslint/typescript-estree': 5.59.8(typescript@5.0.4)
+      tslib: 2.5.3
+    transitivePeerDependencies:
+      - '@markuplint/ml-core'
+      - supports-color
+      - typescript
+    dev: true
+
   /@markuplint/ml-ast@3.1.0:
     resolution: {integrity: sha512-RDk7V16ObmqtAY8jTS1vgFTly1BNVW/tAlYZcah7Y0OJF9itE42nufYmwKdTNKRS9pq09vMHS39icXBYxpXPZw==}
     dev: true
@@ -778,6 +808,17 @@ packages:
       tslib: 2.5.3
       type-fest: 3.11.1
       uuid: 9.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@markuplint/react-spec@3.8.0(@markuplint/ml-core@3.10.0):
+    resolution: {integrity: sha512-n1XkSFX5a4RsDmeIQMYxgrbn6xyLpObDRfTeeQpJ3UW9OiRh7pDQtMybWoIPCnOadd3tW8AFF/0a7IPoQGv3vA==}
+    peerDependencies:
+      '@markuplint/ml-core': 3.x
+    dependencies:
+      '@markuplint/ml-core': 3.10.0
+      '@markuplint/ml-spec': 3.9.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2552,6 +2593,17 @@ packages:
       resolve: 2.0.0-next.4
       semver: 6.3.0
       string.prototype.matchall: 4.0.8
+    dev: true
+
+  /eslint-plugin-tailwindcss@3.12.1(tailwindcss@3.3.2):
+    resolution: {integrity: sha512-LyIRV0rx6prTpJZsSCXSNJ34Yry3Nj9OJwvzh1xTsiG6+UCnAPW1Bx41s7vZzUDKMlwFgpUN9Me+NK12T4DHYg==}
+    engines: {node: '>=12.13.0'}
+    peerDependencies:
+      tailwindcss: ^3.3.2
+    dependencies:
+      fast-glob: 3.2.12
+      postcss: 8.4.23
+      tailwindcss: 3.3.2(ts-node@10.9.1)
     dev: true
 
   /eslint-scope@7.2.0:
@@ -5049,7 +5101,24 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-tailwindcss@0.3.0(prettier@2.8.8):
+  /prettier-plugin-organize-imports@3.2.2(prettier@2.8.8)(typescript@5.0.4):
+    resolution: {integrity: sha512-e97lE6odGSiHonHJMTYC0q0iLXQyw0u5z/PJpvP/3vRy6/Zi9kLBwFAbEGjDzIowpjQv8b+J04PDamoUSQbzGA==}
+    peerDependencies:
+      '@volar/vue-language-plugin-pug': ^1.0.4
+      '@volar/vue-typescript': ^1.0.4
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+    peerDependenciesMeta:
+      '@volar/vue-language-plugin-pug':
+        optional: true
+      '@volar/vue-typescript':
+        optional: true
+    dependencies:
+      prettier: 2.8.8
+      typescript: 5.0.4
+    dev: true
+
+  /prettier-plugin-tailwindcss@0.3.0(prettier-plugin-organize-imports@3.2.2)(prettier@2.8.8):
     resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -5102,6 +5171,7 @@ packages:
         optional: true
     dependencies:
       prettier: 2.8.8
+      prettier-plugin-organize-imports: 3.2.2(prettier@2.8.8)(typescript@5.0.4)
     dev: true
 
   /prettier@2.8.8:
