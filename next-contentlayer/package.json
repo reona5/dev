@@ -9,8 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
-    "markuplint": "markuplint './**/*.{jsx,tsx}'"
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,ts,tsx,json}'",
+    "markuplint": "markuplint './**/*.tsx'"
   },
   "dependencies": {
     "@vercel/analytics": "^1.0.1",
@@ -20,7 +20,9 @@
     "next-themes": "^0.2.1",
     "postcss": "8.4.23",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "rehype-pretty-code": "^0.9.6",
+    "shiki": "^0.14.2"
   },
   "devDependencies": {
     "@markuplint/jsx-parser": "^3.7.0",

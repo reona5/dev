@@ -19,8 +19,8 @@ module.exports = {
             },
             "p, li": {
               code: {
-                color: "#C9D1D9",
-                backgroundColor: "#0D1117",
+                color: "#e5e7eb",
+                backgroundColor: "#1f2937",
                 padding: "4px 6px",
                 borderRadius: "4px",
                 fontWeight: "300",

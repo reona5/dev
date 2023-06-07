@@ -10,5 +10,14 @@
       "parser": "@typescript-eslint/parser"
     }
   ],
-  "ignorePatterns": ["!.prettierrc.js"]
+  "ignorePatterns": ["!.prettierrc.js"],
+  "rules": {
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ]
+  }
 }

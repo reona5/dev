@@ -5,11 +5,7 @@ const components = {
   Image,
 };
 
-interface MdxProps {
-  code: string;
-}
-
-export function Mdx({ code }: MdxProps) {
+export const Mdx = ({ code }: { code: string }) => {
   const Component = useMDXComponent(code);
 
   return <Component components={components} />;
