@@ -1,0 +1,120 @@
+---
+title:
+  - 一連の処理に排他ロックをかける
+description:
+  - データの整合性を保つために、トランザクションはたびたび使われる。
+date:
+  - 2021-06-16T12:53:46.758Z
+tags:
+  - Rails
+draft: false
+---
+
+## トランザクション・ロックについて
+
+データの整合性を保つために、トランザクションはたびたび使われる。
+
+銀行の入金処理がよく例に挙げられるが、A 口座から B 口座に対して 5000 円を振込む際には、
+
+1. 対象となる口座残高を読み込む
+
+2. A 口座残高を 5000 円減らす
+
+3. B 口座残高を 5000 円増やす
+
+これらの処理が一連している必要がある。トランザクションなしで 3 の処理中にエラーが発生した場合、
+
+A 口座の 5000 円が消失してしまうことになる。
+
+トランザクションを使うことで、失敗した場合にはトランザクション前の状態までロールバックする。
+
+ただ、上記のトランザクション処理を行っている途中で C 口座から B 口座への振込が行われた場合には処理が重複してしまうため、
+
+2 つのトランザクション終了時点で B 口座の残高が合計 5000 円しか増えないことがある。
+
+処理の重複によるをデータの矛盾を防ぐために、適切にロックを実装する必要がある。
+
+## Rails でのロックについて
+
+ActiveRecord にはいくつかロックのメソッドが用意されている。
+
+[ActiveRecord::Locking::Pessimistic](https://api.rubyonrails.org/classes/ActiveRecord/Locking/Pessimistic.html)
+
+`lock` , `lock!` はインスタンスに使うことでそのレコードをロックする。クエリに `FOR UPDATE` が追加されるので、ロックがかかったレコードの読み込みは可能だが書き込みは待機となる。
+
+```ruby
+  # select * from accounts where name = 'shugo' limit 1 for update nowait
+  shugo = Account.lock(
+  - FOR UPDATE NOWAIT).find_by(name:
+  - shugo)
+```
+
+このように引数にクエリ句を渡せる。上記だと排他ロックとなり、読み込みで待機となる。
+
+```ruby
+# File activerecord/lib/active_record/locking/pessimistic.rb, line 67
+def lock!(lock = true)
+  if persisted?
+    if has_changes_to_save?
+      raise(<<-MSG.squish)
+        Locking a record with unpersisted changes is not supported. Use
+        `save` to persist the changes, or `reload` to discard them
+        explicitly.
+      MSG
+    end
+
+    reload(lock: lock)
+  end
+  self
+end
+```
+
+`lock!` はレコードが DB に保存されておらず、DB に保存されていない変更が該当するインスタンスにある場合には例外を発生させる。そうでない場合にレコードにロックをかける。
+
+`with_lock` はブロックを渡すことができ、トランザクションとロックを同時にかけることができる。
+
+```ruby
+# File activerecord/lib/active_record/locking/pessimistic.rb, line 85
+def with_lock(lock = true)
+  transaction do
+    lock!(lock)
+    yield
+  end
+end
+```
+
+メソッドの中ではトランザクション内で `lock!` を実行し、メソッドに渡したブロックを実行している。
+
+## MySQL5.7 の GET_LOCK, RELEASE_LOCK
+
+MySQL では排他ロックの機能として `GET_LOCK(str, timeout)` , `RELEASE_LOCK(str)` がある。
+
+前者は任意の文字列に対してロックをかけ、第 2 引数ではロックの取得までの待機時間を指定することができる。第 2 引数を渡さない場合には待機せず 0 を返す。後者は任意の文字列に対するロックを解放する。
+
+ActiveRecord には MySQL 用のクラスがあり、用意されているメソッドを使うことでもロックを実装できる。
+
+[rails/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb:L140-L146](https://github.com/rails/rails/blob/c8f0c6450c758dcc8e6894f7c636ec4d2692b773/activerecord/lib/active_record/connection_adapters/abstract_mysql_adapter.rb#L140-L146)
+
+```ruby
+def with_lock(lock_str)
+  if ActiveRecord::Base.connection.get_advisory_lock(lock_str)
+    begin
+      yield
+    rescue => e
+      raise e
+    end
+  else
+    raise DuplicateError
+  end
+ensure
+  ActiveRecord::Base.connection.release_advisory_lock(lock_str)
+end
+```
+
+## 参考
+
+[データを保護するロックの仕組み](https://www.teradata-jp.com/post/col05i)
+
+[MySQL 5.7 Reference 12.15 Locking Functions](https://dev.mysql.com/doc/refman/5.7/en/locking-functions.html)
+
+[MySQL でシンプルな排他制御を　 GET_LOCK 　で実現する！](https://recruit.gmo.jp/engineer/jisedai/blog/mysql-get-lock/)

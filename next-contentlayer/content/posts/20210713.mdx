@@ -1,0 +1,101 @@
+---
+title:
+  - ターミナルエミュレータを iTerm2 から Alacritty に乗り換えた
+description:
+  - これまで開発時には iTerm2 を使っていて特段困ることはなかったが、 Neovim での開発時、特にファイルサイズが大きいと少々カクつくことがあるのは気になっていた。 そうは言っても Neovim 利用時に限定しているので、基本的にはプラグインの整理をして対処していたが、 Rust 製でパフォーマンスがよい Alacritty というターミナルエミュレータがあると Twitter でたまたま情報を見かけたので、一度試してみることにした。
+date:
+  - 2021-07-13T14:13:37.057Z
+tags:
+  - Terminal
+draft: false
+---
+
+## はじめに
+
+これまで開発時には iTerm2 を使っていて特段困ることはなかったが、 Neovim での開発時、特にファイルサイズが大きいと少々カクつくことがあるのは気になっていた。 そうは言っても Neovim 利用時に限定しているので、基本的にはプラグインの整理をして対処していたが、 Rust 製でパフォーマンスがよい Alacritty というターミナルエミュレータがあると Twitter でたまたま情報を見かけたので、一度試してみることにした。
+
+[Alacritty - A fast, cross-platform, OpenGL terminal emulator](https://github.com/alacritty/alacritty)
+
+## インストール
+
+[Manual Installation](https://github.com/alacritty/alacritty/blob/master/INSTALL.md#manual-installation) を見て一通りの設定を行った。
+
+```shell
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty
+
+// rustup をインストール
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup override set stable
+rustup update stable
+
+// MacOS の場合
+make app
+cp -r target/release/osx/Alacritty.app /Applications/
+
+infocmp alacritty
+sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
+sudo mkdir -p /usr/local/share/man/man1
+gzip -c extra/alacritty.man | sudo tee /usr/local/share/man/man1/alacritty.1.gz > /dev/null
+```
+
+shell ごとに補完機能のインストール手順が最下部に書いてあるので、そちらも実行。
+
+### つまづいた点
+
+tmux の prefix を Ctrl + q に設定しているのだが、反応せず。
+ctrl + q を 2 回押すと tmux のキーバインドが反応したが、ピンポイントで Alacritty の Issue が挙がっていたのでこちらを参考に key_bindings を設定することで対応。
+
+[Ctrl+q not working #1359](https://github.com/alacritty/alacritty/issues/1359)
+
+```yaml
+- { key: Q, mods: Control, chars:
+  - \x11 }
+```
+
+## メリット
+
+- 開発が活発に行わされている印象
+
+メインのターミナルエミュレータにする上で、放置されているようなプロダクトは使いたくないので、この点に関しては非常に好印象。
+
+- OS 間で互換性がある
+
+[iTerm2 - macOS Terminal Replacement](https://iterm2.com/)
+
+iTerm2 は MacOS 用のソフトウェアであるため、Linux であったり Windows 環境では使うことはできない。特にマシンを買い替えて違う OS での開発に主軸を置く予定はないが、いつ違う OS で検証が必要になるかなんてわからないし、互換性があるに越したことはない。
+
+- alacritty.yml に設定をまとめることができる
+
+設定ファイルを yaml 形式で保管できるのは個人的には大きなメリット。互換性のメリットにも通ずるが、config 系のファイルは [reona5/dotfiles](https://github.com/reona5/dotfiles) にまとめているので、マシンが変わってもコマンド一つで開発環境を再現できるのは嬉しいポイント。
+
+- iTerm2 よりかなり速い
+
+割とこれはすぐに実感できるレベルで違いがわかる。 fzf のファイル検索とか ag でまだもたつきは感じるので、 Neovim のプラグイン周りで改善の余地がありそう。（この辺のベストプラクティスというか、他の人がどう管理してるか見てみたい）
+
+## デメリット
+
+- 機能が限定的である
+
+これは速さとトレードオフなポイントではあると思う。私の場合は、もともとタブやペイン等を Neovim + tmux で完結させていたので全く問題なかった。
+
+- 日本語入力のインライン入力ができない
+
+日本語を入力する際にインライン入力ができないので、google 日本語入力の補完候補はでるので使えなくはないが、かなり違和感がある。
+ミスタイプをした際に delete キーを押すと、入力中の文字でなくその前の文字が消えてしまうので、ミスタイプが多い人はかなり大変だと思う。邪道ではあるが、私は Neovim の設定で emacs のキーバインドを有効にしているので ctrl + h で文字を削除することで入力中の文字を削除することができた（普段 delete の方がよく使うので、慣れないといけない）
+
+- 日本語の表示がバグることがある
+
+これも致命的ではないけど結構気になる。Twitter とか見てるとインライン入力も含めて問題になってるみたい。
+
+# 最後に
+
+ターミナルエミュレータを変更したついでに colorscheme や font も変更した。
+
+colorscheme: [morhetz/gruvbox](https://github.com/morhetz/gruvbox) -> [Nord](https://www.nordtheme.com/)
+
+font: [Ricty](https://rictyfonts.github.io/) -> [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads)
+
+![image](https://user-images.githubusercontent.com/46399968/125487027-3d0142e0-baa5-4d55-839f-458259518e3c.png)
+
+Nord は tmux, Alacritty, Vim それぞれのライブラリが用意されているので、統一感が出せて非常に気に入っている。

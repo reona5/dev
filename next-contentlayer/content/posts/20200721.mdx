@@ -1,0 +1,41 @@
+---
+title:
+  - Failed to load the ESLint library for the document
+description:
+  - coc.nvim で eslint に関するエラーがでたときの対処方法
+date:
+  - 2020-07-20T15:03:12.911Z
+tags:
+  - Neovim
+  - Vim
+draft: false
+---
+
+coc.nvim で eslint に関するエラーがでたときの対処方法
+
+参考: https://github.com/neoclide/coc-eslint/issues/11
+
+```
+[coc.nvim] Failed to load the ESLint library for the document
+```
+
+```json
+# coc-settings.json(:CocConfig)
+
+
+  - eslint.options: {
+
+  - configFile:
+  - eslint.{yml, js, json}のパス
+  },
+
+  - eslint.nodePath:
+  - node_modulesのパス,
+```
+
+以上の設定でエラーは解消。
+プロジェクト共通のものがあればそちらを優先すべきだが、基本は global な path を指定すればよさそう。
+
+ちなみに eslint, prettier の設定に関しては、公式ドキュメントを参考に設定することでかなりシンプルな設定で済む。
+
+https://github.com/prettier/eslint-plugin-prettier#recommended-configuration

@@ -1,11 +1,12 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import rehypePrettyCode from "rehype-pretty-code"
-import { rehypePrettyCodeOptions } from "./lib/rehypePrettyCode"
+import remarkGfm from "remark-gfm"
+import rehypePrettyCode from "rehype-pretty-code";
+import { rehypePrettyCodeOptions } from "./lib/rehypePrettyCode";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
   slug: {
-    type: "string",
+    type: "RouteImpl<string>",
     resolve: (doc) => `/${doc._raw.flattenedPath}`,
   },
   slugAsParams: {
@@ -13,22 +14,6 @@ const computedFields = {
     resolve: (doc) => doc._raw.flattenedPath.split("/").slice(1).join("/"),
   },
 };
-
-export const Page = defineDocumentType(() => ({
-  name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
-  contentType: "mdx",
-  fields: {
-    title: {
-      type: "string",
-      required: true,
-    },
-    description: {
-      type: "string",
-    },
-  },
-  computedFields,
-}));
 
 export const Post = defineDocumentType(() => ({
   name: "Post",
@@ -46,16 +31,24 @@ export const Post = defineDocumentType(() => ({
       type: "date",
       required: true,
     },
+    tags: {
+      type: "list",
+      of: { type: "string" },
+      required: true,
+    },
+    draft: {
+      type: "boolean",
+      required: true,
+    },
   },
   computedFields,
 }));
 
 export default makeSource({
   contentDirPath: "./content",
-  documentTypes: [Post, Page],
+  documentTypes: [Post],
   mdx: {
-    rehypePlugins: [
-      [rehypePrettyCode, rehypePrettyCodeOptions],
-    ]
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [[rehypePrettyCode, rehypePrettyCodeOptions]],
   },
 });
