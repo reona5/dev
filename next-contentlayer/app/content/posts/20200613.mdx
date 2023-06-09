@@ -1,9 +1,9 @@
 ---
-title: 
+title:
   - OpenAPI (Swagger) で APIリファレンス作成
-description: 
+description:
   - 現在業務でメンズファッション関連のサービス開発をしていて、Rails でバックエンド API を、SwiftUI で iOS アプリを作成しています。
-date: 
+date:
   - 2020-06-13T05:35:45.983Z
 tags:
   - OpenAPI
@@ -79,7 +79,7 @@ OpenAPI 3.0 であれば `$ref` を使うことによって `response body` な�
   content:
     application/json:
       schema:
-        $ref: 
+        $ref:
   - #/components/schemas/400-bad_request.yaml
 ```
 
@@ -88,10 +88,10 @@ OpenAPI 3.0 であれば `$ref` を使うことによって `response body` な�
 ```yaml
 paths:
   /users:
-    $ref: 
+    $ref:
   - ../resources/users.yaml
   /users/{userId}:
-    $ref: 
+    $ref:
   - ../resources/users-by-id.yaml
 ```
 

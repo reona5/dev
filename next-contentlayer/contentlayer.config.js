@@ -1,7 +1,7 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm"
 import rehypePrettyCode from "rehype-pretty-code";
-import { rehypePrettyCodeOptions } from "./lib/rehypePrettyCode";
+import { rehypePrettyCodeOptions } from "./app/lib/rehypePrettyCode";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -45,7 +45,7 @@ export const Post = defineDocumentType(() => ({
 }));
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: "./app/content",
   documentTypes: [Post],
   mdx: {
     remarkPlugins: [remarkGfm],
