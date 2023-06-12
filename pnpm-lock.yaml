@@ -17,8 +17,8 @@ dependencies:
     specifier: ^3.4.0
     version: 3.4.0(astro@2.5.5)(react@18.2.0)
   '@fontsource/fira-code':
-    specifier: ^4.5.13
-    version: 4.5.13
+    specifier: ^5.0.3
+    version: 5.0.3
   '@fontsource/inter':
     specifier: ^4.5.15
     version: 4.5.15
@@ -733,8 +733,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource/fira-code@4.5.13:
-    resolution: {integrity: sha512-T1IG6/2AXSwEKwlrEm3kyIL3RQTMblPyj68HgnBGl0IBGFxgS5LZ7StRdDo/QimJ4Tz6FQGHuy1Y/ShNxaUefA==}
+  /@fontsource/fira-code@5.0.3:
+    resolution: {integrity: sha512-csSax2QNXYUzUc2UaIv08WfMwFOcWJWlqn5EkA5+hcnM9Kp0VhfFLEcJBEvhWHTZT7ySMvj7oePWSSWiVF3n1g==}
     dev: false
 
   /@fontsource/inter@4.5.15:
