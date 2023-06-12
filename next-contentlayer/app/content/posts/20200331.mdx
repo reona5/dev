@@ -1,15 +1,12 @@
 ---
-title:
-  - GitHub Pages × Hugo で技術ブログを始めた
-description:
-  - Web に関わる開発をしている方であれば、ソースコードのホスティングに GitHub を利用している人は多いのではないでしょうか。
-date:
-  - 2020-03-31T23:54:54.956Z
+title: GitHub Pages × Hugo で技術ブログを始めた
+description: Web に関わる開発をしている方であれば、ソースコードのホスティングに GitHub を利用している人は多いのではないでしょうか。
+date: 2020-03-31T23:54:54.956Z
 tags:
   - Github Pages
   - Hugo
   - Blog
-draft: false
+isPublished: false
 ---
 
 **※ブログを移行しました。**
@@ -145,7 +142,7 @@ $ hugo new posts/first_post.md
 $ hugo server -D
 ```
 
-`-D` オプションを付けることで、`draft: true` （本番環境では表示しない）設定のページの含めてビルドしてくれます。
+`-D` オプションを付けることで、`isPublished: true` （本番環境では表示しない）設定のページの含めてビルドしてくれます。
 `localhost:1313` でブラウザからページが確認できます。ホットリロードであるためファイル変更後に保存すると、自動的に変更を検知してビルド・リロードすることでブラウザ上に変更が反映されます。便利ですね…
 
 最後に `hugo` コマンドでサイトを生成し、デプロイまで進めましょう。

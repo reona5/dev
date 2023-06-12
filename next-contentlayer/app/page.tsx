@@ -1,18 +1,17 @@
 import { allPosts } from "@/.contentlayer/generated";
-import Link from "next/link";
+import { Header } from "@/app/components/header";
+import { PostList } from "@/app/components/post-list";
 
 const Home = () => {
+  const orderedPosts = allPosts.sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
+
   return (
-    <div className="prose dark:prose-invert">
-      {allPosts.map((post) => (
-        <article key={post._id}>
-          <Link href={post.slug}>
-            <h2>{post.title}</h2>
-          </Link>
-          {post.description && <p>{post.description}</p>}
-        </article>
-      ))}
-    </div>
+    <>
+      <Header />
+      <main className="m-auto max-w-4xl p-6">
+        <PostList posts={orderedPosts} isPublished={true} />
+      </main>
+    </>
   );
 };
 

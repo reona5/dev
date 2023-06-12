@@ -36,7 +36,7 @@ export const Post = defineDocumentType(() => ({
       of: { type: "string" },
       required: true,
     },
-    draft: {
+    isPublished: {
       type: "boolean",
       required: true,
     },
