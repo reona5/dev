@@ -1,3 +1,4 @@
+import {TagList} from "@/app/components/tag-list"
 import { Post } from "@/.contentlayer/generated/types";
 import { FormattedDate } from "@/app/components/formatted-date";
 import Link from "next/link";
@@ -17,6 +18,7 @@ export const PostList = (({ posts, isPublished }) => {
             {post.title}
           </Link>
           <p className="truncate text-sm">{post.description}</p>
+          <TagList tags={post.tags} />
         </li>
       ))}
     </ol>

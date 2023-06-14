@@ -1,3 +1,5 @@
+type FormattedDateProps = { date: string };
+
 export const FormattedDate = (({ date }) => {
   const formattedDate = new Date(date).toLocaleString("ja-jp", {
     year: "numeric",
@@ -6,4 +8,4 @@ export const FormattedDate = (({ date }) => {
   });
 
   return <time dateTime={date}>{formattedDate}</time>;
-}) satisfies React.FC<{ date: string }>;
+}) satisfies React.FC<FormattedDateProps>;

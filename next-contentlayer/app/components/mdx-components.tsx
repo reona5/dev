@@ -1,12 +1,12 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 
-const components = {
-  Image,
-};
+type MdxProps = { code: string };
 
-export const Mdx = ({ code }: { code: string }) => {
+const components = { Image };
+
+export const Mdx = (({ code }) => {
   const Component = useMDXComponent(code);
 
   return <Component components={components} />;
-}
+}) satisfies React.FC<MdxProps>;

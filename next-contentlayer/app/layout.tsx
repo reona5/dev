@@ -29,7 +29,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body
         className={inter.className}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class">
           <Analytics />
           {children}
           <Footer />
