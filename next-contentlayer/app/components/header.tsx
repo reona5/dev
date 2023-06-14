@@ -1,5 +1,6 @@
-import { ModeToggle } from "@/app/components/mode-toggle";
 import { MenuButton } from "@/app/components/menu-button";
+import { ModeToggle } from "@/app/components/mode-toggle";
+import Link from "next/link";
 const headerItems = [
   { name: "About", href: "/about" },
   { name: "Posts", href: "/posts" },
@@ -14,22 +15,22 @@ export const Header = (({ ariaCurrent }) => {
   return (
     <header className="sticky top-0 bg-white/75 transition ease-in-out dark:bg-gray-900/75 dark:text-white sm:static">
       <div className="m-auto flex max-w-4xl items-center justify-between p-6">
-        <a href="/" className="text-xl">
+        <Link href="/" className="text-xl">
           reona.dev
-        </a>
+        </Link>
         <nav className="hidden sm:inline">
           <ul className="flex gap-3 text-lg">
             {headerItems.map((item) => (
               <li key={item.name}>
-                <a
+                <Link
                   href={item.href}
                   {...(item.name === ariaCurrent && {
                     className: "underline",
-                    ariaCurrent: "page",
+                    "aria-current": "page",
                   })}
                 >
                   {item.name}
-                </a>
+                </Link>
               </li>
             ))}
             <li>

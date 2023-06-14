@@ -4,24 +4,24 @@ import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-type PostProps = {
+type DraftProps = {
   params: {
     slug: string[];
   };
 };
 
-const getPostFromParams = async (params: PostProps["params"]) => {
+const getPostFromParams = async (params: DraftProps["params"]) => {
   const slug = params?.slug?.join("/");
   const post = allPosts.find((post) => post.slugAsParams === slug);
 
-  if (!post || !post.isPublished) return
+  if (!post || post.isPublished) return
 
   return post;
 };
 
 export const generateMetadata = async ({
   params,
-}: PostProps): Promise<Metadata> => {
+}: DraftProps): Promise<Metadata> => {
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -35,23 +35,24 @@ export const generateMetadata = async ({
 };
 
 export const generateStaticParams = async (): Promise<
-  PostProps["params"][]
+  DraftProps["params"][]
 > => {
   return allPosts.map((post) => ({
     slug: post.slugAsParams.split("/"),
   }));
 };
 
-const PostPage = async ({ params }: PostProps) => {
+const DraftPage = async ({ params }: DraftProps) => {
   const post = await getPostFromParams(params);
+  const isDevelopment = process.env.NODE_ENV === "development"
 
-  if (!post) {
+  if (!post || !isDevelopment) {
     notFound();
   }
 
   return (
     <>
-      <Header ariaCurrent="About" />
+      <Header ariaCurrent="Drafts" />
       <main className="m-auto max-w-4xl p-6">
         <article className="prose max-w-none dark:prose-invert">
           <h1 className="mb-2">{post.title}</h1>
@@ -68,4 +69,4 @@ const PostPage = async ({ params }: PostProps) => {
   );
 };
 
-export default PostPage;
+export default DraftPage;
