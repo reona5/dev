@@ -1,6 +1,6 @@
+import { Header } from "@/app/components/header";
 import Image from "next/image";
 import Link from "next/link";
-import { Header } from "@/app/components/header";
 
 export const metadata = {
   title: "このサイトについて",
@@ -22,7 +22,7 @@ const About: React.FC = () => {
             loading="eager"
             className="pb-8"
           />
-          <h1 className="dark:bg-gray-900 dark:text-white">{metadata.title}</h1>
+          <h1>{metadata.title}</h1>
           <p>
             <Link href="/">reona.dev</Link> は Next.js + Vercel
             によって作成されています。

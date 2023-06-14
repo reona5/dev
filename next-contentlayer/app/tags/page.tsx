@@ -26,7 +26,7 @@ const Tags: React.FC = () => {
           {tags.map((tag) => (
             <p
               key={tag.name}
-              className="m-2 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black dark:text-white"
+              className="m-2 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black"
             >
               <Link href={`/tags/${tag.name}`}>
                 {tag.name} ({tag.posts.length})

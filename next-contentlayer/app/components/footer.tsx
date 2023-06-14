@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer>
-      <div className="m-auto flex max-w-4xl justify-between bg-white p-6 transition ease-in-out dark:bg-gray-900 dark:text-white">
+      <div className="m-auto flex max-w-4xl justify-between p-6">
         <span>&copy; {today.getFullYear()} Reona Shimada.</span>
         <nav>
           <ul className="flex gap-4 p-0">

@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  @apply bg-white transition-colors ease-out dark:bg-gray-900 dark:text-white;
+}
+
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
 
@@ -33,7 +37,7 @@ div[data-rehype-pretty-code-title] {
     "Liberation Mono", "Courier New", monospace;
   font-size: 0.75rem;
   line-height: 1rem;
-  color: #C9D1D9;
+  color: #c9d1d9;
 }
 
 div[data-rehype-pretty-code-fragment] .line {
@@ -44,7 +48,6 @@ div[data-rehype-pretty-code-fragment] .line {
   border-left-width: 4px;
   border-left-color: transparent;
 }
-
 
 div[data-rehype-pretty-code-fragment] .line--highlighted {
   border-left-color: rgb(253 164 175 / 0.7);

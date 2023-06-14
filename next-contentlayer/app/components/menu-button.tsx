@@ -21,19 +21,19 @@ export const MenuButton = (({ children }) => {
         onClick={toggleMenu}
       >
         <span
-          className={`h-0.5 w-6 origin-center bg-gray-800 transition-all ease-out dark:bg-white ${
+          className={`h-0.5 w-6 origin-center bg-gray-800 dark:bg-white ${
             isExpanded && "translate-y-[5px] rotate-45"
           }`}
         ></span>
         <span
           // eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-          className={`h-0.5 w-6 origin-center bg-gray-800 transition-all ease-out dark:bg-white ${
+          className={`h-0.5 w-6 origin-center bg-gray-800 dark:bg-white ${
             isExpanded && "-translate-y-[5px] -rotate-45"
           }`}
         ></span>
       </button>
       {isExpanded && (
-        <div className="absolute right-5 rounded-lg bg-gray-50/75 p-6 shadow-lg dark:bg-black/75 dark:text-white dark:shadow-gray-800">
+        <div className="absolute right-5 rounded-lg bg-gray-50/75 p-6 shadow-lg dark:bg-black/75  dark:shadow-gray-800">
           {children}
         </div>
       )}

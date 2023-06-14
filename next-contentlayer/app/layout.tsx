@@ -27,7 +27,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         />
       </head>
       <body
-        className={`transition ease-in-out dark:bg-gray-900 dark:text-white ${inter.className}`}
+        className={inter.className}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Analytics />
