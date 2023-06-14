@@ -2,6 +2,7 @@ import { Analytics } from "@/app/components/analytics";
 import { ThemeProvider } from "@/app/components/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Footer } from "./components/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Analytics />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
