@@ -8,7 +8,14 @@ export const metadata = {
 };
 
 const Tags: React.FC = () => {
-  const tags = [...new Set(allPosts.map((post) => post.tags).flat())]
+  const tags = [
+    ...new Set(
+      allPosts
+        .filter((post) => post.isPublished === true)
+        .map((post) => post.tags)
+        .flat()
+    ),
+  ]
     .map((tag) => {
       return {
         name: tag,

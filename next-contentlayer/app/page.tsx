@@ -1,6 +1,7 @@
 import { allPosts } from "@/.contentlayer/generated";
 import { Header } from "@/app/components/header";
 import { PostList } from "@/app/components/post-list";
+import Link from "next/link";
 
 export const metadata = {
   title: "reona.dev",
@@ -10,6 +11,7 @@ export const metadata = {
 
 const Home: React.FC = () => {
   const orderedPosts = allPosts
+    .filter((post) => post.isPublished === true)
     .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
     .slice(0, 5);
 
@@ -23,9 +25,9 @@ const Home: React.FC = () => {
             プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
           </p>
           <PostList posts={orderedPosts} isPublished={true} />
-          <a href="/posts" className="text-lg underline">
+          <Link href="/posts" className="text-lg underline">
             &gt;&gt; 記事一覧へ
-          </a>
+          </Link>
         </section>
       </main>
     </>

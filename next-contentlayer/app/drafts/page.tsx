@@ -3,10 +3,9 @@ import { Header } from "@/app/components/header";
 import { PostList } from "@/app/components/post-list";
 
 const Drafts: React.FC = () => {
-  const draftPosts = allPosts.filter((post) => post.isPublished !== true);
-  const orderedPosts = draftPosts.sort(
-    (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf()
-  );
+  const orderedPosts = allPosts
+    .filter((post) => post.isPublished !== true)
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
   return (
     <>

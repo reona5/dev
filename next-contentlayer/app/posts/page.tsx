@@ -8,9 +8,9 @@ export const metadata = {
 };
 
 const Posts: React.FC = () => {
-  const orderedPosts = allPosts.sort(
-    (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf()
-  );
+  const orderedPosts = allPosts
+    .filter((post) => post.isPublished === true)
+    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
 
   return (
     <>

@@ -44,7 +44,7 @@ export const Header = (({ ariaCurrent }) => {
             <ul className="grid items-end gap-3 text-lg">
               {headerItems.map((item) => (
                 <li key={item.name}>
-                  <a
+                  <Link
                     href={item.href}
                     {...(item.name === ariaCurrent && {
                       className: "underline",
@@ -52,7 +52,7 @@ export const Header = (({ ariaCurrent }) => {
                     })}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

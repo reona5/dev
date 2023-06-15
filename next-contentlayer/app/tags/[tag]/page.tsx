@@ -11,9 +11,9 @@ type TagProps = {
 };
 
 const getPostsFromParams = async (params: TagProps["params"]) => {
-  const tag = params?.tag;
+  const { tag } = params;
   const posts = allPosts
-    .filter((post) => post.tags.includes(tag))
+    .filter((post) => post.tags.includes(tag) && post.isPublished === true)
     .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
   return posts;
 };
@@ -41,7 +41,7 @@ const TagPostsPage = async ({ params }: TagProps) => {
   const { tag } = params;
   const posts = await getPostsFromParams(params);
 
-  if (!tag) {
+  if (!tag || !posts.length) {
     notFound();
   }
 
