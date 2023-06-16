@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "pnpm format",
     "build": "next build",
     "preview": "next build && next start",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && pnpm markuplint",
     "lint:fix": "next lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,ts,tsx,json}'",
     "markuplint": "markuplint './**/*.tsx'",

@@ -1,6 +1,6 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
-import remarkGfm from "remark-gfm"
 import rehypePrettyCode from "rehype-pretty-code";
+import remarkGfm from "remark-gfm";
 import { rehypePrettyCodeOptions } from "./app/lib/rehypePrettyCode";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
