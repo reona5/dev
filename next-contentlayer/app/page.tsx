@@ -1,6 +1,6 @@
-import { allPosts } from "@/.contentlayer/generated";
 import { Header } from "@/app/components/header";
 import { PostList } from "@/app/components/post-list";
+import { getPosts } from "@/app/data/post";
 import Link from "next/link";
 
 export const metadata = {
@@ -10,10 +10,7 @@ export const metadata = {
 };
 
 const Home: React.FC = () => {
-  const orderedPosts = allPosts
-    .filter((post) => post.isPublished === true)
-    .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf())
-    .slice(0, 5);
+  const posts = getPosts({ isPublished: true }).slice(0, 5);
 
   return (
     <>
@@ -24,7 +21,7 @@ const Home: React.FC = () => {
           <p>
             プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
           </p>
-          <PostList posts={orderedPosts} isPublished={true} />
+          <PostList posts={posts} isPublished={true} />
           <Link href="/posts" className="text-lg underline">
             &gt;&gt; 記事一覧へ
           </Link>
