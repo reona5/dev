@@ -1,5 +1,4 @@
-import { allPosts } from "@/.contentlayer/generated";
-import { Post } from "@/.contentlayer/generated/types";
+import { allPosts, Post } from "@/.contentlayer/generated";
 
 type GetPosts = (isPublished: { isPublished: boolean }) => Post[];
 

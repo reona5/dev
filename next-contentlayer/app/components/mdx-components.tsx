@@ -10,3 +10,8 @@ export const Mdx = (({ code }) => {
 
   return <Component components={components} />;
 }) satisfies React.FC<MdxProps>;
+
+export const renderedMdx = async (code: string) => {
+  const ReactDOMServer = (await import('react-dom/server')).default
+  return ReactDOMServer.renderToStaticMarkup(<Mdx code={code} />);
+}
