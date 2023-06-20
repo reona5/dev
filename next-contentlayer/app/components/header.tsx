@@ -16,7 +16,7 @@ export const Header = (({ ariaCurrent }) => {
     <header className="sticky top-0 bg-white/75 transition-colors ease-out dark:bg-gray-900/75 sm:static sm:bg-white sm:dark:bg-gray-900">
       <div className="m-auto flex max-w-4xl items-center justify-between p-6">
         <Link href="/" className="text-xl">
-          reona.dev
+          {process.env.NEXT_PUBLIC_SITE_TITLE ?? ""}
         </Link>
         <nav className="hidden sm:inline">
           <ul className="flex gap-3 text-lg">

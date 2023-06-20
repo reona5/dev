@@ -2,7 +2,7 @@ import { getPosts } from "@/app/data/post";
 import { Post } from "contentlayer/generated";
 import Rss from "rss";
 
-const SITE_URL = "https://reona.dev";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 const generateFeedItem = async (post: Post) => {
   const { renderedMdx } = await import("@/app/components/mdx-components");
@@ -26,12 +26,11 @@ const generateFeedItem = async (post: Post) => {
 
 export const GET = async () => {
   const feed = new Rss({
-    title: "reona.dev",
-    description:
-      "reona.dev は Next.js + Vercel によって作成されています。プログラミングに関する学びや日々の出来事を発信するウェブサイトです。",
+    title: process.env.NEXT_PUBLIC_SITE_TITLE ?? "",
+    description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "",
     feed_url: `${SITE_URL}/rss.xml`,
     site_url: SITE_URL,
-    language: "ja",
+    language: process.env.NEXT_PUBLIC_SITE_LANGUAGE ?? "",
   });
   const posts = getPosts({ isPublished: true });
   const feedItems = await Promise.all(posts.map(generateFeedItem));

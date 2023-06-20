@@ -4,8 +4,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "このサイトについて",
-  description:
-    "reona.dev は Next.js + Vercel によって作成されています。プログラミングに関する学びや日々の出来事を発信するウェブサイトです。",
+  description: process.env.NEXT_PUBLIC_SITE_TITLE ?? "",
 };
 
 const About: React.FC = () => {
@@ -24,7 +23,7 @@ const About: React.FC = () => {
           />
           <h1>{metadata.title}</h1>
           <p>
-            <Link href="/">reona.dev</Link> は Next.js + Vercel
+            <Link href="/">{process.env.NEXT_PUBLIC_SITE_TITLE ?? ""}</Link> は Next.js + Vercel
             によって作成されています。
             <a
               href="https://twitter.com/reona_5"

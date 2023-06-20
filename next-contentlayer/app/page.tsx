@@ -4,9 +4,9 @@ import { getPosts } from "@/app/data/post";
 import Link from "next/link";
 
 export const metadata = {
-  title: "reona.dev",
+  title: process.env.NEXT_PUBLIC_SITE_TITLE ?? "",
   description:
-    "reona.dev は Next.js + Vercel によって作成されています。プログラミングに関する学びや日々の出来事を発信するウェブサイトです。",
+    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "",
 };
 
 const Home: React.FC = () => {
