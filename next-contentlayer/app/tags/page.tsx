@@ -1,5 +1,6 @@
 import { allPosts } from "@/.contentlayer/generated";
 import { Header } from "@/app/components/header";
+import { allTags } from "@/app/data/tag";
 import Link from "next/link";
 
 export const metadata = {
@@ -8,14 +9,7 @@ export const metadata = {
 };
 
 const Tags: React.FC = () => {
-  const tags = [
-    ...new Set(
-      allPosts
-        .filter((post) => post.isPublished === true)
-        .map((post) => post.tags)
-        .flat()
-    ),
-  ]
+  const tags = allTags
     .map((tag) => {
       return {
         name: tag,

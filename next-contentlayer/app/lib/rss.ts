@@ -10,7 +10,7 @@ const generateFeedItem = async (post: Post) => {
   return {
     title: post.title,
     description: post.description,
-    url: `${SITE_URL}/${post.slug}`,
+    url: `${SITE_URL}${post.slug}`,
     guid: post.slug,
     date: post.date,
     categories: post.tags,
@@ -33,7 +33,7 @@ export const getFeed = async () => {
     site_url: SITE_URL,
     language: process.env.NEXT_PUBLIC_SITE_LANGUAGE ?? "",
   });
-  const posts = getPosts({ isPublished: true });
+  const posts = getPosts({ isPublished: true }).slice(0, 10);
   const feedItems = await Promise.all(posts.map(generateFeedItem));
 
   feedItems.forEach((item) => {
