@@ -48,7 +48,7 @@ export const Header = (({ ariaCurrent }) => {
                     href={item.href}
                     {...(item.name === ariaCurrent && {
                       className: "underline",
-                      ariaCurrent: "page",
+                      "aria-current": "page",
                     })}
                   >
                     {item.name}
