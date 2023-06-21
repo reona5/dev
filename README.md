@@ -27,7 +27,7 @@ Here are some useful commands you can use to work with this project:
 | `pnpm build`       | Build your production site                     |
 | `pnpm preview`     | Preview your build locally, before deploying   |
 | `pnpm lint`        | Run lint tool                                  |
-| `pnpm create post` | Create a new mdx file under app/content/posts/ |
+| `pnpm create:post` | Create a new mdx file under app/content/posts/ |
 
 ## License
 
