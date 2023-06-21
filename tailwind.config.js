@@ -1,10 +1,11 @@
-// https://tailwindcss.com/docs/configuration#type-script-types
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
-
 module.exports = {
   darkMode: "class",
-  content: ["./src/**/*.{astro,js,md,mdx,ts}"],
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./content/**/*.{md,mdx}",
+  ],
   theme: {
     extend: {
       typography: {
@@ -16,16 +17,10 @@ module.exports = {
             "code::after": {
               content: '""',
             },
-            code: {
-              fontFamily: "Fira Code, monospace",
-              span: {
-                fontFamily: "Fira Code, monospace",
-              },
-            },
             "p, li": {
               code: {
-                color: "#C9D1D9",
-                backgroundColor: "#0D1117",
+                color: "#e5e7eb",
+                backgroundColor: "#090c10",
                 padding: "4px 6px",
                 borderRadius: "4px",
                 fontWeight: "300",
@@ -34,9 +29,6 @@ module.exports = {
           },
         },
       },
-    },
-    fontFamily: {
-      inter: ["Inter", ...defaultTheme.fontFamily.sans],
     },
   },
   plugins: [require("@tailwindcss/typography")],

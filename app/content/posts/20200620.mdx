@@ -1,0 +1,124 @@
+---
+title: Vim で Markdown に画像をペーストして展開する
+description: 私は普段基本的には Vim を使って開発を行い、当ブログの記事も Vim で書いています。
+date: 2020-06-20T14:09:10.389Z
+tags:
+  - Vim
+  - Markdown
+  - Shell
+isPublished: true
+---
+
+私は普段基本的には Vim を使って開発を行い、当ブログの記事も Vim で書いています。
+
+ブログを書く際に画像を文章中に展開したい場面は少なくないですが、VSCode の拡張機能である[Paste Image](https://marketplace.visualstudio.com/items?itemName=mushan.vscode-paste-image)が非常に便利で、画像をコピペする際は VSCode を使っていました。非効率ですね。
+もちろん Vim だと標準ではそのような機能はないので、プラグインを探してみましたが Paste Image のような便利さを感じるものはありませんでした。
+
+そのため、**シェルスクリプトでコマンドを作成し、クリップボードにコピーしてある画像をショートカットで展開するよう設定しました。**
+
+## 利用するライブラリ
+
+[jcsalterego/pngpaste](https://github.com/jcsalterego/pngpaste)
+
+クリップボードにある画像ファイルを指定ディレクトリに保存します。**pngpaste** という名前ですが、gif や jpeg への出力にも対応しているようですね。
+
+```shell
+$ brew install pngpaste
+```
+
+Homebrew があればこのコマンド実行で OK です。
+
+[ImageOptim](https://imageoptim.com/mac)
+
+今回はペーストしたファイルを画像圧縮した状態で保存するようにしたいので、こちらを使います。
+
+## コマンドファイル
+
+シェルスクリプトを使ったコマンドファイルの実装です。
+
+```shell
+#!/bin/bash
+
+if [[ ! $+commands[pngpaste] ]]; then
+  echo
+  - pngpaste: command not found >&2
+  exit 1
+fi
+
+IMAGE_DIR=
+  - public/images/
+
+# 画像の保存先が存在するかチェックをする。
+# 存在しない場合は、エラーで処理を終了する。
+if [[ ! -e
+  - $IMAGE_DIR ]]; then
+  echo
+  - No image Directory
+  exit 1
+fi
+
+IMAGE_NAME=`date
+  - +%Y-%m-%d-%H-%M-%S.png`
+IMAGE_PATH=
+  - $IMAGE_DIR$IMAGE_NAME
+
+# 保存するファイル名と同一のものが存在する場合は、エラーで処理を終了する。
+if [[ -e
+  - $IMAGE_PATH ]]; then
+  echo
+  - File already existed
+  exit 1
+fi
+
+pngpaste $IMAGE_PATH
+RESULT=$?
+
+# 画像が保存できた場合はMarkdownに画像を展開する。
+if [ $RESULT = 0 ]; then
+  MARKDOWN_IMAGE_SYNTAX=
+  - ![]($IMAGE_PATH)
+  echo $MARKDOWN_IMAGE_SYNTAX
+fi
+
+
+IMAGEOPTIM=
+  - open -a ImageOptim
+`${IMAGEOPTIM} ${IMAGE_PATH}`
+```
+
+ファイルパスを指定してコマンドを実行することも可能ですが、ファイル名のみで実行するために PATH が通っているディレクトリ配下にファイルを配置します。
+`echo $PATH` で設定されている PATH 環境変数が確認できます。
+今回は `/usr/local/bin/` に配置します。
+
+コマンドを実行する際には、コマンドファイルの権限を変更する必要があります。
+
+```shell
+$ chmod +x ~/usr/local/bin/paste_image_on_vim_markdown
+```
+
+試しにコマンドで `paste_image_on_vim_markdown` と打ってみると、実行できるようになっているはずです。
+
+## vimrc
+
+最後に Vim 上でコマンドを実行できるように設定します。私は NeoVim と dein を使っているので `init.vim` に設定します。
+
+```
+nnoremap <Leader>p <C-c>:r! paste_image_on_vim_markdown <CR>
+```
+
+キーマップはお好みで変えてください。私は `Leader` にスペースキーを指定してあります。
+試しに `.md` , `.mdx` ファイル上でショートカットキーを押すと、
+
+![](/2020-06-22-02-57-09.png)
+
+指定のディレクトリに画像が保存され、同時に画像圧縮もされます。便利！
+
+## さいごに
+
+これで Vim でもブログに画像を展開する際は非常にスムーズに行えるようになりました。
+普段[Alfred](https://www.alfredapp.com/)のクリップボード機能にはかなりお世話になっているのですが、履歴の一番手前に貼りたい画像を持ってくれば過去の画像も問題なく展開できます。
+
+![](/2020-06-22-03-03-11.png)
+
+実現したい機能を満たすプラグインがない場合は、自分でカスタマイズするのもありですね。
+今回新しいライブラリの存在を知れたり、初めてシェルスクリプトも触れたので勉強になったし、期待する機能も実現できてハッピーです 🙌

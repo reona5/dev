@@ -3,7 +3,7 @@
 
 # [reona.dev](https://reona.dev/)
 
-This is my blog made by [Astro](https://astro.build/) 🚀
+This is my blog made by [Next.js](https://nextjs.org/) 🚀
 
 https://reona.dev/
 
@@ -20,14 +20,14 @@ pnpm dev
 
 Here are some useful commands you can use to work with this project:
 
-| Command             | Action                                                   |
-| :------------------ | :------------------------------------------------------- |
-| `pnpm install`      | Installs dependencies                                    |
-| `pnpm dev`          | Starts local dev server at `localhost:3000`              |
-| `pnpm build`        | Build your production site to `./.vercel/output/static/` |
-| `pnpm preview`      | Preview your build locally, before deploying             |
-| `pnpm astro ...`    | Run CLI commands like `astro add`, `astro check`         |
-| `pnpm astro --help` | Get help using the Astro CLI                             |
+| Command            | Action                                         |
+| :----------------- | :--------------------------------------------- |
+| `pnpm install`     | Installs dependencies                          |
+| `pnpm dev`         | Starts local dev server at `localhost:3000`    |
+| `pnpm build`       | Build your production site                     |
+| `pnpm preview`     | Preview your build locally, before deploying   |
+| `pnpm lint`        | Run lint tool                                  |
+| `pnpm create post` | Create a new mdx file under app/content/posts/ |
 
 ## License
 

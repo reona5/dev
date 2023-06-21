@@ -1,8 +1,11 @@
 {
+  "specs": {
+    "\\.[jt]sx?$": "@markuplint/react-spec"
+  },
   "parser": {
-    ".astro$": "@markuplint/astro-parser"
+    "\\.[jt]sx?$": "@markuplint/jsx-parser"
   },
   "extends": [
-    "markuplint:recommended"
+    "markuplint:recommended-react"
   ]
 }
