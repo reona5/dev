@@ -4,9 +4,8 @@ import { getPosts } from "@/app/data/post";
 import Link from "next/link";
 
 export const metadata = {
-  title: process.env.NEXT_PUBLIC_SITE_TITLE ?? "",
-  description:
-    process.env.NEXT_PUBLIC_SITE_DESCRIPTION ?? "",
+  title: process.env.NEXT_PUBLIC_SITE_TITLE,
+  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
 };
 
 const Home: React.FC = () => {
