@@ -16,9 +16,10 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "gray" },
   ],
   icons: {
-    icon: [{ url: "/icon.svg" }],
+    icon: [{ url: "/favicon.ico" }, { url: "/icon.svg" }],
     apple: [{ url: "/apple-icon.png" }],
   },
+  manifest: "/manifest.json"
 };
 
 const RootLayout = ({ children }: RootLayoutProps) => {
