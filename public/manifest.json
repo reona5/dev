@@ -1,0 +1,23 @@
+{
+  "name": "reona.dev",
+  "short_name": "reona.dev",
+  "start_url": "https://reona.dev",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#000",
+  "description": "reona.dev は Next.js + Vercel によって作成されています。プログラミングに関する学びや日々の出来事を発信するウェブサイトです。",
+  "icons": [
+    {
+      "src": "/maskable_icon_x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/maskable_icon_x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ]
+}
