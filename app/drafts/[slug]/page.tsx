@@ -7,12 +7,12 @@ import { notFound } from "next/navigation";
 
 type DraftProps = {
   params: {
-    slug: string[];
+    slug: string;
   };
 };
 
 const getPostFromParams = async (params: DraftProps["params"]) => {
-  const slug = params?.slug?.join("/");
+  const { slug } = params;
   const post = allPosts.find((post) => post.slugAsParams === slug);
 
   if (!post || post.isPublished) return;
@@ -39,7 +39,7 @@ export const generateStaticParams = async (): Promise<
   DraftProps["params"][]
 > => {
   return allPosts.map((post) => ({
-    slug: post.slugAsParams.split("/"),
+    slug: post.slugAsParams,
   }));
 };
 

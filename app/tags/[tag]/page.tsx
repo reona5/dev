@@ -11,8 +11,7 @@ type TagProps = {
   };
 };
 
-const getPostsFromParams = async (params: TagProps["params"]) => {
-  const { tag } = params;
+const getPostsBy = async (tag: TagProps["params"]["tag"]) => {
   const posts = allPosts
     .filter((post) => post.tags.includes(tag) && post.isPublished === true)
     .sort((a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf());
@@ -22,10 +21,9 @@ const getPostsFromParams = async (params: TagProps["params"]) => {
 export const generateMetadata = async ({
   params,
 }: TagProps): Promise<Metadata> => {
-  const { tag } = params;
-  const posts = await getPostsFromParams(params);
+  const tag = decodeURIComponent(params.tag);
 
-  if (!posts.length) return {};
+  if (!tag) return {};
 
   return {
     title: tag,
@@ -38,10 +36,10 @@ export const generateStaticParams = async (): Promise<TagProps["params"][]> => {
 };
 
 const TagPostsPage = async ({ params }: TagProps) => {
-  const { tag } = params;
-  const posts = await getPostsFromParams(params);
+  const tag = decodeURIComponent(params.tag);
+  const posts = await getPostsBy(tag);
 
-  if (!tag || !posts.length) {
+  if (!tag) {
     notFound();
   }
 

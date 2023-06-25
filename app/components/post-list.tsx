@@ -27,7 +27,7 @@ export const PostList = (({ posts, isPublished }) => {
     </ol>
   ) : (
     <p className="text-lg">
-      📝 {isPublished ? "下書き" : "記事"} はありません。
+      📝 {isPublished ? "記事" : "下書き"} はありません。
     </p>
   );
 }) satisfies React.FC<PostListProps>;
