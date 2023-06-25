@@ -32,5 +32,5 @@ export const loadGoogleFont = async ({
     throw new Error("Could not find font URL");
   }
 
-  return fetch(fontUrl).then((res) => res.arrayBuffer());
+  return fetch(fontUrl, { cache: "no-store" }).then((res) => res.arrayBuffer());
 };
