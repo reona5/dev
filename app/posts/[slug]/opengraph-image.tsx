@@ -1,5 +1,5 @@
-import { allPosts } from "contentlayer/generated";
 import { loadGoogleFont } from "@/app/lib/loadGoogleFont";
+import { allPosts } from "contentlayer/generated";
 import { ImageResponse } from "next/server";
 
 const getPostFromParams = async (params: PostProps["params"]) => {
@@ -41,7 +41,7 @@ const Image = async ({ params }: PostProps) => {
           width: "100%",
           height: "100%",
           display: "flex",
-          padding: "30px",
+          padding: "48px",
           alignItems: "center",
           justifyContent: "center",
         }}
@@ -54,7 +54,7 @@ const Image = async ({ params }: PostProps) => {
             height: "100%",
             display: "flex",
             flexDirection: "column",
-            padding: "30px",
+            padding: "48px",
             borderRadius: "10px",
             justifyContent: "space-between",
           }}
@@ -65,7 +65,7 @@ const Image = async ({ params }: PostProps) => {
               flexDirection: "column",
             }}
           >
-            <h1 style={{ fontSize: "64px" }}>{title}</h1>
+            <h1 style={{ fontSize: "60px" }}>{title}</h1>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {post.tags.map((tag) => (
                 <p
