@@ -1,10 +1,13 @@
 import { Analytics } from "@/app/components/analytics";
 import { ThemeProvider } from "@/app/components/theme-provider";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { Footer } from "./components/footer";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansJP = localFont({
+  src: "../public/NotoSansJP-Regular.ttf",
+  display: "swap",
+});
 
 type RootLayoutProps = {
   children: React.ReactNode;
@@ -19,13 +22,14 @@ export const metadata = {
     icon: [{ url: "/favicon.ico" }, { url: "/icon.svg" }],
     apple: [{ url: "/apple-icon.png" }],
   },
-  manifest: "/manifest.json"
+  manifest: "/manifest.json",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
 };
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={process.env.NEXT_PUBLIC_SITE_LANGUAGE}>
-      <body className={inter.className}>
+      <body className={notoSansJP.className}>
         <ThemeProvider attribute="class">
           {children}
           <Analytics />
