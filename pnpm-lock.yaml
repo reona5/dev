@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@vercel/analytics':
     specifier: ^1.0.1
@@ -27,7 +31,7 @@ dependencies:
     version: 18.2.0(react@18.2.0)
   rehype-pretty-code:
     specifier: ^0.9.9
-    version: 0.9.9(shiki@0.14.2)
+    version: 0.9.9(shiki@0.14.3)
   remark-gfm:
     specifier: ^3.0.1
     version: 3.0.1
@@ -35,8 +39,8 @@ dependencies:
     specifier: ^1.2.2
     version: 1.2.2
   shiki:
-    specifier: ^0.14.2
-    version: 0.14.2
+    specifier: ^0.14.3
+    version: 0.14.3
 
 devDependencies:
   '@markuplint/jsx-parser':
@@ -5464,7 +5468,7 @@ packages:
       functions-have-names: 1.2.3
     dev: true
 
-  /rehype-pretty-code@0.9.9(shiki@0.14.2):
+  /rehype-pretty-code@0.9.9(shiki@0.14.3):
     resolution: {integrity: sha512-mlU2Qgupn9MMK31CTmWk0Ie5Vp0od+jh2vCkGDBMlPAMeAvYASn6Ois6xRmosutMT4yH/COc3R4r/PELpuUoWg==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -5473,7 +5477,7 @@ packages:
       '@types/hast': 2.3.4
       hash-obj: 4.0.0
       parse-numeric-range: 1.3.0
-      shiki: 0.14.2
+      shiki: 0.14.3
     dev: false
 
   /rehype-stringify@9.0.3:
@@ -5673,8 +5677,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /shiki@0.14.2:
-    resolution: {integrity: sha512-ltSZlSLOuSY0M0Y75KA+ieRaZ0Trf5Wl3gutE7jzLuIcWxLp5i/uEnLoQWNvgKXQ5OMpGkJnVMRLAuzjc0LJ2A==}
+  /shiki@0.14.3:
+    resolution: {integrity: sha512-U3S/a+b0KS+UkTyMjoNojvTgrBHjgp7L6ovhFVZsXmBGnVdQ4K4U9oK0z63w538S91ATngv1vXigHCSWOwnr+g==}
     dependencies:
       ansi-sequence-parser: 1.1.0
       jsonc-parser: 3.2.0
@@ -6479,7 +6483,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

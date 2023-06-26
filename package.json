@@ -26,7 +26,7 @@
     "rehype-pretty-code": "^0.9.9",
     "remark-gfm": "^3.0.1",
     "rss": "^1.2.2",
-    "shiki": "^0.14.2"
+    "shiki": "^0.14.3"
   },
   "devDependencies": {
     "@markuplint/jsx-parser": "^3.8.0",
