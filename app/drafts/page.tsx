@@ -2,6 +2,11 @@ import { Header } from "@/app/components/header";
 import { PostList } from "@/app/components/post-list";
 import { getPosts } from "@/app/data/post";
 
+export const metadata = {
+  title: "下書き一覧",
+  description: "下書き一覧です。",
+};
+
 const Drafts: React.FC = () => {
   const posts = getPosts({ isPublished: false });
 

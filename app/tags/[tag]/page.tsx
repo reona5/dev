@@ -26,7 +26,7 @@ export const generateMetadata = async ({
   if (!tag) return {};
 
   return {
-    title: tag,
+    title: `${tag} の記事一覧`,
     description: `${tag} のブログ記事一覧です`,
   };
 };
