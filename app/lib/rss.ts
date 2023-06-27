@@ -17,7 +17,7 @@ const generateFeedItem = async (post: Post) => {
     custom_elements: [
       {
         "content:encoded": {
-          _cdata: await renderedMdx(post.body.code),
+          _cdata: renderedMdx(post.body.code),
         },
       },
     ],
