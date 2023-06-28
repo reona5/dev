@@ -1,7 +1,7 @@
 {
   "name": "reona.dev",
   "short_name": "reona.dev",
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#000",
