@@ -1,4 +1,4 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { getMDXComponent, useMDXComponent } from "next-contentlayer/hooks";
 import Image from "next/image";
 
 type MdxProps = { code: string };
@@ -13,5 +13,6 @@ export const Mdx = (({ code }) => {
 
 export const renderedMdx = async (code: string) => {
   const ReactDOMServer = (await import("react-dom/server")).default;
-  return ReactDOMServer.renderToStaticMarkup(<Mdx code={code} />);
+  const Component = getMDXComponent(code);
+  return ReactDOMServer.renderToStaticMarkup(<Component code={code} />);
 };

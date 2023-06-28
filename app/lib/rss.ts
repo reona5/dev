@@ -1,3 +1,4 @@
+import { renderedMdx } from "@/app/components/mdx-components";
 import { getPosts } from "@/app/data/post";
 import { Post } from "contentlayer/generated";
 import Rss from "rss";
@@ -5,8 +6,6 @@ import Rss from "rss";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "";
 
 const generateFeedItem = async (post: Post) => {
-  const { renderedMdx } = await import("@/app/components/mdx-components");
-
   return {
     title: post.title,
     description: post.description,
@@ -17,7 +16,7 @@ const generateFeedItem = async (post: Post) => {
     custom_elements: [
       {
         "content:encoded": {
-          _cdata: renderedMdx(post.body.code),
+          _cdata: await renderedMdx(post.body.code),
         },
       },
     ],
