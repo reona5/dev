@@ -1,11 +1,11 @@
 import { Analytics } from "@/app/components/analytics";
 import { ThemeProvider } from "@/app/components/theme-provider";
-import localFont from "next/font/local";
+import { Noto_Sans_JP } from "next/font/google";
 import { Footer } from "./components/footer";
 import "./globals.css";
 
-const notoSansJP = localFont({
-  src: "../public/NotoSansJP-Regular.ttf",
+const notoSansJP = Noto_Sans_JP({
+  subsets: ["latin"],
   display: "swap",
 });
 
