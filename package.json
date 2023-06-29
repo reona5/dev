@@ -10,7 +10,7 @@
     "start": "next start",
     "lint": "next lint && pnpm markuplint",
     "lint:fix": "next lint --fix",
-    "format": "prettier --write --ignore-path .gitignore './**/*.{js,ts,tsx,json}'",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,ts,tsx,json,mdx}'",
     "markuplint": "markuplint './**/*.tsx'",
     "create:post": "ruby app/scripts/create_post.rb"
   },
