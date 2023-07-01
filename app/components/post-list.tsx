@@ -9,7 +9,10 @@ export const PostList = (({ posts }) => {
   return posts.length !== 0 ? (
     <ol className="grid gap-8">
       {posts.map((post) => (
-        <li key={post._id} className="grid rounded-2xl border p-4 bg-gray-50 dark:bg-black">
+        <li
+          key={post._id}
+          className="grid gap-2 rounded-2xl border bg-gray-50 p-4 dark:border-gray-700 dark:bg-black"
+        >
           <PostCard post={post} />
         </li>
       ))}

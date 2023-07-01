@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TagCard } from "@/app/components/tag-card";
 
 type TagListProps = {
   tags: string[];
@@ -6,14 +6,11 @@ type TagListProps = {
 
 export const TagList = (({ tags }) => {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-2">
       {tags.map((tag) => (
-        <p
-          key={tag}
-          className="my-1 mr-1 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black"
-        >
-          <Link href={`/tags/${tag}`}>{tag}</Link>
-        </p>
+        <TagCard tag={tag} key={tag}>
+          {tag}
+        </TagCard>
       ))}
     </div>
   );

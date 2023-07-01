@@ -22,7 +22,7 @@ const Home: React.FC = () => {
           </p>
           <PostList posts={posts} />
           <Link href="/posts" className="text-lg underline">
-            &gt;&gt; 記事一覧へ
+            &gt;&gt; すべての記事を見る
           </Link>
         </section>
       </main>

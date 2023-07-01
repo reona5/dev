@@ -1,7 +1,7 @@
 import { allPosts } from "@/.contentlayer/generated";
 import { Header } from "@/app/components/header";
+import { TagCard } from "@/app/components/tag-card";
 import { allTags } from "@/app/data/tag";
-import Link from "next/link";
 
 export const metadata = {
   title: "タグ一覧",
@@ -23,16 +23,11 @@ const Tags: React.FC = () => {
       <Header ariaCurrent="Tags" />
       <main className="m-auto max-w-4xl p-6">
         <h1 className="mb-8 text-3xl font-bold">タグ一覧</h1>
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-2">
           {tags.map((tag) => (
-            <p
-              key={tag.name}
-              className="m-2 rounded-md border bg-gray-50 p-1 text-sm dark:bg-black"
-            >
-              <Link href={`/tags/${tag.name}`}>
-                {tag.name} ({tag.posts.length})
-              </Link>
-            </p>
+            <TagCard tag={tag.name} key={tag.name}>
+              {`${tag.name} (${tag.posts.length})`}
+            </TagCard>
           ))}
         </div>
       </main>
