@@ -15,7 +15,7 @@ const Drafts: React.FC = () => {
       <Header ariaCurrent="Drafts" />
       <main className="m-auto max-w-4xl p-6">
         <h1 className="mb-8 text-3xl font-bold">下書き一覧</h1>
-        <PostList posts={posts} isPublished={false} />
+        <PostList posts={posts} />
       </main>
     </>
   );

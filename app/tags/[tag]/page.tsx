@@ -48,7 +48,7 @@ const TagPostsPage = async ({ params }: TagProps) => {
       <Header ariaCurrent="Tags" />
       <main className="m-auto max-w-4xl p-6">
         <h1 className="mb-8 text-3xl font-bold">{tag} の記事一覧</h1>
-        <PostList posts={posts} isPublished={true} />
+        <PostList posts={posts} />
       </main>
     </>
   );

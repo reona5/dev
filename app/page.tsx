@@ -20,7 +20,7 @@ const Home: React.FC = () => {
           <p>
             プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
           </p>
-          <PostList posts={posts} isPublished={true} />
+          <PostList posts={posts} />
           <Link href="/posts" className="text-lg underline">
             &gt;&gt; 記事一覧へ
           </Link>

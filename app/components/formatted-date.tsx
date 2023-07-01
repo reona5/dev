@@ -7,5 +7,9 @@ export const FormattedDate = (({ date }) => {
     day: "numeric",
   });
 
-  return <time dateTime={date}>{formattedDate}</time>;
+  return (
+    <time dateTime={date} className="text-sm">
+      {formattedDate}
+    </time>
+  );
 }) satisfies React.FC<FormattedDateProps>;
