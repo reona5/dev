@@ -19,11 +19,11 @@ export const ModeToggle = (({ isHidden }) => {
   return (
     <button
       onClick={toggleMode}
-      className={isHidden ? "hidden sm:inline" : "mb-5 sm:hidden"}
+      className={isHidden ? "hidden sm:inline" : "mb-2 sm:hidden"}
     >
       <span className="sr-only">モード切り替え</span>
       {!mounted || theme === "light" ? (
-        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 24 26">
           <path
             className="dark:fill-transparent"
             fill="black"
@@ -32,7 +32,7 @@ export const ModeToggle = (({ isHidden }) => {
           />
         </svg>
       ) : (
-        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 24 26">
           <path
             className="dark:fill-white"
             fill="transparent"
