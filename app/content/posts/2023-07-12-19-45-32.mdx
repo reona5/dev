@@ -1,0 +1,125 @@
+---
+title: "macOS のセットアップをする"
+description: "M1 MacBook Air(2020) を初期化する機会があったため、セットアップの手順を記録しておきます。"
+date: "2023-07-12T19:45:32+09:00"
+tags:
+  - macOS
+  - 環境構築
+isPublished: true
+---
+
+## はじめに
+
+プライベートで利用している M1 MacBook Air(2020) を初期化する機会があったため、セットアップの手順を記録しておきます。
+
+## 前提
+
+移行アシスタントや Time Machine を利用すれば基本的に待機するだけでセットアップが完了しますが、社用 PC の初期セットアップなどそれらを利用できないケースが考えられます。
+
+そのため、今回は新規にユーザーを作成した上でセットアップを進めます。
+
+## システム環境設定
+
+以下の手順でシステム環境設定を行います。
+
+- Apple ID でサインインする
+- Wi-Fi
+  - ネットワークの接続をする
+- Bluetooth
+  - ワイヤレス機器を接続する
+- サウンド
+  - 通知音を OFF にする
+- 一般
+  - OS のソフトウェアアップデートをする
+  - ログイン項目で必要なアプリケーションを追加する
+- 外観
+  - 外観モードをダークにする
+- コントロールバー
+  - メニューバーに表示する項目を設定する
+- デスクトップと Docks
+  - Docks のサイズ変更
+- Touch ID とパスコード
+  - Apple Watch でロックを解除できるようにする
+- キーボード
+  - キーのリピート速度を最速にする
+  - リピート入力認識までの時間を最速にする
+  - キーボードの輝度を最低にする
+  - キーボードショートカット
+    - 入力ソース
+      - 前の入力ソースを選択
+        - ⌘ + Space
+    - Spotlight
+      - Spotlight 検索を表示を OFF にする（raycast による検索を利用するため）
+    - 修飾キー
+      - Caps Lock キーと Control キーを入れ替える
+  - 入力ソース
+    - ABC, ひらがな（Google）を設定
+      - Google 日本語入力の入力ソースが表示されない場合は、一度他の入力ソースを設定した上で再度入力ソースの編集を行う
+- トラックパッド
+  - 軌跡の速さを最速にする
+
+## ターミナル
+
+以下の手順でターミナル上で設定を行います。
+
+1. Homebrew をインストールする
+
+- `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+2. Git をインストールする
+
+- `brew install git`
+
+3. dotfiles を clone する
+
+- `git clone https://github.com/reona5/dotfiles.git`
+- `make` コマンドを実行し、セットアップを行う
+
+4. asdf でプラグインを追加し、動作するバージョンをインストールする
+
+- Ruby、Go、Node.js
+
+5. pnpm でグローバルパッケージをインストールする
+
+- `pnpm add -g typescript typescript-language-server prettier @fsouza/prettierd eslint eslint_d`
+
+6. Neovim を起動し、以下のコマンドを実行してプラグインをインストールする
+
+- `:PackerInstall`
+
+7. GitHub の access token を設定する
+
+- 以下を参考に access token を生成する
+  - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
+- push 時に username と password を求められるため、username に GitHub のユーザー名、password に access token を入力
+
+## 各種アプリケーション
+
+インストール済みの各種アプリケーションを起動し、初回設定を行います。アプリケーション一覧は Brewfile に書かれています。
+
+- https://github.com/reona5/dotfiles/blob/main/.Brewfile
+
+追加で設定が必要なアプリケーションは以下のとおりです。
+
+- Google Chrome
+  - Google アカウントでログインして設定の同期を行う
+  - Google Meet PWA をインストールする
+    - https://support.google.com/meet/answer/10708569?hl=ja
+- Raycast でショートカットキーを設定する
+  - Raycast Hotkey
+    - ⌘ + Control
+  - Clipboard History
+    - ⌘ + Control + v
+- DeepL でショートカットキーを設定する
+  - ⌘ + ;
+
+## 終わりに
+
+今回は macOS のセットアップ手順をまとめました。
+
+dotfiles を利用することでほとんどの設定を行うことができますが、システム環境設定は初回に設定して頻繁に更新することもないので、忘れていることもあり設定に予想以上に時間がかかりました。
+
+また、dotfiles は CI で build 時の挙動を担保しているのですが、インストールしたアプリケーションを実際に起動しようとした際に依存しているリソースがなく立ち上がらないこともありました。
+そのため、追加でライブラリをインストールするなど dotfiles の内容を見直すいい機会にもなりました。
+
+今後も macOS をセットアップする機会はあると思うので、追加で気づいたことがあればこちらの記事に追記します 📝
