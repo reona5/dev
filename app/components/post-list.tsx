@@ -11,7 +11,7 @@ export const PostList = (({ posts }) => {
       {posts.map((post) => (
         <li
           key={post._id}
-          className="grid gap-2 rounded-2xl border bg-gray-50 p-4 dark:border-gray-700 dark:bg-black"
+          className="grid gap-2 rounded-2xl border bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-950"
         >
           <PostCard post={post} />
         </li>

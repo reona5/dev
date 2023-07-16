@@ -54,8 +54,8 @@ const DraftPage = async ({ params }: DraftProps) => {
   return (
     <>
       <Header ariaCurrent="Drafts" />
-      <main className="m-auto max-w-4xl p-6">
-        <article className="prose max-w-none break-words dark:prose-invert">
+      <main className="m-auto max-w-5xl">
+        <article className="prose my-6 max-w-none break-words p-6 dark:prose-invert sm:p-10">
           <h1 className="mb-10">{post.title}</h1>
           <TagList tags={post.tags} />
           <hr className="my-4" />
