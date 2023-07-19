@@ -43,7 +43,7 @@
     "markuplint": "^3.11.0",
     "prettier": "^2.8.8",
     "prettier-plugin-organize-imports": "^3.2.3",
-    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-external-links": "^2.1.0",
     "rehype-pretty-code": "^0.9.9",
