@@ -15,10 +15,12 @@ const About: React.FC = () => {
           <Image
             src="/placeholder-about.jpg"
             alt=""
-            width={944}
-            height={563}
+            width="0"
+            height="0"
+            sizes="100vw"
             loading="eager"
-            className="pb-8"
+            priority={true}
+            className="h-auto w-full pb-8"
           />
           <h1>{metadata.title}</h1>
           <p>

@@ -6,6 +6,15 @@ body {
   @apply bg-white transition-colors ease-out dark:bg-gray-900 dark:text-white;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply scroll-mt-20 sm:scroll-mt-0;
+}
+
 div[data-rehype-pretty-code-fragment] {
   overflow: hidden;
 
@@ -72,4 +81,18 @@ code[data-line-numbers] .line::before {
   margin-right: 0.75rem;
   width: 1rem;
   color: rgb(255 255 255 / 0.2);
+}
+
+.headings-anchor-link {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.headings-anchor-link:hover {
+  color: #659ad2;
+}
+
+.headings-anchor-link > svg {
+  block-size: auto;
+  max-inline-size: 100%;
 }
