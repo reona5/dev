@@ -16,7 +16,7 @@ export const Header = (({ ariaCurrent }) => {
     <>
       {/* sticky な要素がページ最上部にある場合に、next/link でページ遷移をするとスクロールアップされないバグがあるため、一時的に空の div を配置して対処している */}
       {/* refs: https://github.com/vercel/next.js/issues/28778#issuecomment-1615973918 */}
-      <div /> 
+      <div />
       <header className="sticky top-0 bg-white/75 transition-colors ease-out dark:bg-gray-900/75 sm:static sm:bg-white sm:dark:bg-gray-900">
         <div className="m-auto flex max-w-5xl items-center justify-between p-6 sm:px-10">
           <Link href="/" className="text-xl">

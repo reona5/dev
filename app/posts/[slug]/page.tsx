@@ -1,5 +1,6 @@
 import { Header } from "@/app/components/header";
 import { Mdx } from "@/app/components/mdx-components";
+import { RequestEditButton } from "@/app/components/request-edit-button";
 import { TagList } from "@/app/components/tag-list";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
@@ -59,6 +60,9 @@ const PostPage = async ({ params }: PostProps) => {
           <TagList tags={post.tags} />
           <hr className="mt-4" />
           <Mdx code={post.body.code} />
+          <div className="grid justify-items-end p-6">
+            <RequestEditButton slug={post.slug} />
+          </div>
         </article>
       </main>
     </>
