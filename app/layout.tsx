@@ -58,10 +58,7 @@ export const metadata = {
 
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
-    <html
-      lang={process.env.NEXT_PUBLIC_SITE_LANGUAGE}
-      className="scroll-smooth"
-    >
+    <html lang={process.env.NEXT_PUBLIC_SITE_LANGUAGE}>
       <body className={notoSansJP.className}>
         <ThemeProvider attribute="class">
           {children}
