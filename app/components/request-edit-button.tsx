@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-type requestEditButtonParams = {
+type RequestEditButtonParams = {
   slug: string;
 };
 
@@ -30,4 +30,4 @@ export const RequestEditButton = (({ slug }) => {
       編集の提案をする
     </a>
   );
-}) satisfies React.FC<requestEditButtonParams>;
+}) satisfies React.FC<RequestEditButtonParams>;
