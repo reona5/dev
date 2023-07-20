@@ -2,6 +2,7 @@ import { Header } from "@/app/components/header";
 import { Mdx } from "@/app/components/mdx-components";
 import { RequestEditButton } from "@/app/components/request-edit-button";
 import { TagList } from "@/app/components/tag-list";
+import { TweetButton } from "@/app/components/tweet-button";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -60,7 +61,11 @@ const PostPage = async ({ params }: PostProps) => {
           <TagList tags={post.tags} />
           <hr className="mt-4" />
           <Mdx code={post.body.code} />
-          <div className="grid justify-items-end py-4">
+          <div className="grid justify-items-end gap-2 py-4">
+            <TweetButton
+              title={post.title}
+              url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
+            />
             <RequestEditButton slug={post.slug} />
           </div>
         </article>
