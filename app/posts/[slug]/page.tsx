@@ -61,7 +61,8 @@ const PostPage = async ({ params }: PostProps) => {
           <TagList tags={post.tags} />
           <hr className="mt-4" />
           <Mdx code={post.body.code} />
-          <div className="grid justify-items-end gap-2 py-4">
+          <hr className="my-8" />
+          <div className="grid justify-items-end gap-2">
             <TweetButton
               title={post.title}
               url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
