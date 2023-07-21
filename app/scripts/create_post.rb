@@ -16,7 +16,7 @@ puts "\n"
 
 now = Time.now
 date = now.strftime('%Y-%m-%dT%H:%M:%S')
-file_name = "#{now.strftime('%Y-%m-%d-%H-%M-%S')}.mdx"
+file_name = "#{now.strftime('%Y%m%d%H%M%S')}.mdx"
 file_path = "#{POSTS_DIR}#{file_name}"
 
 File.open(file_path, 'w') do |file|
