@@ -3,14 +3,16 @@ import Image from "next/image";
 type TweetButtonParams = {
   title: string;
   url: string;
+  tags: string
 };
 
-export const TweetButton = (({ title, url }) => {
-  const requestUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+export const TweetButton = (({ title, url, tags }) => {
+  const requestUrl = "https://twitter.com/intent/tweet"
+  const params = `?url=${url}&text=${title}&hashtags=${tags}&via=reona_5`;
 
   return (
     <a
-      href={requestUrl}
+      href={`${requestUrl}${params}`}
       target="_blank"
       className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
     >
