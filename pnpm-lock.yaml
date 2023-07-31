@@ -45,7 +45,7 @@ devDependencies:
     version: 3.10.0(@markuplint/ml-core@3.11.0)
   '@tailwindcss/typography':
     specifier: ^0.5.9
-    version: 0.5.9(tailwindcss@3.3.2)
+    version: 0.5.9(tailwindcss@3.3.3)
   '@types/node':
     specifier: 20.3.2
     version: 20.3.2
@@ -75,7 +75,7 @@ devDependencies:
     version: 8.8.0(eslint@8.46.0)
   eslint-plugin-tailwindcss:
     specifier: ^3.13.0
-    version: 3.13.0(tailwindcss@3.3.2)
+    version: 3.13.0(tailwindcss@3.3.3)
   markuplint:
     specifier: ^3.11.0
     version: 3.11.0(@types/node@20.3.2)(ts-node@10.9.1)(typescript@5.1.6)
@@ -104,8 +104,8 @@ devDependencies:
     specifier: ^3.0.1
     version: 3.0.1
   tailwindcss:
-    specifier: 3.3.2
-    version: 3.3.2(ts-node@10.9.1)
+    specifier: 3.3.3
+    version: 3.3.3(ts-node@10.9.1)
   typescript:
     specifier: 5.1.6
     version: 5.1.6
@@ -1367,7 +1367,7 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.2):
+  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.3):
     resolution: {integrity: sha512-t8Sg3DyynFysV9f4JDOVISGsjazNb48AeIYQwcL+Bsq5uf4RYL75C1giZ43KISjeDGBaTN3Kxh7Xj/vRSMJUUg==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
@@ -1376,7 +1376,7 @@ packages:
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 3.3.2(ts-node@10.9.1)
+      tailwindcss: 3.3.3(ts-node@10.9.1)
     dev: true
 
   /@tsconfig/node10@1.0.9:
@@ -2785,7 +2785,7 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.2):
+  /eslint-plugin-tailwindcss@3.13.0(tailwindcss@3.3.3):
     resolution: {integrity: sha512-Fcep4KDRLWaK3KmkQbdyKHG0P4GdXFmXdDaweTIPcgOP60OOuWFbh1++dufRT28Q4zpKTKaHwTsXPJ4O/EjU2Q==}
     engines: {node: '>=12.13.0'}
     peerDependencies:
@@ -2793,7 +2793,7 @@ packages:
     dependencies:
       fast-glob: 3.2.12
       postcss: 8.4.25
-      tailwindcss: 3.3.2(ts-node@10.9.1)
+      tailwindcss: 3.3.3(ts-node@10.9.1)
     dev: true
 
   /eslint-scope@7.2.2:
@@ -6149,8 +6149,8 @@ packages:
       tslib: 2.6.0
     dev: true
 
-  /tailwindcss@3.3.2(ts-node@10.9.1):
-    resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
+  /tailwindcss@3.3.3(ts-node@10.9.1):
+    resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -6174,7 +6174,6 @@ packages:
       postcss-load-config: 4.0.1(postcss@8.4.25)(ts-node@10.9.1)
       postcss-nested: 6.0.1(postcss@8.4.25)
       postcss-selector-parser: 6.0.13
-      postcss-value-parser: 4.2.0
       resolve: 1.22.2
       sucrase: 3.32.0
     transitivePeerDependencies:
