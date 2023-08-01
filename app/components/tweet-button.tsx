@@ -3,11 +3,11 @@ import Image from "next/image";
 type TweetButtonParams = {
   title: string;
   url: string;
-  tags: string
+  tags: string;
 };
 
 export const TweetButton = (({ title, url, tags }) => {
-  const requestUrl = "https://twitter.com/intent/tweet"
+  const requestUrl = "https://twitter.com/intent/tweet";
   const params = `?url=${url}&text=${title}&hashtags=${tags}&via=reona_5`;
 
   return (

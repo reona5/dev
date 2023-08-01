@@ -66,7 +66,7 @@ const PostPage = async ({ params }: PostProps) => {
             <TweetButton
               title={post.title}
               url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
-              tags={post.tags.join('%2C')}
+              tags={post.tags.join("%2C")}
             />
             <RequestEditButton slug={post.slug} />
           </div>
