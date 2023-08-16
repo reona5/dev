@@ -33,7 +33,7 @@ const About: React.FC = () => {
             </a>
             &nbsp;は Next.js + Vercel によって作成されています。
             <a
-              href="https://twitter.com/reona_5"
+              href="https://x.com/reona_5"
               target="_blank"
               rel="noreferrer"
             >

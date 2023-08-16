@@ -14,18 +14,11 @@ export const RequestEditButton = (({ slug }) => {
       className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
     >
       <Image
-        src="/github-white.svg"
+        src="/github.svg"
         width={24}
         height={24}
         alt="Github icon"
-        className="m-0 hidden dark:inline"
-      />
-      <Image
-        src="/github-black.svg"
-        width={24}
-        height={24}
-        alt="Github icon"
-        className="m-0 dark:hidden"
+        className="m-0"
       />
       編集の提案をする
     </a>

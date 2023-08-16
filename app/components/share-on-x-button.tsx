@@ -1,13 +1,13 @@
 import Image from "next/image";
 
-type TweetButtonParams = {
+type ShareOnXButtonParams = {
   title: string;
   url: string;
   tags: string;
 };
 
-export const TweetButton = (({ title, url, tags }) => {
-  const requestUrl = "https://twitter.com/intent/tweet";
+export const ShareOnXButton = (({ title, url, tags }) => {
+  const requestUrl = "https://x.com/intent/tweet";
   const params = `?url=${url}&text=${title}&hashtags=${tags}&via=reona_5`;
 
   return (
@@ -17,13 +17,13 @@ export const TweetButton = (({ title, url, tags }) => {
       className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
     >
       <Image
-        src="/twitter.svg"
+        src="/x.svg"
         width={24}
         height={24}
-        alt="Twitter icon"
+        alt="X icon"
         className="m-0 dark:inline"
       />
-      ツイートする
+      共有する
     </a>
   );
-}) satisfies React.FC<TweetButtonParams>;
+}) satisfies React.FC<ShareOnXButtonParams>;
