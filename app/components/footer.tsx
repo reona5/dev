@@ -8,14 +8,14 @@ export const Footer: React.FC = () => {
       imagePath: "/rss.svg",
     },
     {
-      name: "Twitter",
-      href: "https://twitter.com/reona_5",
-      imagePath: "/twitter.svg",
+      name: "X",
+      href: "https://x.com/reona_5",
+      imagePath: "/x.svg",
     },
     {
       name: "GitHub",
       href: "https://github.com/reona5",
-      imagePath: "/github-black.svg",
+      imagePath: "/github.svg",
     },
   ] as const;
   const today = new Date();
@@ -29,31 +29,12 @@ export const Footer: React.FC = () => {
             {items.map((item) => (
               <li key={item.name}>
                 <a href={item.href} target="_blank" rel="noreferrer">
-                  {item.name === "GitHub" ? (
-                    <>
-                      <Image
-                        src="/github-white.svg"
-                        width={24}
-                        height={24}
-                        alt={`${item.name} icon`}
-                        className="hidden dark:inline"
-                      />
-                      <Image
-                        src={item.imagePath}
-                        width={24}
-                        height={24}
-                        alt={`${item.name} icon`}
-                        className="dark:hidden"
-                      />
-                    </>
-                  ) : (
-                    <Image
-                      src={item.imagePath}
-                      width={24}
-                      height={24}
-                      alt={`${item.name} icon`}
-                    />
-                  )}
+                  <Image
+                    src={item.imagePath}
+                    width={24}
+                    height={24}
+                    alt={`${item.name} icon`}
+                  />
                 </a>
               </li>
             ))}

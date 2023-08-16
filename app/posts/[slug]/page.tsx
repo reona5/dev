@@ -2,7 +2,7 @@ import { Header } from "@/app/components/header";
 import { Mdx } from "@/app/components/mdx-components";
 import { RequestEditButton } from "@/app/components/request-edit-button";
 import { TagList } from "@/app/components/tag-list";
-import { TweetButton } from "@/app/components/tweet-button";
+import { ShareOnXButton } from "@/app/components/share-on-x-button";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -63,7 +63,7 @@ const PostPage = async ({ params }: PostProps) => {
           <Mdx code={post.body.code} />
           <hr className="my-8" />
           <div className="grid justify-items-end gap-2">
-            <TweetButton
+            <ShareOnXButton
               title={post.title}
               url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
               tags={post.tags.join("%2C")}

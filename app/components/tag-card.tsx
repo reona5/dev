@@ -7,7 +7,7 @@ type TagCardProps = {
 
 export const TagCard = (({ children, tag }) => {
   return (
-    <p className="rounded-md border bg-gray-200 p-1.5 text-sm dark:border-gray-700 dark:bg-black">
+    <p className="rounded-md bg-gray-200 p-1.5 text-sm dark:bg-gray-800">
       <Link href={`/tags/${tag}`} className="no-underline">
         {children}
       </Link>
