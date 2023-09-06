@@ -47,8 +47,8 @@ devDependencies:
     specifier: ^0.5.9
     version: 0.5.9(tailwindcss@3.3.3)
   '@types/node':
-    specifier: 20.5.1
-    version: 20.5.1
+    specifier: 20.5.9
+    version: 20.5.9
   '@types/react':
     specifier: 18.2.21
     version: 18.2.21
@@ -78,7 +78,7 @@ devDependencies:
     version: 3.13.0(tailwindcss@3.3.3)
   markuplint:
     specifier: ^3.12.0
-    version: 3.12.0(@types/node@20.5.1)(ts-node@10.9.1)(typescript@5.1.6)
+    version: 3.12.0(@types/node@20.5.9)(ts-node@10.9.1)(typescript@5.1.6)
   prettier:
     specifier: ^3.0.2
     version: 3.0.2
@@ -593,7 +593,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.7
-      '@types/node': 20.5.1
+      '@types/node': 20.5.9
     dev: false
 
   /@grpc/proto-loader@0.7.7:
@@ -698,13 +698,13 @@ packages:
     resolution: {integrity: sha512-ohE9Z48cuZpSeZnA467E/LtKgFTEzu0ncJPM30gp9e/O8SLAo0qzSvQNdTwMS2jf10IA6VSIdOcOfKM5V447fA==}
     dev: true
 
-  /@markuplint/create-rule-helper@3.12.0(@types/node@20.5.1):
+  /@markuplint/create-rule-helper@3.12.0(@types/node@20.5.9):
     resolution: {integrity: sha512-NEtgq+QU0JwOFV6hKzfJDxPAQOvoXigiG83g4Fo/1fD2D2SNq7xPV0aDx5yEqNf6RcFPfnlVsp8eCTrVCU6oyg==}
     dependencies:
       '@markuplint/ml-core': 3.12.0
       glob: 10.3.3
       prettier: 2.8.8
-      ts-node: 10.9.1(@types/node@20.5.1)(typescript@5.1.6)
+      ts-node: 10.9.1(@types/node@20.5.9)(typescript@5.1.6)
       tslib: 2.6.0
       typescript: 5.1.6
     transitivePeerDependencies:
@@ -714,7 +714,7 @@ packages:
       - supports-color
     dev: true
 
-  /@markuplint/file-resolver@3.12.0(@types/node@20.5.1)(ts-node@10.9.1)(typescript@5.1.6):
+  /@markuplint/file-resolver@3.12.0(@types/node@20.5.9)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-LFCnRsKsZF23+JxGCw9yPDKhsh5dDqec3IBFJIal5VTNiVQDPv54u3EY6g0fP9mkhsapyb/igQx0wHvaQA8X6w==}
     dependencies:
       '@markuplint/html-parser': 3.10.0
@@ -726,7 +726,7 @@ packages:
       '@markuplint/selector': 3.11.0
       '@markuplint/shared': 3.8.0
       cosmiconfig: 8.2.0
-      cosmiconfig-typescript-loader: 4.3.0(@types/node@20.5.1)(cosmiconfig@8.2.0)(ts-node@10.9.1)(typescript@5.1.6)
+      cosmiconfig-typescript-loader: 4.3.0(@types/node@20.5.9)(cosmiconfig@8.2.0)(ts-node@10.9.1)(typescript@5.1.6)
       glob: 10.3.3
       ignore: 5.2.4
       jsonc: 2.0.0
@@ -1452,8 +1452,8 @@ packages:
     resolution: {integrity: sha512-MUSpfpW0yZbTgjekDbH0shMYBUD+X/uJJJMm9LXN1d5yjl5lCY1vN/eWKD6D1tOtjA6206K0zcIPnUaFMurdNA==}
     dev: true
 
-  /@types/node@20.5.1:
-    resolution: {integrity: sha512-4tT2UrL5LBqDwoed9wZ6N3umC4Yhz3W3FloMmiiG4JwmUJWpie0c7lcnUNd4gtMKuDEO4wRVS8B6Xa0uMRsMKg==}
+  /@types/node@20.5.9:
+    resolution: {integrity: sha512-PcGNd//40kHAS3sTlzKB9C9XL4K0sTup8nbG5lC14kzEteTNuAFh9u5nA0o5TWnSG2r/JNPRXFVcHJIIeRlmqQ==}
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2084,7 +2084,7 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: false
 
-  /cosmiconfig-typescript-loader@4.3.0(@types/node@20.5.1)(cosmiconfig@8.2.0)(ts-node@10.9.1)(typescript@5.1.6):
+  /cosmiconfig-typescript-loader@4.3.0(@types/node@20.5.9)(cosmiconfig@8.2.0)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-NTxV1MFfZDLPiBMjxbHRwSh5LaLcPMwNdCutmnHJCKoVnlvldPWlllonKwrsRJ5pYZBIBGRWWU2tfvzxgeSW5Q==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
@@ -2093,9 +2093,9 @@ packages:
       ts-node: '>=10'
       typescript: '>=3'
     dependencies:
-      '@types/node': 20.5.1
+      '@types/node': 20.5.9
       cosmiconfig: 8.2.0
-      ts-node: 10.9.1(@types/node@20.5.1)(typescript@5.1.6)
+      ts-node: 10.9.1(@types/node@20.5.9)(typescript@5.1.6)
       typescript: 5.1.6
     dev: true
 
@@ -4037,12 +4037,12 @@ packages:
     resolution: {integrity: sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==}
     dev: true
 
-  /markuplint@3.12.0(@types/node@20.5.1)(ts-node@10.9.1)(typescript@5.1.6):
+  /markuplint@3.12.0(@types/node@20.5.9)(ts-node@10.9.1)(typescript@5.1.6):
     resolution: {integrity: sha512-y0tgdkqRjowT7FZqg01vwFNNPwcYwbUwyD4pH9fgEctK2IgDkqRbVGlp+kg+GE3aTVR0RtzkduERZEUNTu5xMA==}
     hasBin: true
     dependencies:
-      '@markuplint/create-rule-helper': 3.12.0(@types/node@20.5.1)
-      '@markuplint/file-resolver': 3.12.0(@types/node@20.5.1)(ts-node@10.9.1)(typescript@5.1.6)
+      '@markuplint/create-rule-helper': 3.12.0(@types/node@20.5.9)
+      '@markuplint/file-resolver': 3.12.0(@types/node@20.5.9)(ts-node@10.9.1)(typescript@5.1.6)
       '@markuplint/html-parser': 3.10.0
       '@markuplint/html-spec': 3.11.0
       '@markuplint/i18n': 3.9.0
@@ -5260,7 +5260,7 @@ packages:
     dependencies:
       lilconfig: 2.1.0
       postcss: 8.4.29
-      ts-node: 10.9.1(@types/node@20.5.1)(typescript@5.1.6)
+      ts-node: 10.9.1(@types/node@20.5.9)(typescript@5.1.6)
       yaml: 2.3.1
     dev: true
 
@@ -5428,7 +5428,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.5.1
+      '@types/node': 20.5.9
       long: 5.2.3
     dev: false
 
@@ -6145,7 +6145,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node@10.9.1(@types/node@20.5.1)(typescript@5.1.6):
+  /ts-node@10.9.1(@types/node@20.5.9)(typescript@5.1.6):
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -6164,7 +6164,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.5.1
+      '@types/node': 20.5.9
       acorn: 8.9.0
       acorn-walk: 8.2.0
       arg: 4.1.3
