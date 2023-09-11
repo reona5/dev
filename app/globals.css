@@ -100,3 +100,28 @@ code[data-line-numbers] .line::before {
   block-size: auto;
   max-inline-size: 100%;
 }
+
+.toc-list {
+  @apply pl-0;
+}
+
+.is-collapsed,
+.is-collapsible {
+  @apply m-0;
+}
+
+.toc-link {
+  @apply font-normal no-underline;
+}
+
+.toc-list-item {
+  @apply m-0 list-none border-l-2 border-gray-200 py-0.5 pl-3 dark:border-gray-700;
+}
+
+.toc-list-item:has(.is-active-link) {
+  @apply border-current;
+}
+
+.is-active-li {
+  @apply border-current;
+}
