@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^3.10.0
     version: 3.10.0(@markuplint/ml-core@3.12.0)
   '@tailwindcss/typography':
-    specifier: ^0.5.9
-    version: 0.5.9(tailwindcss@3.3.3)
+    specifier: ^0.5.10
+    version: 0.5.10(tailwindcss@3.3.3)
   '@types/node':
     specifier: 20.5.9
     version: 20.5.9
@@ -1338,8 +1338,8 @@ packages:
       tslib: 2.6.0
     dev: false
 
-  /@tailwindcss/typography@0.5.9(tailwindcss@3.3.3):
-    resolution: {integrity: sha512-t8Sg3DyynFysV9f4JDOVISGsjazNb48AeIYQwcL+Bsq5uf4RYL75C1giZ43KISjeDGBaTN3Kxh7Xj/vRSMJUUg==}
+  /@tailwindcss/typography@0.5.10(tailwindcss@3.3.3):
+    resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
