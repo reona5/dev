@@ -1,21 +1,18 @@
-import Image from "next/image";
+import { GitHub, Rss, X } from "@/app/components/icon-components";
 
 export const Footer: React.FC = () => {
   const items = [
     {
       name: "RSS",
       href: "/rss.xml",
-      imagePath: "/rss.svg",
     },
     {
       name: "X",
       href: "https://x.com/reona_5",
-      imagePath: "/x.svg",
     },
     {
       name: "GitHub",
       href: "https://github.com/reona5",
-      imagePath: "/github.svg",
     },
   ] as const;
   const today = new Date();
@@ -26,15 +23,12 @@ export const Footer: React.FC = () => {
         <span>&copy; {today.getFullYear()} Reona Shimada.</span>
         <nav>
           <ul className="flex gap-4 p-0">
-            {items.map((item) => (
-              <li key={item.name}>
+            {items.map((item, index) => (
+              <li key={index}>
                 <a href={item.href} target="_blank" rel="noreferrer">
-                  <Image
-                    src={item.imagePath}
-                    width={24}
-                    height={24}
-                    alt={`${item.name} icon`}
-                  />
+                  {item.name === "RSS" && <Rss />}
+                  {item.name === "X" && <X />}
+                  {item.name === "GitHub" && <GitHub />}
                 </a>
               </li>
             ))}

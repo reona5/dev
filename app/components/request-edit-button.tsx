@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { GitHub } from "@/app/components/icon-components";
 
 type RequestEditButtonParams = {
   slug: string;
@@ -13,13 +13,7 @@ export const RequestEditButton = (({ slug }) => {
       target="_blank"
       className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
     >
-      <Image
-        src="/github.svg"
-        width={24}
-        height={24}
-        alt="Github icon"
-        className="m-0"
-      />
+      <GitHub />
       編集の提案をする
     </a>
   );

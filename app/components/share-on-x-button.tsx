@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { X } from "@/app/components/icon-components";
 
 type ShareOnXButtonParams = {
   title: string;
@@ -16,13 +16,7 @@ export const ShareOnXButton = (({ title, url, tags }) => {
       target="_blank"
       className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
     >
-      <Image
-        src="/x.svg"
-        width={24}
-        height={24}
-        alt="X icon"
-        className="m-0 dark:inline"
-      />
+      <X />
       共有する
     </a>
   );
