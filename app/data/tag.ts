@@ -5,6 +5,6 @@ export const allTags = [
     allPosts
       .filter((post) => post.isPublished === true)
       .map((post) => post.tags)
-      .flat()
+      .flat(),
   ),
 ] as const;

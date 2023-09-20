@@ -19,9 +19,11 @@ export const TableOfContent: React.FC = () => {
 
   return (
     <aside className="sticky top-20 mt-12">
-      <span className="font-bold">目次</span>
-      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
-      <div className="toc" />
+      <nav>
+        <header className="font-bold">目次</header>
+        {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
+        <div className="toc" />
+      </nav>
     </aside>
   );
 };

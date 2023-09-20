@@ -108,7 +108,7 @@ const Image = async ({ params }: PostProps) => {
         },
       ],
       ...size,
-    }
+    },
   );
 };
 

@@ -32,11 +32,7 @@ const About: React.FC = () => {
               {process.env.NEXT_PUBLIC_SITE_TITLE ?? ""}
             </a>
             &nbsp;は Next.js + Vercel によって作成されています。
-            <a
-              href="https://x.com/reona_5"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href="https://x.com/reona_5" target="_blank" rel="noreferrer">
               Reona Shimada
             </a>
             &nbsp;のプログラミングに関する学びや日々の出来事を発信するウェブサイトです。

@@ -25,7 +25,7 @@ export const loadGoogleFont = async ({
   const body = await fetch(url).then((res) => res.text());
 
   const fontUrl = body.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
+    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
   )?.[1];
 
   if (!fontUrl) {
