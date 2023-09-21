@@ -54,7 +54,8 @@ export default makeSource({
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [
-      [rehypeSlug, rehypePrettyCode, rehypePrettyCodeOptions],
+      rehypeSlug,
+      [rehypePrettyCode, rehypePrettyCodeOptions],
       (option) =>
         rehypeAutolinkHeadings({
           ...option,
