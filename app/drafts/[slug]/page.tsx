@@ -1,5 +1,8 @@
 import { Header } from "@/app/components/header";
 import { Mdx } from "@/app/components/mdx-components";
+import { RequestEditButton } from "@/app/components/request-edit-button";
+import { ShareOnXButton } from "@/app/components/share-on-x-button";
+import { TableOfContent } from "@/app/components/table-of-content";
 import { TagList } from "@/app/components/tag-list";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
@@ -58,8 +61,24 @@ const DraftPage = async ({ params }: DraftProps) => {
         <article className="prose my-6 max-w-none break-words p-6 dark:prose-invert sm:p-10">
           <h1 className="mb-10">{post.title}</h1>
           <TagList tags={post.tags} />
-          <hr className="my-4" />
-          <Mdx code={post.body.code} />
+          <hr className="mt-4" />
+          <div className="sm:grid sm:grid-cols-5 sm:gap-4">
+            <section className="sm:col-span-4">
+              <Mdx code={post.body.code} />
+            </section>
+            <div className="col-span-1 hidden h-full md:inline">
+              <TableOfContent />
+            </div>
+          </div>
+          <hr className="my-8" />
+          <div className="grid justify-items-end gap-2">
+            <ShareOnXButton
+              title={post.title}
+              url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
+              tags={post.tags.join("%2C")}
+            />
+            <RequestEditButton slug={post.slug} />
+          </div>
         </article>
       </main>
     </>
