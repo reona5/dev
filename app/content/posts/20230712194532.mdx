@@ -36,6 +36,8 @@ isPublished: true
   - 外観モードをダークにする
 - コントロールバー
   - メニューバーに表示する項目を設定する
+- コントロールセンター
+  - コントロールセンターに表示したい項目を選択する
 - デスクトップと Docks
   - Docks のサイズ変更
 - Touch ID とパスコード
@@ -85,9 +87,11 @@ isPublished: true
 
 6. Neovim を起動し、以下のコマンドを実行してプラグインをインストールする
 
-- `:PackerInstall`
+- `:Lazy`
 
-7. GitHub の access token を設定する
+7. tmux server を起動した状態で prefix + I を押下し、プラグインをダウンロードする
+
+8. GitHub の access token を設定する
 
 - 以下を参考に access token を生成する
   - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-fine-grained-personal-access-token
@@ -101,6 +105,8 @@ isPublished: true
 
 追加で設定が必要なアプリケーションは以下のとおりです。
 
+- Alacritty
+  - Finder 上で ⌘ キーを押下しながらクリックして開く
 - Google Chrome
   - Google アカウントでログインして設定の同期を行う
   - Google Meet PWA をインストールする
