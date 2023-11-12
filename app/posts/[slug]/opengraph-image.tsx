@@ -65,19 +65,18 @@ const Image = async ({ params }: PostProps) => {
               flexDirection: "column",
             }}
           >
-            <h1 style={{ fontSize: "60px" }}>{title}</h1>
+            <h1 style={{ fontSize: "56px" }}>{title}</h1>
             <div style={{ display: "flex", flexWrap: "wrap" }}>
               {post.tags.map((tag) => (
                 <p
                   key={tag}
                   style={{
-                    margin: "8px",
-                    marginRight: "10px",
-                    borderRadius: "10px",
+                    margin: "16px",
+                    borderRadius: "16px",
                     border: "1px solid",
                     borderColor: "#fff",
                     backgroundColor: "#0f131e",
-                    padding: "8px",
+                    padding: "16px",
                     fontSize: "32px",
                     color: "#fff",
                   }}
