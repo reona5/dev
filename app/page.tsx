@@ -21,7 +21,7 @@ const Home: React.FC = () => {
             プログラミングに関する学びや日々の出来事を発信するウェブサイトです。
           </p>
           <PostList posts={posts} />
-          <Link href="/posts" className="text-lg underline">
+          <Link href="/posts" className="text-lg">
             &gt;&gt; すべての記事を見る
           </Link>
         </section>

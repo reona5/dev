@@ -13,7 +13,7 @@ export const PostCard = (({ post }) => {
       <FormattedDate date={post.date} />
       <Link
         href={`/${post.isPublished ? "posts" : "drafts"}/${post.slugAsParams}`}
-        className="text-lg underline"
+        className="text-lg"
       >
         {post.title}
       </Link>
