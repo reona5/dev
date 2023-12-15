@@ -14,7 +14,7 @@ const Posts: React.FC = () => {
     <>
       <Header ariaCurrent="Posts" />
       <main className="m-auto max-w-5xl">
-        <section className="p-6 sm:p-10">
+        <section className="p-4">
           <h1 className="mb-8 text-3xl font-bold">記事一覧</h1>
           <PostList posts={posts} />
         </section>

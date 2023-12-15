@@ -33,7 +33,7 @@ export const MenuButton = (({ children }) => {
         ></span>
       </button>
       {isExpanded && (
-        <div className="absolute right-5 rounded-lg bg-gray-50/75 p-6 shadow-lg dark:bg-black/75  dark:shadow-gray-800">
+        <div className="absolute right-5 rounded-lg bg-gray-50/75 p-4 shadow-lg dark:bg-black/75 dark:shadow-gray-800">
           {children}
         </div>
       )}

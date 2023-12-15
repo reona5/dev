@@ -22,7 +22,7 @@ const Tags: React.FC = () => {
     <>
       <Header ariaCurrent="Tags" />
       <main className="m-auto max-w-5xl">
-        <section className="p-6 sm:p-10">
+        <section className="p-4">
           <h1 className="mb-8 text-3xl font-bold">タグ一覧</h1>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (

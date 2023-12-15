@@ -18,7 +18,7 @@ export const Header = (({ ariaCurrent }) => {
       {/* refs: https://github.com/vercel/next.js/issues/28778#issuecomment-1615973918 */}
       <div />
       <header className="sticky top-0 bg-white/75 transition-colors ease-out dark:bg-gray-900/75 sm:bg-white sm:dark:bg-gray-900">
-        <div className="m-auto flex max-w-5xl items-center justify-between p-6 sm:px-10">
+        <div className="m-auto flex max-w-5xl items-center justify-between p-4">
           <Link href="/" className="text-xl">
             {process.env.NEXT_PUBLIC_SITE_TITLE ?? ""}
           </Link>

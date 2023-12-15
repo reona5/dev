@@ -15,7 +15,7 @@ const Home: React.FC = () => {
     <>
       <Header />
       <main className="m-auto max-w-5xl">
-        <section className="grid gap-8 p-6 sm:p-10">
+        <section className="grid gap-8 p-4">
           <h2 className="text-xl">{"Hello, I'm Reona Shimada👋"}</h2>
           <p>
             プログラミングに関する学びや日々の出来事を発信するウェブサイトです。

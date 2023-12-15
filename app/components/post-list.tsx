@@ -7,11 +7,11 @@ type PostListProps = {
 
 export const PostList = (({ posts }) => {
   return posts.length !== 0 ? (
-    <ol className="grid gap-8">
+    <ol className="grid gap-4">
       {posts.map((post) => (
         <li
           key={post._id}
-          className="grid gap-2 rounded-2xl border bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-950"
+          className="grid gap-2 rounded-2xl bg-gray-100 p-4 dark:bg-gray-950"
         >
           <PostCard post={post} />
         </li>

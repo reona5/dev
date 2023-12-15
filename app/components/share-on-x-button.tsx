@@ -14,7 +14,7 @@ export const ShareOnXButton = (({ title, url, tags }) => {
     <a
       href={`${requestUrl}${params}`}
       target="_blank"
-      className="inline-flex items-center gap-3 rounded-md border border-gray-500 p-2 no-underline"
+      className="inline-flex items-center gap-3 rounded-md bg-gray-200 p-2 no-underline transition-colors transition-colors hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
     >
       <X />
       共有する

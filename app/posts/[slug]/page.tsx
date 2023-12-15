@@ -57,7 +57,7 @@ const PostPage = async ({ params }: PostProps) => {
     <>
       <Header ariaCurrent="Posts" />
       <main className="m-auto max-w-5xl">
-        <article className="prose my-6 max-w-none break-words p-6 dark:prose-invert sm:p-10">
+        <article className="prose my-6 max-w-none break-words p-4 dark:prose-invert">
           <h1 className="mb-10">{post.title}</h1>
           <TagList tags={post.tags} />
           <hr className="mt-4" />

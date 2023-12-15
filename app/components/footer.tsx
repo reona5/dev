@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
 
   return (
     <footer>
-      <div className="m-auto flex max-w-5xl justify-between p-6 sm:px-10">
+      <div className="m-auto flex max-w-5xl justify-between p-4">
         <span>&copy; {today.getFullYear()} Reona Shimada.</span>
         <nav>
           <ul className="flex gap-4 p-0">

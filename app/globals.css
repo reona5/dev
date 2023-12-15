@@ -20,7 +20,7 @@ h6 {
 }
 
 a:hover {
-  @apply text-black dark:text-white
+  @apply text-black dark:text-white;
 }
 
 div[data-rehype-pretty-code-fragment] {

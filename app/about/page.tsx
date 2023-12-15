@@ -11,7 +11,7 @@ const About: React.FC = () => {
     <>
       <Header ariaCurrent="About" />
       <main className="m-auto max-w-5xl">
-        <section className="prose max-w-none p-6 dark:prose-invert sm:p-10">
+        <section className="prose max-w-none p-4 dark:prose-invert">
           <Image
             src="/placeholder-about.jpg"
             alt=""
