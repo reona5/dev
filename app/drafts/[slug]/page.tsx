@@ -23,9 +23,9 @@ const getPostFromParams = async (params: DraftProps["params"]) => {
   return post;
 };
 
-export const generateMetadata = async ({
-  params,
-}: DraftProps): Promise<Metadata> => {
+export const generateMetadata = async (
+  { params }: DraftProps,
+): Promise<Metadata> => {
   const post = await getPostFromParams(params);
 
   if (!post) {
@@ -59,9 +59,9 @@ const DraftPage = async ({ params }: DraftProps) => {
       <Header ariaCurrent="Drafts" />
       <main className="m-auto max-w-5xl">
         <article className="prose my-6 max-w-none break-words p-4 dark:prose-invert">
-          <h1 className="mb-10">{post.title}</h1>
+          <h1 className="mb-8">{post.title}</h1>
           <TagList tags={post.tags} />
-          <hr className="mt-4" />
+          <hr className="my-0" />
           <div className="sm:grid sm:grid-cols-5 sm:gap-4">
             <section className="sm:col-span-4">
               <Mdx code={post.body.code} />
