@@ -6,4 +6,8 @@ export const rehypePrettyCodeOptions: Partial<Options> = {
     node.properties.className = node.properties.className ?? [];
     node.properties.className.push("line--highlighted");
   },
+  onVisitLine(node) {
+    node.properties.className = node.properties.className ?? [];
+    node.properties.className.push("line");
+  },
 };
