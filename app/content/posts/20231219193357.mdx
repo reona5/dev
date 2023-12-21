@@ -1,0 +1,164 @@
+---
+title: "Sass を使わずに CSS をネストさせる"
+description: "CSS のネストを可能にする CSS Nesting がモダンブラウザでサポートされ、Sass に依存しない CSS の書き方が大きく変わり始めています。"
+date: "2023-12-19T19:33:57+09:00"
+tags:
+  - css
+  - sass
+  - scss
+isPublished: true
+---
+
+## CSS Nesting とは
+
+CSS で Sass や Less のような入れ子構造での記述を可能にするものです。
+
+例えば
+
+```html showLineNumbers title="./foo.html"
+<div class="container">
+  <p class="container__text">Hello</p>
+</div>
+```
+
+このような HTML に CSS を当てる場合、
+
+```css showLineNumbers title="./foo.css" {5-7}
+.container {
+  padding: 16px;
+}
+
+.container .container__text {
+  font-size: 12px;
+}
+```
+
+これまでは親子関係にあるセレクタでも上記のように同じ階層に書いていましたが、CSS Nesting を使うと以下のような記述ができるようになります。
+
+```css showLineNumbers title="./foo.css" {4-6}
+.container {
+  padding: 16px;
+
+  .container__text {
+    font-size: 12px;
+  }
+}
+```
+
+セレクタの階層構造がネストによって表現され、適切に利用することで保守性が高まります。
+
+## ネストの記法
+
+Sass を書いたことがあれば、基本的には同じようにネストして書くことができます。
+
+### クラスや ID を選択するセレクタの場合
+
+冒頭で書いたような記法がスタンダードですが、Nesting Selector である `&` を Prefix として付与できます。
+
+```css showLineNumbers title="./foo.css" {4-6}
+.container {
+  padding: 16px;
+
+  & .container__text {
+    font-size: 12px;
+  }
+}
+```
+
+### `main`, `h1` といった要素を選択するセレクタの場合
+
+要素をネストする場合は `&` を付与した上で選択します。
+
+```html showLineNumbers title="./foo.html"
+<main class="container">
+  <h1>Hello</h1>
+</main>
+```
+
+このような HTML に CSS を当てる場合、
+
+```css showLineNumbers title="./foo.css" {4-6}
+.container {
+  padding: 16px;
+
+  & h1 {
+    color: blue;
+  }
+}
+```
+
+このようにすることで、`.container` の子要素である `h1` をスタイリングすることができます。
+
+一部のブラウザでは CSS Nesting のサポートが進んでおり、以下のように `&` なしで要素を選択することができます。
+
+```css showLineNumbers title="./foo.css" {4-6}
+.container {
+  padding: 16px;
+
+  h1 {
+    color: blue;
+  }
+}
+```
+
+12/19 時点でサポートを開始したブラウザとバージョンは以下の通りです。
+
+- Chrome 120(2023/12/8~)
+- Safari 17.2(2023/12/11~)
+- Firefox 117(2023/8/29~)
+
+### `+`, `~`, `>` といった結合子を使って選択するセレクタの場合
+
+```html showLineNumbers title="./foo.html"
+<div class="container">
+  <p class="container__text">Hello</p>
+  <div>
+    <p class="container__text">こんにちは</p>
+  </div>
+</div>
+```
+
+このような HTML の場合で、`.container` の子要素の `.container__text` のみ選択したい場合は以下のように書くことができます。
+
+```css showLineNumbers title="./foo.css" {4-6}
+.container {
+  padding: 16px;
+
+  > .container__text {
+    font-size: 12px;
+  }
+}
+```
+
+### 擬似クラス `:` や疑似要素 `::` を使って選択する場合
+
+Sass と同様に `&` に連結することで選択できます。
+
+```css showLineNumbers title="./foo.css"
+button {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+```
+
+`has()` は 本日 12/19 に Firefox 121 でサポートが開始されたことにより、全てのモダンブラウザで利用できるようになりました。
+このような関数擬似クラスを利用する場合は以下のように書くことができます。
+
+```css showLineNumbers title="./foo.css"
+html {
+  &:has(dialog[open]) {
+    overflow: hidden;
+  }
+}
+```
+
+## サポート状況
+
+![CSS Nesting のサポート状況](/2023-12-21-23-07-28.png)
+https://caniuse.com/css-nesting
+
+## 関連資料
+
+- https://www.w3.org/TR/css-nesting-1/
+- https://drafts.csswg.org/css-nesting/ (日本語)
