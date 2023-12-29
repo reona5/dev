@@ -1,10 +1,10 @@
 import { Analytics } from "@/app/components/analytics";
 import { ThemeProvider } from "@/app/components/theme-provider";
-import { Noto_Sans_JP } from "next/font/google";
+import { Inter } from "next/font/google";
 import { Footer } from "./components/footer";
 import "./globals.css";
 
-const notoSansJP = Noto_Sans_JP({
+const inter = Inter({
   subsets: ["latin"],
   display: "swap",
 });
@@ -59,7 +59,7 @@ export const metadata = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={process.env.NEXT_PUBLIC_SITE_LANGUAGE}>
-      <body className={notoSansJP.className}>
+      <body className={inter.className}>
         <ThemeProvider attribute="class">
           {children}
           <Analytics />
