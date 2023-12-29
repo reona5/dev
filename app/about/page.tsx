@@ -11,7 +11,8 @@ const About: React.FC = () => {
     <>
       <Header ariaCurrent="About" />
       <main className="m-auto max-w-5xl">
-        <section className="prose max-w-none p-4 dark:prose-invert">
+        <section className="prose max-w-none p-4 dark:prose-invert dark:prose-dark">
+          <h1>{metadata.title}</h1>
           <Image
             src="/placeholder-about.jpg"
             alt=""
@@ -22,7 +23,6 @@ const About: React.FC = () => {
             priority={true}
             className="h-auto w-full pb-8"
           />
-          <h1>{metadata.title}</h1>
           <p>
             <a
               href="https://github.com/reona5/dev"

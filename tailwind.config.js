@@ -11,11 +11,17 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            "code::before": {
-              content: '""',
+            "h1, h2, h3, h4, h5, h6, a, p, li": {
+              color: "#374151",
             },
-            "code::after": {
-              content: '""',
+            h1: {
+              fontWeight: "600",
+            },
+            h2: {
+              fontWeight: "500",
+            },
+            h3: {
+              fontWeight: "400",
             },
             "p, li": {
               code: {
@@ -26,17 +32,18 @@ module.exports = {
                 fontWeight: "300",
               },
             },
-            "h1": {
-              fontWeight: "600",
+            "code::before": {
+              content: '""',
             },
-            "h2": {
-              fontWeight: "500",
+            "code::after": {
+              content: '""',
             },
-            "h3": {
-              fontWeight: "400",
-            },
-            "h4, h5, h6": {
-              fontWeight: "300",
+          },
+        },
+        dark: {
+          css: {
+            "h1, h2, h3, h4, h5, h6, a, p, li": {
+              color: "#D1D5DB",
             },
           },
         },
