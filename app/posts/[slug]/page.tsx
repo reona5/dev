@@ -23,9 +23,9 @@ const getPostFromParams = async (params: PostProps["params"]) => {
   return post;
 };
 
-export const generateMetadata = async ({
-  params,
-}: PostProps): Promise<Metadata> => {
+export const generateMetadata = async (
+  { params }: PostProps,
+): Promise<Metadata> => {
   const post = await getPostFromParams(params);
 
   if (!post) {

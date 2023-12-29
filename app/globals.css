@@ -119,7 +119,7 @@ code[data-line-numbers] .line::before {
 }
 
 .toc-list-item {
-  @apply m-0 list-none border-l-2 border-gray-200 py-0.5 pl-3 dark:border-gray-700;
+  @apply m-0 list-none border-l-2 border-gray-200 py-0.5 pl-3 transition-colors ease-out dark:border-gray-700;
 }
 
 .toc-list-item:has(.is-active-link) {
@@ -127,5 +127,9 @@ code[data-line-numbers] .line::before {
 }
 
 .is-active-li {
-  @apply border-current;
+  @apply border-current transition-colors ease-out;
+}
+
+.is-active-link {
+  @apply font-bold;
 }
