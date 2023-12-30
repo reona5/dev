@@ -96,29 +96,35 @@ code[data-line-numbers] {
 
 .toc-list {
   @apply pl-0;
-}
 
-.is-collapsed,
-.is-collapsible {
-  @apply m-0;
-}
+  .toc-list-item {
+    @apply m-0 list-none border-l-2 border-gray-200 py-0.5 pl-3 transition-colors ease-out dark:border-gray-700;
 
-.toc-link {
-  @apply font-normal no-underline;
-}
+    &:is(.is-collapsed, .is-collapsible > *) {
+      &:first-child {
+        @apply mt-2;
+      }
 
-.toc-list-item {
-  @apply m-0 list-none border-l-2 border-gray-200 py-0.5 pl-3 transition-colors ease-out dark:border-gray-700;
+      &:last-child {
+        @apply mb-2;
+      }
+    }
 
-  &:has(.is-active-link) {
-    @apply border-current;
+    &:has(.is-active-link) {
+      @apply border-current;
+    }
+
+    .toc-link {
+      @apply font-normal no-underline;
+    }
+
+    .is-active-link {
+      @apply font-bold;
+    }
+
+    .is-collapsed,
+    .is-collapsible {
+      @apply m-0;
+    }
   }
-
-  .is-active-li {
-    @apply border-current transition-colors ease-out;
-  }
-}
-
-.is-active-link {
-  @apply font-bold;
 }
