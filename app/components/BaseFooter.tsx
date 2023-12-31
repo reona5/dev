@@ -1,6 +1,6 @@
-import { GitHub, Rss, X } from "@/app/components/IconComponents";
+import { GitHub, Rss, X } from "@/app/components/BaseIcon";
 
-export const Footer: React.FC = () => {
+export const BaseFooter: React.FC = () => {
   const items = [
     {
       name: "RSS",

@@ -1,9 +1,9 @@
-import { Header } from "@/app/components/Header";
-import { Mdx } from "@/app/components/MdxComponents";
-import { RequestEditButton } from "@/app/components/RequestEditButton";
-import { ShareOnXButton } from "@/app/components/ShareOnXButton";
-import { TableOfContent } from "@/app/components/TableOfContent";
-import { TagList } from "@/app/components/TagList";
+import { BaseHeader } from "@/app/components/BaseHeader";
+import { BaseMdx } from "@/app/components/BaseMdx";
+import { ButtonRequestEdit } from "@/app/components/buttons/ButtonRequestEdit";
+import { ButtonShareOnX } from "@/app/components/buttons/ButtonShareOnX";
+import { PostTableOfContent } from "@/app/components/posts/PostTableOfContent";
+import { TagList } from "@/app/components/tags/TagList";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -55,7 +55,7 @@ const PostPage = async ({ params }: PostProps) => {
 
   return (
     <>
-      <Header ariaCurrent="Posts" />
+      <BaseHeader ariaCurrent="Posts" />
       <main className="m-auto max-w-5xl">
         <article className="prose my-6 max-w-none break-words p-4 dark:prose-invert dark:prose-dark">
           <h1 className="mb-8">{post.title}</h1>
@@ -63,20 +63,20 @@ const PostPage = async ({ params }: PostProps) => {
           <hr className="my-0" />
           <div className="sm:grid sm:grid-cols-5 sm:gap-4">
             <section className="sm:col-span-4">
-              <Mdx code={post.body.code} />
+              <BaseMdx code={post.body.code} />
             </section>
             <div className="col-span-1 hidden h-full md:inline">
-              <TableOfContent />
+              <PostTableOfContent />
             </div>
           </div>
           <hr className="my-8" />
           <div className="grid justify-items-end gap-2">
-            <ShareOnXButton
+            <ButtonShareOnX
               title={post.title}
               url={`${process.env.NEXT_PUBLIC_SITE_URL}${post.slug}`}
               tags={post.tags.join("%2C")}
             />
-            <RequestEditButton slug={post.slug} />
+            <ButtonRequestEdit slug={post.slug} />
           </div>
         </article>
       </main>

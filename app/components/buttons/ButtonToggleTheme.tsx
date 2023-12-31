@@ -3,14 +3,14 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-type ModeToggleProps = {
+type ButtonToggleThemeProps = {
   isHidden: boolean;
 };
 
-export const ModeToggle = (({ isHidden }) => {
+export const ButtonToggleTheme = (({ isHidden }) => {
   const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
-  const toggleMode = () => setTheme(theme === "light" ? "dark" : "light");
+  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
 
   useEffect(() => {
     setMounted(true);
@@ -18,10 +18,10 @@ export const ModeToggle = (({ isHidden }) => {
 
   return (
     <button
-      onClick={toggleMode}
+      onClick={toggleTheme}
       className={isHidden ? "hidden sm:inline" : "mb-2 sm:hidden"}
     >
-      <span className="sr-only">モード切り替え</span>
+      <span className="sr-only">カラーテーマ切り替え</span>
       {!mounted || theme === "light" ? (
         <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 24 26">
           <path
@@ -43,4 +43,4 @@ export const ModeToggle = (({ isHidden }) => {
       )}
     </button>
   );
-}) satisfies React.FC<ModeToggleProps>;
+}) satisfies React.FC<ButtonToggleThemeProps>;

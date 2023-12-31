@@ -2,7 +2,7 @@ import { getMDXComponent, useMDXComponent } from "next-contentlayer/hooks";
 
 type MdxProps = { code: string };
 
-export const Mdx = (({ code }) => {
+export const BaseMdx = (({ code }) => {
   const MDXComponent = useMDXComponent(code);
   return <MDXComponent />;
 }) satisfies React.FC<MdxProps>;

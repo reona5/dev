@@ -1,5 +1,5 @@
 import { Post } from "@/.contentlayer/generated/types";
-import { PostCard } from "@/app/components/PostCard";
+import { PostListCard } from "@/app/components/posts/PostListCard";
 
 type PostListProps = {
   posts: Post[];
@@ -13,7 +13,7 @@ export const PostList = (({ posts }) => {
           key={post._id}
           className="grid gap-2 rounded-2xl bg-gray-100 p-4 dark:bg-gray-950"
         >
-          <PostCard post={post} />
+          <PostListCard post={post} />
         </li>
       ))}
     </ol>

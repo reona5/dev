@@ -31,7 +31,7 @@ const Image = async ({ params }: PostProps) => {
   if (!post) return;
 
   const title = `> ${post.title} _`;
-  const notoSansJP = await loadGoogleFont({ family: "Noto Sans JP" });
+  const inter = await loadGoogleFont({ family: "Inter" });
 
   return new ImageResponse(
     (
@@ -100,8 +100,8 @@ const Image = async ({ params }: PostProps) => {
     {
       fonts: [
         {
-          name: "NotoSansJP",
-          data: notoSansJP,
+          name: "Inter",
+          data: inter,
           style: "normal",
           weight: 400,
         },

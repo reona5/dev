@@ -1,4 +1,4 @@
-import { Header } from "@/app/components/Header";
+import { BaseHeader } from "@/app/components/BaseHeader";
 import Image from "next/image";
 
 export const metadata = {
@@ -9,7 +9,7 @@ export const metadata = {
 const About: React.FC = () => {
   return (
     <>
-      <Header ariaCurrent="About" />
+      <BaseHeader ariaCurrent="About" />
       <main className="m-auto max-w-5xl">
         <section className="prose max-w-none p-4 dark:prose-invert dark:prose-dark">
           <h1>{metadata.title}</h1>

@@ -1,6 +1,6 @@
 import { allPosts } from "@/.contentlayer/generated";
-import { Header } from "@/app/components/Header";
-import { TagCard } from "@/app/components/TagCard";
+import { BaseHeader } from "@/app/components/BaseHeader";
+import { TagListCard } from "@/app/components/tags/TagListCard";
 import { allTags } from "@/app/data/tag";
 
 export const metadata = {
@@ -20,15 +20,15 @@ const Tags: React.FC = () => {
 
   return (
     <>
-      <Header ariaCurrent="Tags" />
+      <BaseHeader ariaCurrent="Tags" />
       <main className="m-auto max-w-5xl">
         <section className="p-4">
           <h1 className="mb-8 text-3xl font-bold">タグ一覧</h1>
           <div className="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <TagCard tag={tag.name} key={tag.name}>
+              <TagListCard tag={tag.name} key={tag.name}>
                 {`${tag.name} (${tag.posts.length})`}
-              </TagCard>
+              </TagListCard>
             ))}
           </div>
         </section>

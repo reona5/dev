@@ -1,4 +1,4 @@
-import { renderedMdx } from "@/app/components/MdxComponents";
+import { renderedMdx } from "@/app/components/BaseMdx";
 import { getPosts } from "@/app/data/post";
 import { Post } from "contentlayer/generated";
 import Rss from "rss";

@@ -1,10 +1,10 @@
-import { GitHub } from "@/app/components/IconComponents";
+import { GitHub } from "@/app/components/BaseIcon";
 
 type RequestEditButtonParams = {
   slug: string;
 };
 
-export const RequestEditButton = (({ slug }) => {
+export const ButtonRequestEdit = (({ slug }) => {
   const requestUrl = `https://github.com/reona5/dev/blob/main/app/content/${slug}.mdx`;
 
   return (
