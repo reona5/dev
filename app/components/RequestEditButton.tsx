@@ -1,4 +1,4 @@
-import { GitHub } from "@/app/components/icon-components";
+import { GitHub } from "@/app/components/IconComponents";
 
 type RequestEditButtonParams = {
   slug: string;

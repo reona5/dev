@@ -1,7 +1,7 @@
-import { Analytics } from "@/app/components/analytics";
-import { ThemeProvider } from "@/app/components/theme-provider";
+import { Analytics } from "@/app/components/Analytics";
+import { Footer } from "@/app/components/Footer";
+import { ThemeProvider } from "@/app/components/ThemeProvider";
 import { Inter } from "next/font/google";
-import { Footer } from "./components/footer";
 import "./globals.css";
 
 const inter = Inter({

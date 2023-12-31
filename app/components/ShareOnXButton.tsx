@@ -1,4 +1,4 @@
-import { X } from "@/app/components/icon-components";
+import { X } from "@/app/components/IconComponents";
 
 type ShareOnXButtonParams = {
   title: string;

@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/header";
-import { PostList } from "@/app/components/post-list";
+import { Header } from "@/app/components/Header";
+import { PostList } from "@/app/components/PostList";
 import { getPosts } from "@/app/data/post";
 import Link from "next/link";
 

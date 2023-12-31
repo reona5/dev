@@ -1,9 +1,9 @@
-import { Header } from "@/app/components/header";
-import { Mdx } from "@/app/components/mdx-components";
-import { RequestEditButton } from "@/app/components/request-edit-button";
-import { ShareOnXButton } from "@/app/components/share-on-x-button";
-import { TableOfContent } from "@/app/components/table-of-content";
-import { TagList } from "@/app/components/tag-list";
+import { Header } from "@/app/components/Header";
+import { Mdx } from "@/app/components/MdxComponents";
+import { RequestEditButton } from "@/app/components/RequestEditButton";
+import { ShareOnXButton } from "@/app/components/ShareOnXButton";
+import { TableOfContent } from "@/app/components/TableOfContent";
+import { TagList } from "@/app/components/TagList";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -23,9 +23,9 @@ const getPostFromParams = async (params: PostProps["params"]) => {
   return post;
 };
 
-export const generateMetadata = async (
-  { params }: PostProps,
-): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: PostProps): Promise<Metadata> => {
   const post = await getPostFromParams(params);
 
   if (!post) {

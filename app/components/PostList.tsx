@@ -1,5 +1,5 @@
 import { Post } from "@/.contentlayer/generated/types";
-import { PostCard } from "@/app/components/post-card";
+import { PostCard } from "@/app/components/PostCard";
 
 type PostListProps = {
   posts: Post[];
