@@ -6,7 +6,7 @@ type MenuButtonProps = {
   children: React.ReactNode;
 };
 
-export const MenuButton = (({ children }) => {
+export const ButtonMenu = (({ children }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleMenu = () => {

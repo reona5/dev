@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import tocbot from "tocbot";
 
-export const TableOfContent: React.FC = () => {
+export const PostTableOfContent: React.FC = () => {
   useEffect(() => {
     tocbot.init({
       tocSelector: ".toc",

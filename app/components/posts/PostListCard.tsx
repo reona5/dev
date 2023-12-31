@@ -1,16 +1,16 @@
 import { Post } from "@/.contentlayer/generated/types";
-import { FormattedDate } from "@/app/components/FormattedDate";
-import { TagList } from "@/app/components/TagList";
+import { PostFormattedDate } from "@/app/components/posts/PostFormattedDate";
+import { TagList } from "@/app/components/tags/TagList";
 import Link from "next/link";
 
-type PostCardProps = {
+type PostListCardProps = {
   post: Post;
 };
 
-export const PostCard = (({ post }) => {
+export const PostListCard = (({ post }) => {
   return (
     <>
-      <FormattedDate date={post.date} />
+      <PostFormattedDate date={post.date} />
       <Link
         href={`/${post.isPublished ? "posts" : "drafts"}/${post.slugAsParams}`}
         className="text-lg"
@@ -21,4 +21,4 @@ export const PostCard = (({ post }) => {
       <TagList tags={post.tags} />
     </>
   );
-}) satisfies React.FC<PostCardProps>;
+}) satisfies React.FC<PostListCardProps>;

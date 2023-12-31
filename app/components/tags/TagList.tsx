@@ -1,4 +1,4 @@
-import { TagCard } from "@/app/components/TagCard";
+import { TagListCard } from "@/app/components/tags/TagListCard";
 
 type TagListProps = {
   tags: string[];
@@ -8,9 +8,9 @@ export const TagList = (({ tags }) => {
   return (
     <div className="flex flex-wrap gap-2">
       {tags.map((tag) => (
-        <TagCard tag={tag} key={tag}>
+        <TagListCard tag={tag} key={tag}>
           {tag}
-        </TagCard>
+        </TagListCard>
       ))}
     </div>
   );

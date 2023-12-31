@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/Header";
-import { PostList } from "@/app/components/PostList";
+import { BaseHeader } from "@/app/components/BaseHeader";
+import { PostList } from "@/app/components/posts/PostList";
 import { getPosts } from "@/app/data/post";
 
 export const metadata = {
@@ -12,7 +12,7 @@ const Posts: React.FC = () => {
 
   return (
     <>
-      <Header ariaCurrent="Posts" />
+      <BaseHeader ariaCurrent="Posts" />
       <main className="m-auto max-w-5xl">
         <section className="p-4">
           <h1 className="mb-8 text-3xl font-bold">記事一覧</h1>

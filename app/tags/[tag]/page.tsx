@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/Header";
-import { PostList } from "@/app/components/PostList";
+import { BaseHeader } from "@/app/components/BaseHeader";
+import { PostList } from "@/app/components/posts/PostList";
 import { allTags } from "@/app/data/tag";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
@@ -45,7 +45,7 @@ const TagPostsPage = async ({ params }: TagProps) => {
 
   return (
     <>
-      <Header ariaCurrent="Tags" />
+      <BaseHeader ariaCurrent="Tags" />
       <main className="m-auto max-w-5xl">
         <section className="p-6 sm:p-10">
           <h1 className="mb-8 text-3xl font-bold">{tag} の記事一覧</h1>

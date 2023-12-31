@@ -1,6 +1,6 @@
-import { Analytics } from "@/app/components/Analytics";
-import { Footer } from "@/app/components/Footer";
-import { ThemeProvider } from "@/app/components/ThemeProvider";
+import { BaseFooter } from "@/app/components/BaseFooter";
+import { ProviderAnalytics } from "@/app/components/providers/ProviderAnalytics";
+import { ProviderTheme } from "@/app/components/providers/ProviderTheme";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -60,11 +60,11 @@ const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang={process.env.NEXT_PUBLIC_SITE_LANGUAGE}>
       <body className={inter.className}>
-        <ThemeProvider attribute="class">
+        <ProviderTheme attribute="class">
           {children}
-          <Analytics />
-          <Footer />
-        </ThemeProvider>
+          <ProviderAnalytics />
+          <BaseFooter />
+        </ProviderTheme>
       </body>
     </html>
   );

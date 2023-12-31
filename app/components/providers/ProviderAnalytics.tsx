@@ -2,6 +2,6 @@
 
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 
-export const Analytics: React.FC = () => {
+export const ProviderAnalytics: React.FC = () => {
   return <VercelAnalytics />;
 };

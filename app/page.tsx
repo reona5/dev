@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/Header";
-import { PostList } from "@/app/components/PostList";
+import { BaseHeader } from "@/app/components/BaseHeader";
+import { PostList } from "@/app/components/posts/PostList";
 import { getPosts } from "@/app/data/post";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <BaseHeader />
       <main className="m-auto max-w-5xl">
         <section className="grid gap-8 p-4">
           <h2 className="text-xl">{"Hello, I'm Reona Shimada👋"}</h2>

@@ -1,5 +1,5 @@
-import { MenuButton } from "@/app/components/MenuButton";
-import { ModeToggle } from "@/app/components/ModeToggle";
+import { ButtonMenu } from "@/app/components/buttons/ButtonMenu";
+import { ButtonToggleTheme } from "@/app/components/buttons/ButtonToggleTheme";
 import Link from "next/link";
 const headerItems = [
   { name: "About", href: "/about" },
@@ -11,7 +11,7 @@ const headerItems = [
 type Item = (typeof headerItems)[number]["name"];
 type HeaderProps = { ariaCurrent?: Item };
 
-export const Header = (({ ariaCurrent }) => {
+export const BaseHeader = (({ ariaCurrent }) => {
   return (
     <>
       {/* sticky な要素がページ最上部にある場合に、next/link でページ遷移をするとスクロールアップされないバグがあるため、一時的に空の div を配置して対処している */}
@@ -38,12 +38,12 @@ export const Header = (({ ariaCurrent }) => {
                 </li>
               ))}
               <li>
-                <ModeToggle isHidden={true} />
+                <ButtonToggleTheme isHidden={true} />
               </li>
             </ul>
           </nav>
-          <MenuButton>
-            <ModeToggle isHidden={false} />
+          <ButtonMenu>
+            <ButtonToggleTheme isHidden={false} />
             <nav className="inline">
               <ul className="grid items-end gap-3 text-lg">
                 {headerItems.map((item) => (
@@ -61,7 +61,7 @@ export const Header = (({ ariaCurrent }) => {
                 ))}
               </ul>
             </nav>
-          </MenuButton>
+          </ButtonMenu>
         </div>
       </header>
     </>
