@@ -1,6 +1,6 @@
 import { allPosts } from "@/.contentlayer/generated";
-import { Header } from "@/app/components/header";
-import { TagCard } from "@/app/components/tag-card";
+import { Header } from "@/app/components/Header";
+import { TagCard } from "@/app/components/TagCard";
 import { allTags } from "@/app/data/tag";
 
 export const metadata = {

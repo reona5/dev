@@ -1,4 +1,4 @@
-import { TagCard } from "@/app/components/tag-card";
+import { TagCard } from "@/app/components/TagCard";
 
 type TagListProps = {
   tags: string[];

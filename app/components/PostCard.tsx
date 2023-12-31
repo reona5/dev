@@ -1,6 +1,6 @@
 import { Post } from "@/.contentlayer/generated/types";
-import { FormattedDate } from "@/app/components/formatted-date";
-import { TagList } from "@/app/components/tag-list";
+import { FormattedDate } from "@/app/components/FormattedDate";
+import { TagList } from "@/app/components/TagList";
 import Link from "next/link";
 
 type PostCardProps = {

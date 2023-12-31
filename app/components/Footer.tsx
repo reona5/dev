@@ -1,4 +1,4 @@
-import { GitHub, Rss, X } from "@/app/components/icon-components";
+import { GitHub, Rss, X } from "@/app/components/IconComponents";
 
 export const Footer: React.FC = () => {
   const items = [
@@ -28,7 +28,12 @@ export const Footer: React.FC = () => {
           <ul className="flex gap-4 p-0">
             {items.map((item, index) => (
               <li key={index}>
-                <a href={item.href} aria-label={item.ariaLabel} target="_blank" rel="noreferrer">
+                <a
+                  href={item.href}
+                  aria-label={item.ariaLabel}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {item.name === "RSS" && <Rss />}
                   {item.name === "X" && <X />}
                   {item.name === "GitHub" && <GitHub />}

@@ -1,5 +1,5 @@
-import { Header } from "@/app/components/header";
-import { PostList } from "@/app/components/post-list";
+import { Header } from "@/app/components/Header";
+import { PostList } from "@/app/components/PostList";
 import { allTags } from "@/app/data/tag";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";

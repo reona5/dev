@@ -1,5 +1,5 @@
-import { MenuButton } from "@/app/components/menu-button";
-import { ModeToggle } from "@/app/components/mode-toggle";
+import { MenuButton } from "@/app/components/MenuButton";
+import { ModeToggle } from "@/app/components/ModeToggle";
 import Link from "next/link";
 const headerItems = [
   { name: "About", href: "/about" },
