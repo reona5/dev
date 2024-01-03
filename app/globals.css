@@ -4,6 +4,10 @@
 
 html {
   @apply scroll-smooth;
+
+  &:has(#menu-dialog) {
+    overflow: hidden;
+  }
 }
 
 body {
