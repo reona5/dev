@@ -1,0 +1,319 @@
+---
+title: "Vue 3 の概要と Vue 2 との違いについて"
+description: "2023年1月27日に行った社内勉強会でのポストを一部改変して転記しています。"
+date: "2024-01-04T09:20:54+09:00"
+tags:
+  - vue
+  - frontend
+isPublished: true
+---
+
+## 前置き
+
+2023年1月27日に行った社内勉強会でのポストを一部改変して転記しています。
+
+## 概要
+
+現在 Vue.js を使っている各プロジェクトにおいて、Vue 2 → Vue 3 へのアップグレードが進行しています。
+[このアップグレードにおける破壊的変更](https://v3-migration.vuejs.org/breaking-changes/)は非常に多く、今後フロントエンド開発を継続する上での学習コストは少なくないため、Vue 3 における主要機能やアップグレードすることによるメリットを Vue 2 までの機能と比較しながら解説していきます。
+
+## Vue 3について
+
+Vue 3 は2020年9月19日 にリリースされました。[2023年01月27日現在の最新バージョンは v3.2.45](https://github.com/vuejs/core/releases)です。
+Vue 2 と比較したメリットはざっくり以下の通りです。
+
+- Composition API 等の主要機能追加によるコードの最適化
+- 全面的な TypeScript のサポート
+- ビルド後のバンドルサイズが大きく改善したことによるパフォーマンスの向上
+
+## コードの最適化
+
+Vue 2 では Options API が主に利用されていましたが、Composition API に変更することで以下のようなメリットがあります。
+
+- JavaScript らしい記法でコンポーネントを記述できる
+- フレームワークにそこまで依存しない記法なので、変数や関数の型定義がしやすい
+- リアクティブな値（ref, reactive, computed）やそれに関するロジックが UI コンポーネントに依存しない
+  - 再利用性が向上し、Pure な JS/TS の関数になるためより testable になる
+- [ライフサイクルフック](https://v3.ja.vuejs.org/guide/composition-api-lifecycle-hooks.html)が少し単純になった
+
+また、Vue 3.2 で追加された `<script setup>` 記法を使うことでよりコードがシンプルに記述できるようになります。
+
+### JavaScript らしい記法でコンポーネントを記述できる
+
+Options API では、ボイラープレート的なフレームワークに依存した記法を覚える必要がありました。
+
+```js
+export default Vue.extend({
+  data: () => ({
+    name: "",
+  }),
+  methods: {
+    input(value) {
+      this.name = value;
+    },
+  },
+  computed: {
+    call() {
+      return `${this.name} 様`;
+    },
+  },
+});
+```
+
+Composition API を利用することで、フレームワーク独自の記法が少なくなるので、より JavaScript らしいコードでコンポーネントを記述することができるようになります。
+
+```js
+export default defineComponent({
+  setup() {
+    const name = ref("");
+    const input = (value) => {
+      name.value = value;
+    };
+    const call = computed(() => {
+      return `${this.name} 様`;
+    });
+
+    return { name, input, call };
+  },
+});
+```
+
+`const`, `let` 等の JavaScript のキーワードを用いて変数や関数を宣言できるので、`setup` 内のコードは非常に記述しやすくなります。
+
+### リアクティブな値やロジックが UI コンポーネントに依存しない
+
+`setup` 内で宣言するリアクティブな値や関数は、UI コンポーネントから切り離すことができます。
+
+```js
+export default const useForm = () => {
+    const name = ref('')
+    const input = value => {
+      name.value = value
+    }
+    const call = computed(() => {
+      return `${this.name} 様`
+    })
+
+    return { name, input, call }
+}
+
+// Vue コンポーネント側
+export default defineComponent({
+  setup() {
+    const { name, input, call } = useForm()
+
+    return { name, input, call }
+  }
+})
+```
+
+コンポーネントに関係する値やロジックを独立できるので、単体テストが書きやすくなります。
+また、複数コンポーネント間で値やロジックの使いまわしができるようになるのもメリットです。
+
+### ライフサイクルフックが単純になった
+
+[![Vue.js ライフサイクルフックの早見表](https://i.gyazo.com/0cb1b4226f83216a3e7eefbc177e49ed.png)](https://gyazo.com/0cb1b4226f83216a3e7eefbc177e49ed)
+
+refs: [ライフサイクルフック](https://v3.ja.vuejs.org/guide/composition-api-lifecycle-hooks.html)
+
+`beforeCreate`, `created` がなくなり、本来これらのライフサイクルに書かれていたロジックは `setup` 内に直接記述するようになりました。
+
+```js
+export default defineComponent({
+  setup() {
+    // 従来の created のタイミングで実行される
+    console.log("Component is created!");
+    // mounted
+    onMounted(() => {
+      console.log("Component is mounted!");
+    });
+  },
+});
+```
+
+### Vue 3.2 で追加された記法について
+
+Vue 3.2 からは [`<script setup>`](https://v3.ja.vuejs.org/api/sfc-script-setup.html)というシンタックスシュガーが追加され、よりシンプルにコンポーネントを構成することができるようになります。
+これまでの記法と比較することで違いがわかりやすくなるので、順を追ってコードを比較していきましょう。
+（それぞれのタイトルが Playground のリンクになっています）
+
+[Options API](https://sfc.vuejs.org/#eNpdkktuwjAQhq8ysioFJIj3UUDqBbrsKgtMMoEgv+QHpUK5R2/Qm/UcHTsQWja2x9/M75lfvrJXa8tzRFaxOqCyUgTcNhqg7o1ToDAcTbdpmDU+NCwTYlLsUQJlENFCIZE32mqewT1r0DYGGFL5lATntTIdysdF+LRIUcALqQP/X3mDPu7V8MA1T53RseZ/GqbQt26wAaTQhyTpc7ucw6CscQHeI0LvjIKCxi1SBTG8ZNZhL6LMOSW1grpbXBv9BOkGoBNBVLBYwmYLKSe1m2apoChWKRyXeZuM89VUBZAnWpyFjLi83wGE4+DLVA4byGwC46SU19YoqsRuVmqFlPT+rOEwRKdh93Kd1Ub4+f7aPWuNybLJJDKGrdhkzFoJW5680fQFsmhzA2Tg/GjDyLQUN+wYgvUV575v08c5+dK4A6dT6aIOgyIHvVrvnfnw6Ei4YbkBep+Nv7BjzZM=)
+
+```vue
+<template>
+  <form method="post">
+    <label for="name">Name</label>
+    <input id="name" v-model="name" type="text" />
+    <input type="submit" />
+  </form>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  data: () => ({
+    name: '',
+  }),
+  methods: {
+    input(value) {
+      this.name = value
+    },
+  },
+  computed: {
+    call() {
+      return `${this.name} 様`
+    },
+  },
+}
+</script>
+```
+
+[Composition API](https://sfc.vuejs.org/#eNpVUltugzAQvMrKqgSVCPxHJFLV/56AjxBYEiK/ZC9pKsQ9eoPerOfo2oBCf2yvZ2d2PPIo3qzN7wOKvSgJlZU14bHSAGVnnAKFdDXtoRLWeKpERBiT9RklcAcjulbIyAdvZRGBtavXdiDoA31ugvtOmRbl84K+LHJF+GB1KP4zF9APZ9U/4bIIzvhYFhvDXPrG9ZZA1voSJH202ytrHMEILXa9xnfDtUZNGTjsMmi4HghbmKBzRkHCUSRBDR+Rx6x6kHHfstMxOPFIg01fIRbAWtoThIfBIainSfK6ReZHHeBey4FbjisPIidfrmd4RqYtvamlZHh1nPLgrYZjM07D6WWka+/zIDnB78/3aZFiK/NpaRzj1Gx2xUEE9TiPl9BcFnOenKHIxBzjTtU2v3mj+bfEwdUCcNb71UolOMNQV+JKZP2+KHzXhD9287lxl4JPuRs09fxo9Gp3dubTo2PhSqwGxPQH3kje/Q==)
+
+```vue
+<template>
+  <form method="post">
+    <label for="name">Name</label>
+    <input id="name" v-model="name" type="text" />
+    <input type="submit" />
+  </form>
+</template>
+
+<script lang="ts">
+import { defineComponent, ref, computed } from "vue";
+
+export default defineComponent({
+  setup() {
+    const name = ref("");
+    const input = (value) => {
+      name.value = value;
+    };
+    const call = computed(() => {
+      return `${this.name} 様`;
+    });
+
+    return { name, input, call };
+  },
+});
+</script>
+```
+
+[`<script setup>`](https://sfc.vuejs.org/#eNpVUW1uwjAMvYoVTRpI0PyvCtIusBPkB6G4EJQvJS7bVPUeu8FutnPMaSlo+RPnPT/Hfh7EW4zVrUdRiya3yUSCjNRHsNqfd0pQVmKvvHExJIIBEnYbaIOLPeEJRuhScKAEV1BCeeXb4DOB1w5hV5JXr6/rBTWeVQzftO2Z3sOgPEy51R2aKeXHRdJqaxlePlyt1g9d4jaTh8PLQBeTq1JmhN+f7wPL+ctGzuNw8/wgdNFqQn4BNF1IDhzSJZx4xBgyTUMCn8bqI1rgDGZKTWbe+WrkRCxZ8yimyOckuG1dOKF9AvQVsRiIn1wd5H/lncz90Zkn3cjSGYeNfDQsNmI2f+t0rK45eF7VZIC6E7yherakYNMmag4uRDHXUuauLQu+5iqks+SoSr0nw6ZjdttjCh8ZExcu+wNg50cx/gHOVrbH)
+
+```vue
+<script setup lang="ts">
+import { ref, computed } from "vue";
+
+const name = ref("");
+const input = (value) => {
+  name.value = value;
+};
+const call = computed(() => {
+  return `${this.name} 様`;
+});
+</script>
+
+<template>
+  <form method="post">
+    <label for="name">Name</label>
+    <input id="name" v-model="name" type="text" />
+    <input type="submit" />
+  </form>
+</template>
+```
+
+とてもシンプルになりました🙌
+
+一度 Composition API の記法でコードを書けるようになれば、`<script setup>` 構文に全く違和感なく、むしろ気持ちよく移行できるはずです。
+公式のサンプルコードを見てもわかると思いますが、`script` → `template` の順序に変わっているので、本稿のサンプルコードもそちらに準拠しています。
+ちなみに逆の順序でも問題なく動くので、Playground で試してみて下さい。
+
+#### Language server
+
+これまで Vue の Language server は [vuejs / vetur](https://github.com/vuejs/vetur) でしたが、`<script setup>` 構文には対応していないため [johnsoncodehk / volar](https://github.com/johnsoncodehk/volar) の利用が推奨されています。
+
+以下公式ツイート
+https://twitter.com/vuejs/status/1429195877365780486?s=20&t=s8ZKmwmrabCWU7hhsx0eZw
+
+#### Components
+
+これまではテンプレート内で `import` した components 使うには `props` 等の並びで一度列挙して登録する必要がありましたが、 `import` するだけで直接利用できるようになりました。
+
+```vue
+<script>
+import MyComponent from "./MyComponent.vue";
+
+// これまでは登録する必要があった
+export default {
+  components: { MyComponent },
+};
+</script>
+
+<template>
+  <MyComponent />
+</template>
+```
+
+```vue
+<script setup>
+// import のみでコンポーネントを使える
+import MyComponent from "./MyComponent.vue";
+</script>
+
+<template>
+  <MyComponent />
+</template>
+```
+
+#### props, emit
+
+`props` と `emit` については `defineProps`, `defineEmits` を利用することで `<script setup>` 構文内で宣言ができます。
+これまでは `props`, `emit` の型定義や型推論や完全ではありませんでしたが、Pure な TypeScript の記法で宣言ができるようになるので自然に型を定義でき、型推論もされるようになります。
+
+```vue
+<script>
+export default {
+  props: {
+    name: { type: String },
+  },
+  methods: {
+    onInput(target) {
+      this.$emit("input", target.value);
+    },
+  },
+};
+</script>
+```
+
+```vue
+<script setup lang="ts">
+const props = defineProps<{ name: string }>();
+// デフォルト値を入れたい場合は withDefaults を使う
+// const props = withDefaults(defineProps<{ name: string }>(), { name: '太郎' })
+
+const emit = defineEmits<{ (e: "input", value: string): void }>();
+
+const onInput = ({ target }: { target: HTMLInputElement }) => {
+  emit("input", target.value);
+};
+</script>
+```
+
+`defineProps`や `withDefaults`、 `defineEmits` は `<script setup>` 内でのみ使用可能なコンパイラマクロなので、インポートせずに利用することができます。
+
+### 最後に
+
+今回紹介できなかった機能も沢山あるので、是非公式ドキュメント等をチェックしてみてください！
+
+また、TypeScript サポートが手厚くなっていることで今後も TypeScript のコードは増えていくと思うので、[ドキュメント](https://www.typescriptlang.org/docs/)を読んでみたり [実際に手を動かしてみる](https://github.com/type-challenges/type-challenges) のもいいと思います👩‍💻
+
+[vuejs-challenges](https://github.com/webfansplz/vuejs-challenges) は Vue 3 対応しているので、課題にトライしていって今回紹介したような記法に慣れておくのもいいですね👍
+
+## 参考資料
+
+- [Composition API FAQ](https://vuejs.org/guide/extras/composition-api-faq.html)
+- [2022年の最新標準！Vue 3の新しい開発体験に触れよう](https://ics.media/entry/220120/)
+- [Composition APIを使って感じた「これどうなの？」](https://zenn.dev/844/articles/facd083b7df63e)
+- [機能開発を止めずに、500コンポーネント規模の Vue 3 移行を完了させた開発プロセス](https://studist.tech/migration-to-vue-3-4b4c4fad0324)
+- [【Vue.js 3.2】`<script setup>` 構文がすごくすごい](https://zenn.dev/azukiazusa/articles/676d88675e4e74)
