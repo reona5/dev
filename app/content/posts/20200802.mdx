@@ -13,21 +13,21 @@ isPublished: true
 
 [OpenAPI (Swagger) で API リファレンス作成](/posts/20200614)
 
-その後、以下のライブラリによるリファレンスの管理を開始したので紹介する。
+その後、次のライブラリによるリファレンスの管理を開始したので紹介する。
 
 [javanile / yamlinc](https://github.com/javanile/yamlinc)
 
 ## yamlinc について
 
-yamlinc を使うと、コンポーネント化した OpenAPI のファイルを一つにまとめてくれる。
+yamlinc を使うと、コンポーネント化した OpenAPI のファイルを 1 つにまとめてくれる。
 基本的な使い方は README を参照。
 
 これまでの管理と違う点は大きく 2 つ
 
 - `$include` という特殊なタグを使用してコンポーネントを読み込む。公式の `$ref` を置き換えるイメージで OK
-- `$ yamlinc my_swagger_doc.yml` コマンドによってコンパイルされ、一つにまとまった `my_swagger_doc.inc.yml` ファイルができる
+- `$ yamlinc my_swagger_doc.yml` コマンドによってコンパイルされ、1 つにまとまった `my_swagger_doc.inc.yml` ファイルができる
 
-Swagger3.0 以前はコンポーネント化できず、1 つのファイルでリファレンス管理が行われていたが、yamlinc を使えばコンポーネントとしての管理はもちろん、コンパイルによって全てのパスとその詳細が記されたファイルが自動生成される。
+Swagger3.0 以前はコンポーネント化できず、1 つのファイルでリファレンス管理が行なわれていたが、yamlinc を使えばコンポーネントとしての管理はもちろん、コンパイルによってすべてのパスとその詳細が記されたファイルが自動生成される。
 
 yamlinc という名前だが、`-o` オプションでファイル名を指定すれば json フォーマットのファイル生成も可能。
 
@@ -66,7 +66,7 @@ Rails プロジェクトで `vendor/bundle` がある場合、
 
 上の記事で `vendor/bundle` を用意することで gem コードへのタグジャンプを可能にしてたんだった。
 
-gem に関するタグは既に生成されてはいるけど念の為 `BUNDLE_PARH = 'vendor/bundle'` を設定して `bundle install` 、 `docker-compose up` してみると問題なかったので、とりあえずこのまま。
+gem に関するタグはすでに生成されてはいるけど念の為 `BUNDLE_PARH = 'vendor/bundle'` を設定して `bundle install` 、 `docker-compose up` してみると問題なかったので、とりあえずこのまま。
 
 ## さいごに
 
@@ -74,4 +74,4 @@ OpenAPI によるリファレンス管理は学習コストがそれなりにあ
 
 yamlinc を導入すればコンポーネント分けできて管理は楽だし、設定すれば構文チェックや自動コンパイルしてくれるので API ドキュメントの保守運用がめっちゃ楽になる。
 
-例えばこのドキュメントを元に [openapi-generator](https://github.com/OpenAPITools/openapi-generator) だったりでクライアント API 作成時のモデルとなるコードの自動生成を行ったりすれば確実で DX も非常に良いのでおすすめ。
+例えばこのドキュメントを元に [openapi-generator](https://github.com/OpenAPITools/openapi-generator) だったりでクライアント API 作成時のモデルとなるコードの自動生成を行なったりすれば確実で DX も非常に良いのでおすすめ。

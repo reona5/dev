@@ -45,7 +45,7 @@ $ ctags -R .
 $ ctags -R . --languages=Ruby
 ```
 
-調査中に[こちらの記事](https://dev.to/lucasprag/little-trick-to-use-ctags-to-jump-to-definition-even-inside-gems-like-rails-on-vim-244j)でたまたま見つけたのですが、以下のコマンド実行後にタグ生成すれば gem の内部コードへのパスを設定し、ジャンプできるようになります。いちいちブラウザで調べる必要がなくなったので嬉しい、、
+調査中に[こちらの記事](https://dev.to/lucasprag/little-trick-to-use-ctags-to-jump-to-definition-even-inside-gems-like-rails-on-vim-244j)でたまたま見つけたのですが、次のコマンド実行後にタグ生成すれば gem の内部コードへのパスを設定し、ジャンプできるようになります。いちいちブラウザで調べる必要がなくなったので嬉しい、、
 
 ```
 $ bundle install --path=vendor/bundle
