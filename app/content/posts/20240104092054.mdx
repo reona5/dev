@@ -10,7 +10,7 @@ isPublished: true
 
 ## 前置き
 
-2023年1月27日に行った社内勉強会でのポストを一部改変して転記しています。
+2023 年 1 月 27 日に行なった社内勉強会でのポストを一部改変して転記しています。
 
 ## 概要
 
@@ -19,16 +19,16 @@ isPublished: true
 
 ## Vue 3について
 
-Vue 3 は2020年9月19日 にリリースされました。[2023年01月27日現在の最新バージョンは v3.2.45](https://github.com/vuejs/core/releases)です。
-Vue 2 と比較したメリットはざっくり以下の通りです。
+Vue 3 は 2020 年 9 月 19 日にリリースされました。[2023年01月27日現在の最新バージョンは v3.2.45 ](https://github.com/vuejs/core/releases)です。
+Vue 2 と比較したメリットはざっくり次の通りです。
 
-- Composition API 等の主要機能追加によるコードの最適化
+- Composition API などの主要機能追加によるコードの最適化
 - 全面的な TypeScript のサポート
 - ビルド後のバンドルサイズが大きく改善したことによるパフォーマンスの向上
 
 ## コードの最適化
 
-Vue 2 では Options API が主に利用されていましたが、Composition API に変更することで以下のようなメリットがあります。
+Vue 2 では Options API が主に利用されていましたが、Composition API に変更することで次のようなメリットがあります。
 
 - JavaScript らしい記法でコンポーネントを記述できる
 - フレームワークにそこまで依存しない記法なので、変数や関数の型定義がしやすい
@@ -60,7 +60,7 @@ export default Vue.extend({
 });
 ```
 
-Composition API を利用することで、フレームワーク独自の記法が少なくなるので、より JavaScript らしいコードでコンポーネントを記述することができるようになります。
+Composition API を利用することで、フレームワーク独自の記法が少なくなるので、より JavaScript らしいコードでコンポーネントを記述できるようになります。
 
 ```js
 export default defineComponent({
@@ -78,7 +78,7 @@ export default defineComponent({
 });
 ```
 
-`const`, `let` 等の JavaScript のキーワードを用いて変数や関数を宣言できるので、`setup` 内のコードは非常に記述しやすくなります。
+`const`, `let` などの JavaScript のキーワードを用いて変数や関数を宣言できるので、`setup` 内のコードは非常に記述しやすくなります。
 
 ### リアクティブな値やロジックが UI コンポーネントに依存しない
 
@@ -133,7 +133,7 @@ export default defineComponent({
 
 ### Vue 3.2 で追加された記法について
 
-Vue 3.2 からは [`<script setup>`](https://v3.ja.vuejs.org/api/sfc-script-setup.html)というシンタックスシュガーが追加され、よりシンプルにコンポーネントを構成することができるようになります。
+Vue 3.2 からは [`<script setup>`](https://v3.ja.vuejs.org/api/sfc-script-setup.html)というシンタックスシュガーが追加され、よりシンプルにコンポーネントを構成できるようになります。
 これまでの記法と比較することで違いがわかりやすくなるので、順を追ってコードを比較していきましょう。
 （それぞれのタイトルが Playground のリンクになっています）
 
@@ -227,7 +227,7 @@ const call = computed(() => {
 
 一度 Composition API の記法でコードを書けるようになれば、`<script setup>` 構文に全く違和感なく、むしろ気持ちよく移行できるはずです。
 公式のサンプルコードを見てもわかると思いますが、`script` → `template` の順序に変わっているので、本稿のサンプルコードもそちらに準拠しています。
-ちなみに逆の順序でも問題なく動くので、Playground で試してみて下さい。
+ちなみに逆の順序でも問題なく動くので、Playground で試してみてください。
 
 #### Language server
 
@@ -238,7 +238,7 @@ https://twitter.com/vuejs/status/1429195877365780486?s=20&t=s8ZKmwmrabCWU7hhsx0e
 
 #### Components
 
-これまではテンプレート内で `import` した components 使うには `props` 等の並びで一度列挙して登録する必要がありましたが、 `import` するだけで直接利用できるようになりました。
+これまではテンプレート内で `import` した components 使うには `props` などの並びで一度列挙して登録する必要がありましたが、 `import` するだけで直接利用できるようになりました。
 
 ```vue
 <script>
@@ -300,11 +300,11 @@ const onInput = ({ target }: { target: HTMLInputElement }) => {
 </script>
 ```
 
-`defineProps`や `withDefaults`、 `defineEmits` は `<script setup>` 内でのみ使用可能なコンパイラマクロなので、インポートせずに利用することができます。
+`defineProps`や `withDefaults`、 `defineEmits` は `<script setup>` 内でのみ使用可能なコンパイラマクロなので、インポートせずに利用できます。
 
 ### 最後に
 
-今回紹介できなかった機能も沢山あるので、是非公式ドキュメント等をチェックしてみてください！
+今回紹介できなかった機能もたくさんあるので、ぜひ公式ドキュメントなどをチェックしてみてください！
 
 また、TypeScript サポートが手厚くなっていることで今後も TypeScript のコードは増えていくと思うので、[ドキュメント](https://www.typescriptlang.org/docs/)を読んでみたり [実際に手を動かしてみる](https://github.com/type-challenges/type-challenges) のもいいと思います👩‍💻
 

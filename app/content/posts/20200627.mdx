@@ -34,7 +34,7 @@ iOS9 からデフォルトで ATS（App Transport Security）が設定されて�
 
 ## 解決策
 
-`Info.prist` を右クリック > Open As > Sourse Code で以下のコードを挿入
+`Info.prist` を右クリック > Open As > Sourse Code で次のコードを挿入
 
 ```html
 <key>NSAppTransportSecurity</key>
@@ -44,7 +44,7 @@ iOS9 からデフォルトで ATS（App Transport Security）が設定されて�
 </dict>
 ```
 
-以下のように ATS を無効化することでも通信可能だが、セキュリティが担保されないので非推奨
+次のように ATS を無効化することでも通信可能だが、セキュリティが担保されないので非推奨
 （何故かこの方法のみ説明している日本語記事が多い…）
 
 ```html
