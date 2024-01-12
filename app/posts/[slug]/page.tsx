@@ -3,6 +3,7 @@ import { BaseMdx } from "@/app/components/BaseMdx";
 import { ButtonRequestEdit } from "@/app/components/buttons/ButtonRequestEdit";
 import { ButtonShareOnX } from "@/app/components/buttons/ButtonShareOnX";
 import { PostTableOfContent } from "@/app/components/posts/PostTableOfContent";
+import { PostFormattedDate } from "@/app/components/posts/PostFormattedDate";
 import { TagList } from "@/app/components/tags/TagList";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
@@ -59,6 +60,7 @@ const PostPage = async ({ params }: PostProps) => {
       <main className="m-auto max-w-5xl">
         <article className="prose my-6 max-w-none break-words p-4 dark:prose-invert dark:prose-dark">
           <h1 className="mb-8">{post.title}</h1>
+          <PostFormattedDate date={post.date} />
           <TagList tags={post.tags} />
           <hr className="my-0" />
           <div className="sm:grid sm:grid-cols-5 sm:gap-4">
