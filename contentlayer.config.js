@@ -62,7 +62,7 @@ export default makeSource({
           properties: {
             class: "headings-anchor-link",
             "aria-hidden": true,
-            "tabindex": "-1",
+            tabindex: "-1",
           },
           content: {
             type: "element",
