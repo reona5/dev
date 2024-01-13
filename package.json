@@ -2,6 +2,7 @@
   "name": "dev",
   "private": true,
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "prebuild": "pnpm format",
@@ -12,7 +13,8 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,ts,tsx,json,mdx}'",
     "markuplint": "markuplint './**/*.tsx'",
-    "create:post": "ruby app/scripts/create_post.rb"
+    "create:post": "ruby app/scripts/create_post.rb",
+    "test": "exec playwright test"
   },
   "dependencies": {
     "@vercel/analytics": "^1.1.1",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@markuplint/jsx-parser": "^3.12.0",
     "@markuplint/react-spec": "^3.13.0",
+    "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "20.10.7",
     "@types/react": "18.2.46",

@@ -34,3 +34,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .contentlayer
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
