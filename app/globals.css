@@ -27,7 +27,7 @@ a:hover {
   @apply text-black dark:text-white;
 }
 
-div[data-rehype-pretty-code-fragment] {
+figure[data-rehype-pretty-code-figure] {
   overflow: hidden;
   border-radius: 0.5rem;
 
@@ -58,7 +58,7 @@ div[data-rehype-pretty-code-fragment] {
   }
 }
 
-div[data-rehype-pretty-code-title] {
+figcaption[data-rehype-pretty-code-title] {
   border-radius: 4px 4px 0 0;
   background-color: rgb(50 50 50 / 0.9);
   padding-left: 0.75rem;
