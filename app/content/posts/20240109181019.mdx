@@ -1,22 +1,219 @@
 ---
-title: 'ESLint のカスタムルールでディレクトリに配置する拡張子を限定する'
-description: 'ESLint のカスタムルールを作成する機会が'
+title: 'ESLint のカスタムルールでディレクトリに配置するファイルの拡張子を制限する'
+description: 'プロダクト開発において、コーディング規約を定めておくことはコードの品質を保つ上で重要です。'
 date: '2024-01-09T18:10:19+09:00'
 tags:
   - eslint
   - javascript
   - typescript
-isPublished: false
+isPublished: true
 ---
 
 ## はじめに
 
-JavaScript と TypeScript のファイルが同一ディレクトリに混在しており、それを TypeScript に統一する場合は `.js` 拡張子のファイルを増やさないことが重要です。
+プロダクト開発において、コーディング規約を定めておくことはコードの品質を保つ上で重要です。しかし、ドキュメンテーションを行なう場合にあがるのがメンテナンスの問題です。ドキュメントは定期的に見直して更新していく必要がありますが、更新するのも一定のコストがかかります。更新されないことでドキュメント自体が負債になるケースも考えられるでしょう。
 
-一方で、コードに手を加える人数が多かったり人員が流動的である場合にはそのようなルールが守られず、`.js` 拡張子のファイルが配置されてしまうケースは考えられます。
+基本的には開発ルールを **意識せずに** 遵守していくために、Linter や Formatter の力を借りるのがベストだと考えています。
 
-そこで ESLint のカスタムルールを作成し、`.js` ファイルを配置した場合にエラーを発生させてエディタ上や CI で気づける仕組みを作りました。
+今回は ESLint のカスタムルールで指定した拡張子以外のファイルを配置した場合にエラーを発生させる仕組みを作ったのでご紹介します。
 
 ## 手順
 
+今回は ESLint のプラグインとしてルールを追加し、package.json で依存関係として管理する方法を選択しました。
 
+### プラグインを作成する
+
+次のコマンドを実行し、プラグインのひな形を作成していきます。
+便宜上ルートディレクトリにディレクトリやファイルを作成していますが、より適切なディレクトリに配置できるとよいでしょう。
+
+```shell
+mkdir eslint-custom-rules
+cd eslint-custom-rules
+npm init -y
+touch index.js
+mkdir rules
+touch rules/restrict-extensions.js
+mkdir tests
+touch tests/restrict-extensions.spec.js
+```
+
+ESLint のプラグインとして package.json で管理したいため、追加した eslint-custom-rules ディレクトリに移動して `npm init -y` コマンドで初期化しています。
+
+package.json がデフォルトで追加されるので、`name` を `eslint-plugin-<plugin-name>` のフォーマットに変更します。（他のプロパティは初期値のままです）
+
+```json showLineNumbers title="package.json"
+{
+  "name": "eslint-plugin-custom-rules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+`main` に指定している index.js が Entry point となるため、Export するルールを追加します。
+
+```js showLineNumbers title="index.js"
+module.exports = {
+  rules: {
+    'restrict-extensions': require('./rules/restrict-extensions'),
+  },
+}
+```
+
+### ルールの記述
+
+本題であるカスタムルールを書いていきます。フォーマットは [ESLint の Custom Rules ドキュメント](https://eslint.org/docs/latest/extend/custom-rules)を参考にしています。
+
+```js showLineNumbers title="restrict-extensions.js"
+'use strict'
+
+module.exports = {
+  create: function (context) {
+    return {
+      Program: function (node) {
+        const options = context.options
+        const filename = context.getFilename()
+
+        for (const { directory, extension } of options) {
+          if (directory && extension) {
+            if (filename.includes(directory) && !filename.endsWith(extension)) {
+              context.report({
+                node,
+                message: `'${directory}'ディレクトリにファイルを配置する場合、ファイルの拡張子は'${extension}'としてください。`,
+              })
+            }
+          }
+        }
+      },
+    }
+  },
+}
+```
+
+ルールのオプションとしてディレクトリと拡張子を渡します。また、いくつかルールを適用させたいディレクトリがある場合を考慮し、復数のオプション渡すことができるようにしています。
+
+このルールを適用することで、ディレクトリ配下に指定した拡張子以外のファイルが検知された場合にエラーが発生します。
+
+### テストの追加
+
+ESLint のバージョンアップやルール内容の更新を考慮してテストを用意しておきます。Testing library は jest を想定しています。
+
+```js showLineNumbers title="restrict-extensions.spec.js"
+'use strict'
+
+import { RuleTester } from 'eslint'
+import Rule from '../rules/restrict-extensions'
+
+describe('restrict-extensions', () => {
+  const tester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: 'module' } })
+
+  tester.run('restrict-extensions', Rule, {
+    valid: [
+      {
+        code: 'let validExtension;',
+        filename: 'app/javascript/packs/file.ts',
+        options: [{ directory: 'app/javascript/packs/', extension: '.ts' }],
+      },
+      {
+        code: 'let validExtension;',
+        filename: 'app/javascript/components/common/file.vue',
+        options: [
+          { directory: 'app/javascript/types/', extension: '.ts' },
+          { directory: 'app/javascript/components/', extension: '.tsx' },
+        ],
+      },
+    ],
+    invalid: [
+      {
+        code: 'let invalidExtension;',
+        filename: 'app/javascript/packs/file.js',
+        options: [{ directory: 'app/javascript/packs/', extension: '.ts' }],
+        errors: [
+          {
+            message:
+              "'app/javascript/packs/'ディレクトリにファイルを配置する場合、ファイルの拡張子は'.ts'としてください。",
+          },
+        ],
+      },
+      {
+        code: 'let invalidExtension;',
+        filename: 'app/javascript/components/common/file.ts',
+        options: [
+          { directory: 'app/javascript/types/', extension: '.ts' },
+          { directory: 'app/javascript/components/', extension: '.tsx' },
+        ],
+        errors: [
+          {
+            message:
+              "'app/javascript/components/'ディレクトリにファイルを配置する場合、ファイルの拡張子は'.tsx'としてください。",
+          },
+        ],
+      },
+    ],
+  })
+})
+```
+
+テストを実行し、成功することを確認します。事前に `filename` や `options` の値を変更して意図的に失敗させておくとより安心でしょう。
+
+```shell
+> jest --runInBand --runTestsByPath eslint-custom-rules/tests/restrict-extensions.spec.js
+PASS  eslint-custom-rules/tests/restrict-extensions.spec.js
+  restrict-extensions
+    restrict-extensions
+      valid
+        ✓ let validExtension; (14 ms)
+        ✓ let validExtension; (1 ms)
+      invalid
+        ✓ let invalidExtension; (2 ms)
+        ✓ let invalidExtension; (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        1.221 s
+Ran all test suites within paths "eslint-custom-rules/tests/restrict-extensions.spec.js".
+Done in 5.46s.
+```
+
+### ルールを適用させる
+
+ルールを適用させたいリポジトリの package.json に次のような記述を追加し、開発時の依存関係としてインストールします。
+
+```json title="package.json"
+  "devDependencies": {
+    "eslint-plugin-custom-rules": "file:./eslint-custom-rules",
+```
+
+.eslintrc.js にプラグイン・ルールを追加することで、カスタムルールが適用されます。
+
+```js showLineNumbers title=".eslintrc.js"
+module.exports = {
+  plugins: ['custom-rules'],
+  rules: {
+    'custom-rules/restrict-extensions': [
+      'error',
+      { directory: 'app/javascript/packs/', extension: '.ts' },
+      { directory: 'app/javascript/components/', extension: '.tsx' },
+    ],
+  }
+}
+```
+
+.tsx 拡張子に制限しているディレクトリ配下に .js 拡張子のファイルを配置すると次のようにエラーメッセージが表示されました。
+
+[![Neovim 上で表示されるカスタムルールのエラーメッセージ](https://i.gyazo.com/42f643d809cd42fc4606d39acb2282b2.png)](https://gyazo.com/42f643d809cd42fc4606d39acb2282b2)
+
+## 最後に
+
+今回はプラグインとしてカスタムルールを作成する方法をご紹介しました。
+
+ESLint の設定ファイルは今後 eslintrc から Flat config が推奨されることが[公式ブログの記事](https://eslint.org/blog/2023/10/flat-config-rollout-plans/)で発表されました。Flat config に移行することで eslint.config.js 内でカスタムルールを直接 `import` できるようになります。Flat config をすぐに適用できる環境であれば、今回ご紹介した方法ではなくそちらを使う方がよいでしょう。
+
+既存の ESLint のプラグインでは満たせないような仕組みが柔軟に作れるので、今後も積極的に使っていきたいです。
