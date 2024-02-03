@@ -16,8 +16,8 @@ const About: React.FC = () => {
           <Image
             src="/placeholder-about.jpg"
             alt=""
-            width="0"
-            height="0"
+            width="992"
+            height="590"
             sizes="100vw"
             loading="eager"
             priority={true}
