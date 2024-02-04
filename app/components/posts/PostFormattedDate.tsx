@@ -6,8 +6,8 @@ export const PostFormattedDate = (({ date }) => {
     month: "2-digit",
     day: "2-digit",
     hour: "2-digit",
-    minute: "2-digit"
-});
+    minute: "2-digit",
+  });
 
   return (
     <time dateTime={date} className="text-sm">

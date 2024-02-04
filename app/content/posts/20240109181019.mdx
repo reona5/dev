@@ -1,7 +1,7 @@
 ---
-title: 'ESLint のカスタムルールでディレクトリに配置するファイルの拡張子を制限する'
-description: 'プロダクト開発において、コーディング規約を定めておくことはコードの品質を保つ上で重要です。'
-date: '2024-01-09T18:10:19+09:00'
+title: "ESLint のカスタムルールでディレクトリに配置するファイルの拡張子を制限する"
+description: "プロダクト開発において、コーディング規約を定めておくことはコードの品質を保つ上で重要です。"
+date: "2024-01-09T18:10:19+09:00"
 tags:
   - eslint
   - javascript
@@ -61,9 +61,9 @@ package.json がデフォルトで追加されるので、`name` を `eslint-plu
 ```js showLineNumbers title="index.js"
 module.exports = {
   rules: {
-    'restrict-extensions': require('./rules/restrict-extensions'),
+    "restrict-extensions": require("./rules/restrict-extensions"),
   },
-}
+};
 ```
 
 ### ルールの記述
@@ -71,14 +71,14 @@ module.exports = {
 本題であるカスタムルールを書いていきます。フォーマットは [ESLint の Custom Rules ドキュメント](https://eslint.org/docs/latest/extend/custom-rules)を参考にしています。
 
 ```js showLineNumbers title="restrict-extensions.js"
-'use strict'
+"use strict";
 
 module.exports = {
   create: function (context) {
     return {
       Program: function (node) {
-        const options = context.options
-        const filename = context.getFilename()
+        const options = context.options;
+        const filename = context.getFilename();
 
         for (const { directory, extension } of options) {
           if (directory && extension) {
@@ -86,14 +86,14 @@ module.exports = {
               context.report({
                 node,
                 message: `'${directory}'ディレクトリにファイルを配置する場合、ファイルの拡張子は'${extension}'としてください。`,
-              })
+              });
             }
           }
         }
       },
-    }
+    };
   },
-}
+};
 ```
 
 ルールのオプションとしてディレクトリと拡張子を渡します。また、いくつかルールを適用させたいディレクトリがある場合を考慮し、復数のオプション渡すことができるようにしています。
@@ -105,35 +105,37 @@ module.exports = {
 ESLint のバージョンアップやルール内容の更新を考慮してテストを用意しておきます。Testing library は jest を想定しています。
 
 ```js showLineNumbers title="restrict-extensions.spec.js"
-'use strict'
+"use strict";
 
-import { RuleTester } from 'eslint'
-import Rule from '../rules/restrict-extensions'
+import { RuleTester } from "eslint";
+import Rule from "../rules/restrict-extensions";
 
-describe('restrict-extensions', () => {
-  const tester = new RuleTester({ parserOptions: { ecmaVersion: 2020, sourceType: 'module' } })
+describe("restrict-extensions", () => {
+  const tester = new RuleTester({
+    parserOptions: { ecmaVersion: 2020, sourceType: "module" },
+  });
 
-  tester.run('restrict-extensions', Rule, {
+  tester.run("restrict-extensions", Rule, {
     valid: [
       {
-        code: 'let validExtension;',
-        filename: 'app/javascript/packs/file.ts',
-        options: [{ directory: 'app/javascript/packs/', extension: '.ts' }],
+        code: "let validExtension;",
+        filename: "app/javascript/packs/file.ts",
+        options: [{ directory: "app/javascript/packs/", extension: ".ts" }],
       },
       {
-        code: 'let validExtension;',
-        filename: 'app/javascript/components/common/file.vue',
+        code: "let validExtension;",
+        filename: "app/javascript/components/common/file.vue",
         options: [
-          { directory: 'app/javascript/types/', extension: '.ts' },
-          { directory: 'app/javascript/components/', extension: '.tsx' },
+          { directory: "app/javascript/types/", extension: ".ts" },
+          { directory: "app/javascript/components/", extension: ".tsx" },
         ],
       },
     ],
     invalid: [
       {
-        code: 'let invalidExtension;',
-        filename: 'app/javascript/packs/file.js',
-        options: [{ directory: 'app/javascript/packs/', extension: '.ts' }],
+        code: "let invalidExtension;",
+        filename: "app/javascript/packs/file.js",
+        options: [{ directory: "app/javascript/packs/", extension: ".ts" }],
         errors: [
           {
             message:
@@ -142,11 +144,11 @@ describe('restrict-extensions', () => {
         ],
       },
       {
-        code: 'let invalidExtension;',
-        filename: 'app/javascript/components/common/file.ts',
+        code: "let invalidExtension;",
+        filename: "app/javascript/components/common/file.ts",
         options: [
-          { directory: 'app/javascript/types/', extension: '.ts' },
-          { directory: 'app/javascript/components/', extension: '.tsx' },
+          { directory: "app/javascript/types/", extension: ".ts" },
+          { directory: "app/javascript/components/", extension: ".tsx" },
         ],
         errors: [
           {
@@ -156,8 +158,8 @@ describe('restrict-extensions', () => {
         ],
       },
     ],
-  })
-})
+  });
+});
 ```
 
 テストを実行し、成功することを確認します。事前に `filename` や `options` の値を変更して意図的に失敗させておくとより安心でしょう。
@@ -195,15 +197,15 @@ Done in 5.46s.
 
 ```js showLineNumbers title=".eslintrc.js"
 module.exports = {
-  plugins: ['custom-rules'],
+  plugins: ["custom-rules"],
   rules: {
-    'custom-rules/restrict-extensions': [
-      'error',
-      { directory: 'app/javascript/packs/', extension: '.ts' },
-      { directory: 'app/javascript/components/', extension: '.tsx' },
+    "custom-rules/restrict-extensions": [
+      "error",
+      { directory: "app/javascript/packs/", extension: ".ts" },
+      { directory: "app/javascript/components/", extension: ".tsx" },
     ],
-  }
-}
+  },
+};
 ```
 
 .tsx 拡張子に制限しているディレクトリ配下に .js 拡張子のファイルを配置すると次のようにエラーメッセージが表示されました。
