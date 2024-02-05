@@ -39,6 +39,7 @@
     "@types/rss": "^0.0.32",
     "@typescript-eslint/parser": "^6.19.0",
     "autoprefixer": "10.4.16",
+    "classnames": "^2.5.1",
     "eslint": "8.56.0",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
