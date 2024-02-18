@@ -5,6 +5,7 @@ import { ButtonShareOnX } from "@/app/components/buttons/ButtonShareOnX";
 import { PostFormattedDate } from "@/app/components/posts/PostFormattedDate";
 import { PostTableOfContent } from "@/app/components/posts/PostTableOfContent";
 import { TagList } from "@/app/components/tags/TagList";
+import classNames from "classnames";
 import { allPosts } from "contentlayer/generated";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -58,7 +59,16 @@ const PostPage = async ({ params }: PostProps) => {
     <>
       <BaseHeader ariaCurrent="Posts" />
       <main className="m-auto max-w-5xl">
-        <article className="prose my-6 max-w-none break-words p-4 dark:prose-invert dark:prose-dark">
+        <article
+          className={classNames(
+            "prose",
+            "my-6",
+            "max-w-none",
+            "break-words",
+            "p-4",
+            ["dark:prose-invert", "dark:prose-dark"],
+          )}
+        >
           <h1 className="mb-8">{post.title}</h1>
           <PostFormattedDate date={post.date} />
           <TagList tags={post.tags} />

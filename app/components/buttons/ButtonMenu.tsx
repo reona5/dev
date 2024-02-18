@@ -1,5 +1,6 @@
 "use client";
 
+import classNames from "classnames";
 import { useState } from "react";
 
 type MenuButtonProps = {
@@ -35,7 +36,15 @@ export const ButtonMenu = (({ children }) => {
       {isExpanded && (
         <div
           id="menu-dialog"
-          className="absolute right-5 rounded-lg bg-gray-50/75 p-4 shadow-lg dark:bg-black/75 dark:shadow-gray-800"
+          className={classNames(
+            "absolute",
+            "right-5",
+            "rounded-lg",
+            "bg-gray-50/75",
+            "p-4",
+            "shadow-lg",
+            ["dark:bg-black/75", "dark:shadow-gray-800"],
+          )}
         >
           {children}
         </div>

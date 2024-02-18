@@ -1,4 +1,5 @@
 import { BaseHeader } from "@/app/components/BaseHeader";
+import classNames from "classnames";
 import Image from "next/image";
 
 export const metadata = {
@@ -11,7 +12,12 @@ const About: React.FC = () => {
     <>
       <BaseHeader ariaCurrent="About" />
       <main className="m-auto max-w-5xl">
-        <section className="prose max-w-none p-4 dark:prose-invert dark:prose-dark">
+        <section
+          className={classNames("prose", "max-w-none", "p-4", [
+            "dark:prose-invert",
+            "dark:prose-dark",
+          ])}
+        >
           <h1>{metadata.title}</h1>
           <Image
             src="/placeholder-about.jpg"
