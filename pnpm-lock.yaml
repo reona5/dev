@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^3.12.0
     version: 3.12.0(typescript@5.3.3)
   '@markuplint/react-spec':
-    specifier: ^3.13.0
-    version: 3.13.0(@markuplint/ml-core@3.15.0)
+    specifier: ^4.3.0
+    version: 4.3.0
   '@playwright/test':
     specifier: ^1.40.1
     version: 1.40.1
@@ -784,6 +784,10 @@ packages:
     resolution: {integrity: sha512-qZJ0GTdGx1+2INEjfpSufu0143RgNqzfs9cA4TMdt9V18qdhSH1swWaMLiY0JJdnfJ4ui2uwxzg9Mhdtu0EINQ==}
     dev: true
 
+  /@markuplint/ml-ast@4.2.0:
+    resolution: {integrity: sha512-b5ZrVKKg1OdaWJXCKVobbemdQncbHTpk6VKNWah05Gji9RKC7RekyhNVYmTRO0LZqNXlM9fzhCWnoFuEWzzeLg==}
+    dev: true
+
   /@markuplint/ml-config@3.14.0:
     resolution: {integrity: sha512-KSmiKCKLg5nfnicx8OEPZUuelOBvYJ0hh82w5Z+PN8IruZF0C8vuoQ7zNSVTvLtyc97G1g83uk660hYe6/aJGg==}
     dependencies:
@@ -833,6 +837,18 @@ packages:
       - supports-color
     dev: true
 
+  /@markuplint/ml-spec@4.3.0:
+    resolution: {integrity: sha512-91YJI47UYD8OCIzI06Qn06kdd2rPi23gpH9Ul12kjfWc9mqwE/PcmnZwtRbYJ9wJXlAkCbJkCLYd7nxZue1eVA==}
+    dependencies:
+      '@markuplint/ml-ast': 4.2.0
+      '@markuplint/types': 4.2.0
+      dom-accessibility-api: 0.6.3
+      is-plain-object: 5.0.0
+      type-fest: 4.14.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@markuplint/parser-utils@3.13.0:
     resolution: {integrity: sha512-XSefmOiWu4tA2Ke+42XF5C5bdgySzm2dq04ja4YUpHmSPwudvzOjYFWGY6+f00jsW1lEU4SYFDxVONq2OBUYjw==}
     dependencies:
@@ -846,13 +862,10 @@ packages:
       - supports-color
     dev: true
 
-  /@markuplint/react-spec@3.13.0(@markuplint/ml-core@3.15.0):
-    resolution: {integrity: sha512-hWolWbmQvSF7WIv4MOW0itiuPICykxngVYFODes5LRyJUpNEeUxT674WBR4WOiingg0LI49eTpJ2UAoWo9/b3g==}
-    peerDependencies:
-      '@markuplint/ml-core': 3.x
+  /@markuplint/react-spec@4.3.0:
+    resolution: {integrity: sha512-eIS3IzXqxK33IYDTtLuzoi3gQYCrKfwGYusSGKi2w7ji96qJnwFfasVjnsS3I08fb2p84bnX8ygL7Da8DqbxIA==}
     dependencies:
-      '@markuplint/ml-core': 3.15.0
-      '@markuplint/ml-spec': 3.14.0
+      '@markuplint/ml-spec': 4.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -909,6 +922,22 @@ packages:
       leven: 3.1.0
       type-fest: 4.9.0
       whatwg-mimetype: 3.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@markuplint/types@4.2.0:
+    resolution: {integrity: sha512-0Y1UTvvanysqVOTRIJrx5uNsCPwO5tiO87XIXneFQNTHOInRae4UHrOfXggKAgUf4aMlBBjq8F5zB01lwWRnvg==}
+    dependencies:
+      '@types/css-tree': 2.3.7
+      '@types/debug': 4.1.12
+      '@types/whatwg-mimetype': 3.0.2
+      bcp-47: 2.1.0
+      css-tree: 2.3.1
+      debug: 4.3.4
+      leven: 4.0.0
+      type-fest: 4.14.0
+      whatwg-mimetype: 4.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1393,6 +1422,10 @@ packages:
 
   /@types/css-tree@2.3.4:
     resolution: {integrity: sha512-wdxxe7zEpOXfy5C3FmwinAIc/6p6du/wOKMGZf07JHuHHRIvLtLq8h66zi3Yn7PCyswxbp3Ujx9h+vSuMvfN/w==}
+    dev: true
+
+  /@types/css-tree@2.3.7:
+    resolution: {integrity: sha512-LUlutQBpR2TgqZJdvXCPOx9EME7a4PHSEo2Y2c8POFpj1E9a6V94PUZNwjVdfHWyb8RQZoNHTYOKs980+sOi+g==}
     dev: true
 
   /@types/debug@4.1.12:
@@ -1952,6 +1985,14 @@ packages:
       is-alphabetical: 1.0.4
       is-alphanumerical: 1.0.4
       is-decimal: 1.0.4
+    dev: true
+
+  /bcp-47@2.1.0:
+    resolution: {integrity: sha512-9IIS3UPrvIa1Ej+lVDdDwO7zLehjqsaByECw0bu2RRGP73jALm6FYbzI5gWbgHLvNdkvfXB5YrSbocZdOS0c0w==}
+    dependencies:
+      is-alphabetical: 2.0.1
+      is-alphanumerical: 2.0.1
+      is-decimal: 2.0.1
     dev: true
 
   /big-integer@1.6.51:
@@ -3808,7 +3849,6 @@ packages:
 
   /is-alphabetical@2.0.1:
     resolution: {integrity: sha512-FWyyY60MeTNyeSRpkM2Iry0G9hpr7/9kD40mD/cGQEuilcZYS4okz8SN2Q6rLCJ8gbCt6fN+rC+6tMGS99LaxQ==}
-    dev: false
 
   /is-alphanumerical@1.0.4:
     resolution: {integrity: sha512-UzoZUr+XfVz3t3v4KyGEniVL9BDRoQtY7tOyrRybkVNjDFWyo1yhXNGrrBTQxp3ib9BLAWs7k2YKBQsFRkZG9A==}
@@ -3822,7 +3862,6 @@ packages:
     dependencies:
       is-alphabetical: 2.0.1
       is-decimal: 2.0.1
-    dev: false
 
   /is-array-buffer@3.0.2:
     resolution: {integrity: sha512-y+FyyR/w8vfIRq4eQcM1EYgSTnmHXPqaF+IgzgraytCFq5Xh8lllDVmAZolPJiZttZLeFSINPYMaEJ7/vWUa1w==}
@@ -3890,7 +3929,6 @@ packages:
 
   /is-decimal@2.0.1:
     resolution: {integrity: sha512-AAB9hiomQs5DXWcRB1rqsxGUstbRroFOPPVAomNk/3XHR5JyEZChOyTWe2oayKnsSsr/kcGqF+z6yuH6HHpN0A==}
-    dev: false
 
   /is-docker@2.2.1:
     resolution: {integrity: sha512-F+i2BKsFrH66iaUFc0woD8sLy8getkwTwtOBjvs56Cx4CgJDeKQeqfz8wAYiSb8JOprWhHH5p77PbmYCvvUuXQ==}
@@ -4206,6 +4244,11 @@ packages:
   /leven@3.1.0:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
+    dev: true
+
+  /leven@4.0.0:
+    resolution: {integrity: sha512-puehA3YKku3osqPlNuzGDUHq8WpwXupUg1V6NXdV38G+gr+gkBwFC8g1b/+YcIvp8gnqVIus+eJCH/eGsRmJNw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: true
 
   /levn@0.4.1:
@@ -6610,6 +6653,11 @@ packages:
     engines: {node: '>=14.16'}
     dev: false
 
+  /type-fest@4.14.0:
+    resolution: {integrity: sha512-on5/Cw89wwqGZQu+yWO0gGMGu8VNxsaW9SB2HE8yJjllEk7IDTwnSN1dUVldYILhYPN5HzD7WAaw2cc/jBfn0Q==}
+    engines: {node: '>=16'}
+    dev: true
+
   /type-fest@4.8.3:
     resolution: {integrity: sha512-//BaTm14Q/gHBn09xlnKNqfI8t6bmdzx2DXYfPBNofN0WUybCEUDcbCWcTa0oF09lzLjZgPphXAsvRiMK0V6Bw==}
     engines: {node: '>=16'}
@@ -6923,6 +6971,11 @@ packages:
   /whatwg-mimetype@3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
     engines: {node: '>=12'}
+    dev: true
+
+  /whatwg-mimetype@4.0.0:
+    resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
+    engines: {node: '>=18'}
     dev: true
 
   /whatwg-url@5.0.0:
