@@ -29,7 +29,7 @@
     "shiki": "^1.2.3"
   },
   "devDependencies": {
-    "@markuplint/jsx-parser": "^3.12.0",
+    "@markuplint/jsx-parser": "^4.6.1",
     "@markuplint/react-spec": "^4.3.0",
     "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.12",
