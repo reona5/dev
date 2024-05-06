@@ -33,7 +33,7 @@
     "@markuplint/react-spec": "^4.3.0",
     "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.12",
-    "@types/node": "20.11.19",
+    "@types/node": "20.12.9",
     "@types/react": "18.2.74",
     "@types/react-dom": "18.2.7",
     "@types/rss": "^0.0.32",
