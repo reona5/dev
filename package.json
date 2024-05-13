@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@markuplint/jsx-parser": "^4.6.1",
-    "@markuplint/react-spec": "^4.3.0",
+    "@markuplint/react-spec": "^4.5.2",
     "@playwright/test": "^1.40.1",
     "@tailwindcss/typography": "^0.5.12",
     "@types/node": "20.12.11",
