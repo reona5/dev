@@ -41,8 +41,8 @@ devDependencies:
     specifier: ^4.6.1
     version: 4.6.1(typescript@5.3.3)
   '@markuplint/react-spec':
-    specifier: ^4.3.0
-    version: 4.3.0
+    specifier: ^4.5.3
+    version: 4.5.3
   '@playwright/test':
     specifier: ^1.40.1
     version: 1.40.1
@@ -749,7 +749,7 @@ packages:
       '@markuplint/parser-utils': 3.13.0
       parse5: 7.1.2
       tslib: 2.6.2
-      type-fest: 4.14.0
+      type-fest: 4.15.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -798,6 +798,10 @@ packages:
     resolution: {integrity: sha512-b5ZrVKKg1OdaWJXCKVobbemdQncbHTpk6VKNWah05Gji9RKC7RekyhNVYmTRO0LZqNXlM9fzhCWnoFuEWzzeLg==}
     dev: true
 
+  /@markuplint/ml-ast@4.4.0:
+    resolution: {integrity: sha512-CnBChr2N7BL21STm3Fr77h6GA2QMiMAR1P+Eh4JiWywz79TMmrutwrOOKkKPBM6V0NI2pAG8G8mR+92IPjp6eQ==}
+    dev: true
+
   /@markuplint/ml-config@3.14.0:
     resolution: {integrity: sha512-KSmiKCKLg5nfnicx8OEPZUuelOBvYJ0hh82w5Z+PN8IruZF0C8vuoQ7zNSVTvLtyc97G1g83uk660hYe6/aJGg==}
     dependencies:
@@ -808,7 +812,7 @@ packages:
       deepmerge: 4.3.1
       is-plain-object: 5.0.0
       mustache: 4.2.0
-      type-fest: 4.14.0
+      type-fest: 4.15.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -829,7 +833,7 @@ packages:
       debug: 4.3.4
       is-plain-object: 5.0.0
       tslib: 2.6.2
-      type-fest: 4.14.0
+      type-fest: 4.15.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -842,19 +846,7 @@ packages:
       dom-accessibility-api: 0.6.3
       is-plain-object: 5.0.0
       tslib: 2.6.2
-      type-fest: 4.14.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
-  /@markuplint/ml-spec@4.3.0:
-    resolution: {integrity: sha512-91YJI47UYD8OCIzI06Qn06kdd2rPi23gpH9Ul12kjfWc9mqwE/PcmnZwtRbYJ9wJXlAkCbJkCLYd7nxZue1eVA==}
-    dependencies:
-      '@markuplint/ml-ast': 4.2.0
-      '@markuplint/types': 4.2.0
-      dom-accessibility-api: 0.6.3
-      is-plain-object: 5.0.0
-      type-fest: 4.14.0
+      type-fest: 4.15.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -867,6 +859,18 @@ packages:
       dom-accessibility-api: 0.6.3
       is-plain-object: 5.0.0
       type-fest: 4.15.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@markuplint/ml-spec@4.6.1:
+    resolution: {integrity: sha512-5sNFc0JfmcYG4Bdvf0bQ4OCD4kjrM5kiML+yi7b8PK4VLcmKL5fkTemko30k80CqQ1vuZE1ekdBvI5tvGKgtKw==}
+    dependencies:
+      '@markuplint/ml-ast': 4.4.0
+      '@markuplint/types': 4.5.1
+      dom-accessibility-api: 0.6.3
+      is-plain-object: 5.0.0
+      type-fest: 4.18.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -899,10 +903,10 @@ packages:
       - supports-color
     dev: true
 
-  /@markuplint/react-spec@4.3.0:
-    resolution: {integrity: sha512-eIS3IzXqxK33IYDTtLuzoi3gQYCrKfwGYusSGKi2w7ji96qJnwFfasVjnsS3I08fb2p84bnX8ygL7Da8DqbxIA==}
+  /@markuplint/react-spec@4.5.3:
+    resolution: {integrity: sha512-HF9bi7eOXc11uTjo4jvT1LRuxqJBiLp/iTTlTognEG4HmmdTycXUL9vZ0/qepUb1dgBmx1e43NQBK3CLLUq89Q==}
     dependencies:
-      '@markuplint/ml-spec': 4.3.0
+      '@markuplint/ml-spec': 4.6.1
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -922,7 +926,7 @@ packages:
       chrono-node: 2.7.5
       debug: 4.3.4
       tslib: 2.6.2
-      type-fest: 4.14.0
+      type-fest: 4.15.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -946,6 +950,12 @@ packages:
       html-entities: 2.4.0
     dev: true
 
+  /@markuplint/shared@4.4.1:
+    resolution: {integrity: sha512-yog5u59pihJ/jc41se/Nbl+EOg5qd+MWMYWZQzcXmeaY5mvEm0G0dtHhD1CzL0Tzhv6XHERehR7SaWpBhpcItg==}
+    dependencies:
+      html-entities: 2.5.2
+    dev: true
+
   /@markuplint/types@3.12.0:
     resolution: {integrity: sha512-DG8s61lqBmipcqoi/44JSsn9hwOw6yQaIHfeOEtnjqORWhlL38F3sGh6l+hDW9zh5nltibx9o2jZvlT2LheUYA==}
     dependencies:
@@ -963,22 +973,6 @@ packages:
       - supports-color
     dev: true
 
-  /@markuplint/types@4.2.0:
-    resolution: {integrity: sha512-0Y1UTvvanysqVOTRIJrx5uNsCPwO5tiO87XIXneFQNTHOInRae4UHrOfXggKAgUf4aMlBBjq8F5zB01lwWRnvg==}
-    dependencies:
-      '@types/css-tree': 2.3.7
-      '@types/debug': 4.1.12
-      '@types/whatwg-mimetype': 3.0.2
-      bcp-47: 2.1.0
-      css-tree: 2.3.1
-      debug: 4.3.4
-      leven: 4.0.0
-      type-fest: 4.14.0
-      whatwg-mimetype: 4.0.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@markuplint/types@4.3.0:
     resolution: {integrity: sha512-YtQ0IbIfYPLCiUEpwxGqs2HVK0SdvonZ19HLRhct5tjU2yOUpmGMBp6WNHejb+KiSmokxM8tfu55MfQhlTdPzg==}
     dependencies:
@@ -990,6 +984,23 @@ packages:
       debug: 4.3.4
       leven: 4.0.0
       type-fest: 4.15.0
+      whatwg-mimetype: 4.0.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@markuplint/types@4.5.1:
+    resolution: {integrity: sha512-7STM8Ey/G5Tz20QYs4ZSwdP5may/kfCbpOGIvkF7BC3G0yPip58GgWGcT38x2e4zsTO6iYp+5VM9Mfhp6mM7tQ==}
+    dependencies:
+      '@markuplint/shared': 4.4.1
+      '@types/css-tree': 2.3.7
+      '@types/debug': 4.1.12
+      '@types/whatwg-mimetype': 3.0.2
+      bcp-47: 2.1.0
+      css-tree: 2.3.1
+      debug: 4.3.4
+      leven: 4.0.0
+      type-fest: 4.18.3
       whatwg-mimetype: 4.0.0
     transitivePeerDependencies:
       - supports-color
@@ -2360,7 +2371,7 @@ packages:
     engines: {node: ^10 || ^12.20.0 || ^14.13.0 || >=15.0.0}
     dependencies:
       mdn-data: 2.0.30
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: true
 
   /cssesc@3.0.0:
@@ -3803,6 +3814,10 @@ packages:
 
   /html-entities@2.4.0:
     resolution: {integrity: sha512-igBTJcNNNhvZFRtm8uA6xMY6xYleeDwn3PeBCkDz7tHttv4F2hsDI2aPgNERWzvRcNYHNT3ymRaQzllmXj4YsQ==}
+    dev: true
+
+  /html-entities@2.5.2:
+    resolution: {integrity: sha512-K//PSRMQk4FZ78Kyau+mZurHn3FH0Vwr+H36eE0rPbeYkRRi9YxceYPhuN60UwWorxyKHhqoAJl2OFKa4BVtaA==}
     dev: true
 
   /html-void-elements@2.0.1:
@@ -5707,7 +5722,7 @@ packages:
     dependencies:
       nanoid: 3.3.7
       picocolors: 1.0.0
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
     dev: false
 
   /postcss@8.4.38:
@@ -6258,10 +6273,6 @@ packages:
     engines: {node: '>=12'}
     dev: true
 
-  /source-map-js@1.0.2:
-    resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
-    engines: {node: '>=0.10.0'}
-
   /source-map-js@1.2.0:
     resolution: {integrity: sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==}
     engines: {node: '>=0.10.0'}
@@ -6685,13 +6696,13 @@ packages:
     engines: {node: '>=14.16'}
     dev: false
 
-  /type-fest@4.14.0:
-    resolution: {integrity: sha512-on5/Cw89wwqGZQu+yWO0gGMGu8VNxsaW9SB2HE8yJjllEk7IDTwnSN1dUVldYILhYPN5HzD7WAaw2cc/jBfn0Q==}
+  /type-fest@4.15.0:
+    resolution: {integrity: sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==}
     engines: {node: '>=16'}
     dev: true
 
-  /type-fest@4.15.0:
-    resolution: {integrity: sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==}
+  /type-fest@4.18.3:
+    resolution: {integrity: sha512-Q08/0IrpvM+NMY9PA2rti9Jb+JejTddwmwmVQGskAlhtcrw1wsRzoR6ode6mR+OAabNa75w/dxedSUY2mlphaQ==}
     engines: {node: '>=16'}
     dev: true
 
