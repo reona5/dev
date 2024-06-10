@@ -44,7 +44,7 @@
     "eslint-config-next": "14.2.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-tailwindcss": "^3.17.0",
-    "markuplint": "^3.15.0",
+    "markuplint": "^4.9.1",
     "prettier": "^3.2.5",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.14",
