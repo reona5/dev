@@ -1,6 +1,6 @@
 import { loadGoogleFont } from "@/app/lib/loadGoogleFont";
 import { allPosts } from "contentlayer/generated";
-import { ImageResponse } from "next/server";
+import { ImageResponse } from "next/og";
 
 const getPostFromParams = async (params: PostProps["params"]) => {
   const { slug } = params;
