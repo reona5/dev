@@ -4,7 +4,6 @@ export const Rss: React.FC = () => {
       height="24"
       width="24"
       viewBox="0 0 8 8"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <rect fill="#ffa500" height="8" rx="1.5" width="8" />
       <g fill="#fff">
@@ -22,7 +21,6 @@ export const X: React.FC = () => {
       width="24"
       height="24"
       viewBox="0 0 1200 1227"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         className="fill-black dark:fill-white"
@@ -38,7 +36,6 @@ export const GitHub: React.FC = () => {
       width="24"
       height="24"
       viewBox="0 0 98 96"
-      xmlns="http://www.w3.org/2000/svg"
     >
       <path
         className="fill-[#24292f] dark:fill-white"

@@ -23,7 +23,7 @@ export const ButtonToggleTheme = (({ isHidden }) => {
     >
       <span className="sr-only">カラーテーマ切り替え</span>
       {!mounted || theme === "light" ? (
-        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 24 26">
+        <svg width="24" viewBox="0 -2 24 26">
           <path
             className="fill-gray-700 hover:fill-black"
             fill="black"
@@ -32,7 +32,7 @@ export const ButtonToggleTheme = (({ isHidden }) => {
           />
         </svg>
       ) : (
-        <svg width="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 -2 24 26">
+        <svg width="24" viewBox="0 -2 24 26">
           <path
             className="dark:fill-gray-300 dark:hover:fill-white"
             fill="transparent"
