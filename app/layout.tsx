@@ -1,5 +1,4 @@
 import { BaseFooter } from "@/app/components/BaseFooter";
-import { ProviderAnalytics } from "@/app/components/providers/ProviderAnalytics";
 import { ProviderTheme } from "@/app/components/providers/ProviderTheme";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -62,7 +61,6 @@ const RootLayout = ({ children }: RootLayoutProps) => {
       <body className={inter.className}>
         <ProviderTheme attribute="class">
           {children}
-          <ProviderAnalytics />
           <BaseFooter />
         </ProviderTheme>
       </body>
