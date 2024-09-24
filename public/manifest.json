@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#fff",
   "theme_color": "#000",
-  "description": "reona.dev は Next.js + Vercel によって作成されています。プログラミングに関する学びや日々の出来事を発信するウェブサイトです。",
+  "description": "reona.devはReona Shimadaの技術的な学びや日々の出来事を発信するWebサイトです。",
   "icons": [
     {
       "src": "/maskable_icon_x192.png",
